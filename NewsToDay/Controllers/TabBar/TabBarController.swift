@@ -1,5 +1,5 @@
 //
-//  TabBarVC.swift
+//  TabBarController.swift
 //  NewsToDay
 //
 //  Created by Kovs on 06.05.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarVC: UITabBarController {
+class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
