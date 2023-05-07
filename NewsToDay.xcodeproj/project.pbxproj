@@ -200,6 +200,7 @@
 				4E1520892A06C11400E42537 /* AppDelegate.swift */,
 				4E15208B2A06C11400E42537 /* SceneDelegate.swift */,
 				4E1520922A06C11700E42537 /* Assets.xcassets */,
+				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -630,6 +631,7 @@
 			files = (
 				4E4993A12A07AB73001CBF8C /* NetworkManager.swift in Sources */,
 				4E4993A52A07AC1F001CBF8C /* NewsError.swift in Sources */,
+				C80148732A0851FD00EB1E99 /* Coordinator.swift in Sources */,
 				4E4993A32A07AB84001CBF8C /* PersistenceManager.swift in Sources */,
 				4E49939A2A07A7FC001CBF8C /* NewsModel.swift in Sources */,
 				4E49939C2A07A84C001CBF8C /* NewsResponse.swift in Sources */,
