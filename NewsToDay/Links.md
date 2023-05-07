@@ -10,6 +10,8 @@ https://www.figma.com/file/1RuiQp6e7KzxUkQrT0BlSy/Challenge-№2-%22NewsToDay-Ap
 ## Notion tasks
 https://solid-llama-3ab.notion.site/CHALLENGE-2-NewsToDay-SM-7-0-f4256064d9e5460195033cd912867fbb
 
+## Fork - Git client
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjC7Yr4iuP-AhWS6CoKHTjOBoMQFnoECAsQAQ&url=https%3A%2F%2Fgit-fork.com%2F&usg=AOvVaw1MWCTEig31WAjyqhjJOqk7
 
 
 # FONT
