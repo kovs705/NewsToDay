@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class CategoriesViewController: UIViewController {
+final class CategoriesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
