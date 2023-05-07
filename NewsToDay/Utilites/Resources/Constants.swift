@@ -26,3 +26,13 @@ enum Colors {
     static let greyLighter   = "GreyLighter"
     static let greyPrimary   = "GreyPrimary"
 }
+
+enum Categories {
+    static let business = "business"
+    static let entertainment = "entertainment"
+    static let general = "general"
+    static let health = "health"
+    static let science = "science"
+    static let sports = "sports"
+    static let technology = "technology"
+}

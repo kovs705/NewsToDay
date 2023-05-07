@@ -30,6 +30,8 @@
 		4E4993A32A07AB84001CBF8C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A22A07AB84001CBF8C /* PersistenceManager.swift */; };
 		4E4993A52A07AC1F001CBF8C /* NewsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A42A07AC1F001CBF8C /* NewsError.swift */; };
 		4E4993A92A07AE1B001CBF8C /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A82A07AE1B001CBF8C /* NewsService.swift */; };
+		4ECDAAA22A082CEB00E8485C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDAAA12A082CEB00E8485C /* MainVC.swift */; };
+		4ECDAAA52A082EBD00E8485C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4ECDAAA42A082EBD00E8485C /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,7 @@
 		4E4993A22A07AB84001CBF8C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4E4993A42A07AC1F001CBF8C /* NewsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsError.swift; sourceTree = "<group>"; };
 		4E4993A82A07AE1B001CBF8C /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
+		4ECDAAA12A082CEB00E8485C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECDAAA52A082EBD00E8485C /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				4E15208D2A06C11400E42537 /* ViewController.swift */,
+				4ECDAAA12A082CEB00E8485C /* MainVC.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -321,6 +326,9 @@
 			dependencies = (
 			);
 			name = NewsToDay;
+			packageProductDependencies = (
+				4ECDAAA42A082EBD00E8485C /* SnapKit */,
+			);
 			productName = NewsToDay;
 			productReference = 4E1520862A06C11400E42537 /* NewsToDay.app */;
 			productType = "com.apple.product-type.application";
@@ -393,6 +401,9 @@
 				Base,
 			);
 			mainGroup = 4E15207D2A06C11400E42537;
+			packageReferences = (
+				4ECDAAA32A082EBD00E8485C /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4E1520872A06C11400E42537 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -453,6 +464,7 @@
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* UIHelper.swift in Sources */,
+				4ECDAAA22A082CEB00E8485C /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +804,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4ECDAAA32A082EBD00E8485C /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4ECDAAA42A082EBD00E8485C /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4ECDAAA32A082EBD00E8485C /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4E15207E2A06C11400E42537 /* Project object */;
 }

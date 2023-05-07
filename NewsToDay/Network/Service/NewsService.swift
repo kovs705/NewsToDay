@@ -27,7 +27,8 @@ class NewsService {
     static let shared = NewsService()
     
     func getHeadline() async throws -> [News] {
-        let components = URLComponents(string: "\(baseURL)/top-headlines?country=id&apiKey=\(apiKey)")!
+        let components = URLComponents(string: "\(baseURL)/top-headlines?country=us&apiKey=\(apiKey)")!
+    
         
         let request = URLRequest(url: components.url!)
         let (data, response) = try await URLSession.shared.data(for: request)
