@@ -30,3 +30,6 @@ https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_
 
 ## Get Started
 https://newsapi.org/docs/get-started
+
+## List of errors (NewsError)
+https://newsapi.org/docs/errors
