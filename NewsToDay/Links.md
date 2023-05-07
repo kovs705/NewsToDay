@@ -1,6 +1,7 @@
 #  Links 
 
 
+
 # Project
 
 ## Figma mock-up
@@ -22,3 +23,10 @@ http://iosfonts.com
 ## Adding custom font to the project
 https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app
 
+
+
+# API Key
+## 8e4cb38d557a45798ecdfa5b7c61f16e
+
+## Get Started
+https://newsapi.org/docs/get-started
