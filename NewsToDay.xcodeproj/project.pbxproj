@@ -36,6 +36,7 @@
 		C801486E2A0844DA00EB1E99 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C801486D2A0844DA00EB1E99 /* CategoriesViewController.swift */; };
 		C80148712A084DED00EB1E99 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148702A084DED00EB1E99 /* CategoriesPresenter.swift */; };
 		C80148732A0851FD00EB1E99 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148722A0851FD00EB1E99 /* Coordinator.swift */; };
+		C80148712A084DED00EB1E99 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148702A084DED00EB1E99 /* CategoriesPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
