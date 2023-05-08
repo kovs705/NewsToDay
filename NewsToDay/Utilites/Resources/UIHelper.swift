@@ -10,15 +10,22 @@ import UIKit
 enum UIHelper {
     
     static func createTwoColumnLayout(in view: UIView) -> UICollectionViewLayout {
-        let width                       = view.bounds.width
-        let padding: CGFloat            = 12
-        let minimumItemSpacing: CGFloat = 10
-        let availableWidth              = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidth                   = availableWidth / 2
+        let width = view.bounds.width
+        let padding: CGFloat = 32
+        let minimumItemSpacing: CGFloat = 16
+        let availableWidth = width - (padding * 2) - (minimumItemSpacing * 2)
+        let itemWidth = availableWidth / 2
+        let itemHeight = itemWidth / 2.22
         
-        let flowLayout                  = UICollectionViewFlowLayout()
-        flowLayout.sectionInset         = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize             = CGSize(width: itemWidth, height: 35)
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumLineSpacing = padding
+        flowLayout.minimumInteritemSpacing = minimumItemSpacing
+        
+        flowLayout.sectionInset = UIEdgeInsets(top: padding,
+                                               left: padding,
+                                               bottom: padding,
+                                               right: padding)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         
         // TODO: ----> подобрать высоту для ячеек !!!!! (itemSize height)
         
