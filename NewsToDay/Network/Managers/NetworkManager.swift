@@ -5,7 +5,7 @@
 //  Created by Kovs on 07.05.2023.
 //
 
-import UIKit
+import Foundation
 
 protocol NetworkmanagerProtocol {
     func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void)
@@ -14,8 +14,8 @@ protocol NetworkmanagerProtocol {
 class Networkmanager: NetworkmanagerProtocol {
     private var baseURL: String = "https://newsapi.org/v2"
     // cache for image?
-    
     let decoder = JSONDecoder()
+    
     private init() {}
     
     
@@ -52,7 +52,6 @@ class Networkmanager: NetworkmanagerProtocol {
             }
             
         }
-        
         task.resume()
     }
 }
