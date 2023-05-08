@@ -7,8 +7,12 @@
 
 import UIKit
 
-class Networkmanager {
-    static let shared = Networkmanager()
+protocol NetworkmanagerProtocol {
+    func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void)
+}
+
+class Networkmanager: NetworkmanagerProtocol {
+//    static let shared = Networkmanager()
     private var baseURL: String = "https://newsapi.org/v2"
     // cache for image?
     
