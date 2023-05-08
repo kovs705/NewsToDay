@@ -15,6 +15,7 @@ class Networkmanager: NetworkmanagerProtocol {
     private var baseURL: String = "https://newsapi.org/v2"
     // cache for image?
     
+    let decoder = JSONDecoder()
     private init() {}
     
     
@@ -42,10 +43,9 @@ class Networkmanager: NetworkmanagerProtocol {
             }
             
             do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                self.decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let news = try decoder.decode([News].self, from: data)
+                let news = try self.decoder.decode([News].self, from: data)
                 completed(.success(news))
             } catch {
                 completed(.failure(.invalidData))
