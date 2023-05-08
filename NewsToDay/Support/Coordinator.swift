@@ -14,7 +14,7 @@ protocol CoordinatorProtocol {
 class Coordinator: CoordinatorProtocol {
     static func getCategoriesModule() -> UIViewController {
         let view = CategoriesViewController()
-        let presenter = CategoriesPresenter(view: view)
+        let presenter = CategoriesPresenter(view: view, categories: <#[Category]#>)
         view.presenter = presenter
         return view
     }
