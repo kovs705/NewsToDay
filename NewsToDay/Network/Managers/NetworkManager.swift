@@ -12,7 +12,6 @@ protocol NetworkmanagerProtocol {
 }
 
 class Networkmanager: NetworkmanagerProtocol {
-//    static let shared = Networkmanager()
     private var baseURL: String = "https://newsapi.org/v2"
     // cache for image?
     
