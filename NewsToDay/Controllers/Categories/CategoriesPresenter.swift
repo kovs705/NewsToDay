@@ -7,14 +7,18 @@
 
 import Foundation
 
-protocol CategriesViewProtocol {
+protocol CategriesViewProtocol: AnyObject {
     
 }
 
-protocol CategoriesPresenterProtocol {
-    init(view: CategriesViewProtocol, network)
+protocol CategoriesPresenterProtocol: AnyObject {
+    init(view: CategriesViewProtocol)
 }
 // Possible options: business entertainment general health science sports technology
-class CategoriesPresenter {
+class CategoriesPresenter: CategoriesPresenterProtocol {
+    weak var view: CategriesViewProtocol?
     
+    required init(view: CategriesViewProtocol) {
+        self.view = view
+    }
 }
