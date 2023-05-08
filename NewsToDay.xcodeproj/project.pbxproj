@@ -37,6 +37,7 @@
 		C80148712A084DED00EB1E99 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148702A084DED00EB1E99 /* CategoriesPresenter.swift */; };
 		C80148732A0851FD00EB1E99 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148722A0851FD00EB1E99 /* Coordinator.swift */; };
 		C80148712A084DED00EB1E99 /* CategoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148702A084DED00EB1E99 /* CategoriesPresenter.swift */; };
+		C80148732A0851FD00EB1E99 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80148722A0851FD00EB1E99 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,9 +87,9 @@
 		4E4993A82A07AE1B001CBF8C /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		4ECDAAA12A082CEB00E8485C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4ECDAAA62A082F4A00E8485C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C80148722A0851FD00EB1E99 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C801486D2A0844DA00EB1E99 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		C80148702A084DED00EB1E99 /* CategoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesPresenter.swift; sourceTree = "<group>"; };
+		C80148722A0851FD00EB1E99 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,8 +177,8 @@
 			children = (
 				4E1520892A06C11400E42537 /* AppDelegate.swift */,
 				4E15208B2A06C11400E42537 /* SceneDelegate.swift */,
-				4E1520922A06C11700E42537 /* Assets.xcassets */,
 				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
+				4E1520922A06C11700E42537 /* Assets.xcassets */,
 			);
 			path = Support;
 			sourceTree = "<group>";

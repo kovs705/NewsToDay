@@ -36,3 +36,10 @@ enum Categories {
     static let sports = "sports"
     static let technology = "technology"
 }
+
+enum Fonts {
+    static let regular = "Inter-Regular.ttf"
+    static let medium = "Inter-Medium.ttf"
+    static let semiBold = "Inter-SemiBold.ttf"
+    static let bold = "Inter-Bold.ttf"
+}
