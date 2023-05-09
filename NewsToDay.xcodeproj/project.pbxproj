@@ -648,6 +648,7 @@
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
 				EB6909FB2A095261009E0A1C /* RegisterController.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
+				27A988C12A0A6E9000A0AAD9 /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* UIHelper.swift in Sources */,
 				4ECDAAA22A082CEB00E8485C /* MainVC.swift in Sources */,
 				C801486E2A0844DA00EB1E99 /* CategoriesViewController.swift in Sources */,
