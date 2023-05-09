@@ -183,6 +183,7 @@
 				4E15208B2A06C11400E42537 /* SceneDelegate.swift */,
 				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 				4E1520922A06C11700E42537 /* Assets.xcassets */,
+				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
