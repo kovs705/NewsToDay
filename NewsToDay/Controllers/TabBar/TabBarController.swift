@@ -12,7 +12,7 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemBlue
-        viewControllers = [] // VCs here
+        viewControllers = [BrowseViewController()] // VCs here
         
     }
     
