@@ -5,12 +5,16 @@
 //  Created by Kovs on 07.05.2023.
 //
 
-import UIKit
+import Foundation
 
-class Networkmanager {
-    static let shared = Networkmanager()
+protocol NetworkmanagerProtocol {
+    func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void)
+}
+
+class Networkmanager: NetworkmanagerProtocol {
     private var baseURL: String = "https://newsapi.org/v2"
     // cache for image?
+    let decoder = JSONDecoder()
     
     private init() {}
     
@@ -39,17 +43,15 @@ class Networkmanager {
             }
             
             do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                self.decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let news = try decoder.decode([News].self, from: data)
+                let news = try self.decoder.decode([News].self, from: data)
                 completed(.success(news))
             } catch {
                 completed(.failure(.invalidData))
             }
             
         }
-        
         task.resume()
     }
 }
