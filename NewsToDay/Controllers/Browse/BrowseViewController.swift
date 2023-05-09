@@ -35,6 +35,8 @@ final class BrowseViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: createCompositionalLayout())
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.register(CategoryCell.self,
+                                forCellWithReuseIdentifier: CategoryCell.id)
         collectionView.register(NewsCell.self,
                                 forCellWithReuseIdentifier: NewsCell.id)
         collectionView.register(SectionHeaderView.self,
@@ -46,7 +48,7 @@ final class BrowseViewController: UIViewController {
     private func configureDataSouce() {
         dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
             switch itemIdentifier {
-            case let .category(title): return self.configure(NewsCell.self, with: title, for: indexPath)
+            case let .category(title): return self.configure(CategoryCell.self, with: title, for: indexPath)
             case let .news(title): return self.configure(NewsCell.self, with: title, for: indexPath)
             case let .article(title): return self.configure(NewsCell.self, with: title, for: indexPath)
             }
@@ -140,15 +142,14 @@ extension BrowseViewController {
     }
     
     func createCategorySection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(90), heightDimension: .estimated(30))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(254))
+        layoutItem.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: .fixed(8), top: .fixed(5), trailing: .fixed(8), bottom: .fixed(5))
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .estimated(300), heightDimension: .estimated(50))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
         let section = NSCollectionLayoutSection(group: layoutGroup)
-        section.boundarySupplementaryItems = [createSectionHeader()]
-        section.interGroupSpacing = 10
-        section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 16)
         return section
     }
     
@@ -158,7 +159,6 @@ extension BrowseViewController {
         let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(254))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
         let section = NSCollectionLayoutSection(group: layoutGroup)
-        section.boundarySupplementaryItems = [createSectionHeader()]
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .groupPaging
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
@@ -168,12 +168,11 @@ extension BrowseViewController {
     func createArticleSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(254))
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
         let section = NSCollectionLayoutSection(group: layoutGroup)
         section.boundarySupplementaryItems = [createSectionHeader()]
         section.interGroupSpacing = 10
-        section.orthogonalScrollingBehavior = .groupPaging
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         return section
     }
