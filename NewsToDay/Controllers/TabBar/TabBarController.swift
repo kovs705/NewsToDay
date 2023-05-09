@@ -7,16 +7,51 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = .systemBlue
-        viewControllers = [] // VCs here
-        
+        setupTabs()
+        setupTabBar()
     }
     
+    private func setupTabs() {
+        let categories = Coordinator.getCategoriesModule()
+        let test = ViewController()
+        
+        let navigationController = setupViewController(categories,
+                                                       title: "Categories",
+                                                       iconSystemName: "square.grid.2x2")
+        let navigationController2 = setupViewController(test,
+                                                        title: "Test",
+                                                        iconSystemName: "bookmark")
+        let tabs = [navigationController, navigationController2] // VCs here
+        setViewControllers(tabs, animated: true)
+    }
     
+    private func setupViewController(_ viewController: UIViewController,
+                                     title: String, iconSystemName: String) -> UINavigationController {
+        viewController.title = title
+        viewController.tabBarItem.image = UIImage(systemName: iconSystemName)?.withBaselineOffset(fromBottom: 16)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationItem.largeTitleDisplayMode = .automatic
+        navigationController.navigationBar.prefersLargeTitles = true
+        return navigationController
+    }
     
+    private func setupTabBar() {
+        tabBar.layer.borderColor = UIColor(named: Colors.greyLighter)?.cgColor
+        tabBar.layer.borderWidth = 1
+        tabBar.layer.cornerRadius = 12
+        tabBar.tintColor = UIColor(named: Colors.purplePrimary)
+        tabBar.unselectedItemTintColor = UIColor(named: Colors.greyLight)
+        removeTabbarItemsText()
+    }
     
+    private func removeTabbarItemsText() {
+        guard let items = tabBar.items else { return }
+        for item in items {
+            item.title = ""
+        }
+    }
 }
