@@ -13,6 +13,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemBlue
         setupTabs()
+        setupTabBar()
     }
     private func setupTabs() {
         let categories = Coordinator.getCategoriesModule()
@@ -33,6 +34,10 @@ class TabBarController: UITabBarController {
         setViewControllers(tabs, animated: true)
     }
     
-    
+    private func setupTabBar() {
+        tabBar.layer.borderColor = UIColor(named: Colors.greyLighter)?.cgColor
+        tabBar.layer.borderWidth = 1
+        tabBar.layer.cornerRadius = 12
+    }
     
 }
