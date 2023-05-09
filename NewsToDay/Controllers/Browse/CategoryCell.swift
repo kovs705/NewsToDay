@@ -46,7 +46,6 @@ final class CategoryCell: UICollectionViewCell {
 extension CategoryCell {
     private func setupTitleLabel() {
         contentView.addSubview(titleLabel)
-        titleLabel.text = "Yes"
         titleLabel.textColor = .systemPurple
         titleLabel.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(24)
