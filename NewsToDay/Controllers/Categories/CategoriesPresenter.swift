@@ -12,10 +12,11 @@ protocol CategriesViewProtocol: AnyObject {
 }
 
 protocol CategoriesPresenterProtocol: AnyObject {
+    var categories: [Category] { get }
     init(view: CategriesViewProtocol, categories: [Category])
 }
-// Possible options: business entertainment general health science sports technology
-class CategoriesPresenter: CategoriesPresenterProtocol {
+
+final class CategoriesPresenter: CategoriesPresenterProtocol {
     weak var view: CategriesViewProtocol?
     var categories: [Category]
     
