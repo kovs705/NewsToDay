@@ -17,7 +17,7 @@ struct BaseResponse<T: ApiResponse>: Codable {
 
 
 struct SourceResponse: Codable {
-    let id:   String? = nil
+    let id:   String?
     let name: String?
 }
 
