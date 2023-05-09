@@ -127,12 +127,28 @@
 		27A988B92A0A3F5A00A0AAD9 /* Browse */ = {
 			isa = PBXGroup;
 			children = (
+				27A988C32A0A737A00A0AAD9 /* ViewModel */,
+				27A988C22A0A737400A0AAD9 /* Model */,
 				27A988BA2A0A3F8600A0AAD9 /* BrowseViewController.swift */,
 				27A988BC2A0A5A9100A0AAD9 /* NewsCell.swift */,
 				27A988C02A0A6E9000A0AAD9 /* CategoryCell.swift */,
 				27A988BE2A0A5C8500A0AAD9 /* SectionHeaderView.swift */,
 			);
 			path = Browse;
+			sourceTree = "<group>";
+		};
+		27A988C22A0A737400A0AAD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27A988C32A0A737A00A0AAD9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4E15207D2A06C11400E42537 = {
