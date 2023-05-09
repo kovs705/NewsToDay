@@ -8,11 +8,24 @@
 import Foundation
 
 protocol CategoryManagerProtocol {
-    var categories: [Category] { get }
+    var all: [Category] { get }
 }
 
 class CategoryManager: CategoryManagerProtocol {
-    var categories: [Category] = [
-        Category(name: <#T##String#>, icon: <#T##String#>, apiName: <#T##String#>)
+    var all: [Category] = [
+        Category(name: Categories.business,
+                 icon: "📈"),
+        Category(name: Categories.entertainment,
+                 icon: "🎥"),
+        Category(name: Categories.general,
+                 icon: "⚖️"),
+        Category(name: Categories.health,
+                 icon: "🏃🏼‍♀️"),
+        Category(name: Categories.science,
+                 icon: "🧬"),
+        Category(name: Categories.technology,
+                 icon: "📱"),
+        Category(name: Categories.sports,
+                 icon: "🏈"),
     ]
 }
