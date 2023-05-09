@@ -5,21 +5,18 @@ final class CategoryCell: UICollectionViewCell {
     
     private let titleLabel = UILabel()
     
-//    override var isSelected: Bool {
-//        didSet {
-//            if isSelected {
-//                contentView.backgroundColor = Theme.purple
-//                titleLabel.textColor = .white
-//                titleLabel.font = .systemFont(ofSize: 13, weight: .bold)
-//            } else {
-//                contentView.backgroundColor = .clear
-//                contentView.layer.borderColor = UIColor.lightGray.cgColor
-//                titleLabel.textColor = Theme.darkGreyToWhite
-//
-//                titleLabel.font = .systemFont(ofSize: 13, weight: .regular)
-//            }
-//        }
-//    }
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                contentView.backgroundColor = .systemPurple
+                titleLabel.textColor = .white
+            } else {
+                contentView.backgroundColor = .clear
+                contentView.layer.borderColor = UIColor.systemPurple.cgColor
+                titleLabel.textColor = .systemPurple
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,7 +33,7 @@ final class CategoryCell: UICollectionViewCell {
     
     private func setupView() {
         contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderColor = UIColor.systemPurple.cgColor
         setupTitleLabel()
     }
     
@@ -50,6 +47,7 @@ extension CategoryCell {
     private func setupTitleLabel() {
         contentView.addSubview(titleLabel)
         titleLabel.text = "Yes"
+        titleLabel.textColor = .systemPurple
         titleLabel.snp.makeConstraints {
             $0.left.right.equalToSuperview().inset(24)
             $0.top.bottom.equalToSuperview().inset(8)
