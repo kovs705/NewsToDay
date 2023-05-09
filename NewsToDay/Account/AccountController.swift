@@ -18,23 +18,24 @@ class AccountController: UIViewController {
     
     private lazy var header: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24)
+        label.font = UIFont(name: Constants.Font.interSemiBold, size: 24)
         label.text = Constants.String.welcome
         return label
     }()
     
     private lazy var underHeader: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIFont(name: Constants.Font.interRegular, size: 16)
         label.text = Constants.String.iAm
         label.numberOfLines = 2
-        label.textColor = .systemGray2
+        label.textColor = .systemGray
         return label
     }()
     
     private lazy var emailTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.email
+        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
         text.delegate = self
         return text
     }()
@@ -42,6 +43,7 @@ class AccountController: UIViewController {
     private lazy var passwordTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.password
+        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -50,7 +52,7 @@ class AccountController: UIViewController {
     private lazy var emailView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -58,7 +60,7 @@ class AccountController: UIViewController {
     private lazy var passwordView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -66,8 +68,9 @@ class AccountController: UIViewController {
     private lazy var signButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.signIn, for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: Colors.purplePrimary)
         button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
         button.addTarget(self, action: #selector(tapButton(sender:)), for: .touchUpInside)
         return button
     }()
@@ -75,8 +78,9 @@ class AccountController: UIViewController {
     private lazy var googleSingIn: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.google, for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: Colors.purplePrimary)
         button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
         button.addTarget(self, action: #selector(googleSign), for: .touchUpInside)
         return button
     }()
@@ -84,7 +88,7 @@ class AccountController: UIViewController {
     private lazy var registrButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.dontAc, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont(name: Constants.Font.interMedium, size: 16)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(tapButton(sender:)), for: .touchUpInside)
         return button
@@ -93,6 +97,7 @@ class AccountController: UIViewController {
     private lazy var hideButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
+        button.tintColor = UIColor(named: Colors.purplePrimary)
         button.addTarget(self, action: #selector(hidePressed), for: .touchUpInside)
         return button
     }()
@@ -100,14 +105,14 @@ class AccountController: UIViewController {
     private lazy var emailImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.envelope)
-        image.tintColor = .gray
+        image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
     private lazy var passwordImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
-        image.tintColor = .gray
+        image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
@@ -257,7 +262,7 @@ class AccountController: UIViewController {
                     alertController.addAction(action)
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    //                        navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+                    //navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
                     print("ok")
                 }
             }

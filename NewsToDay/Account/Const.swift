@@ -41,4 +41,10 @@ continue where you left off by logging in
         static let eye = "eye"
         static let google = "google"
     }
+    
+    enum Font {
+        static let interSemiBold = "Inter-SemiBold"
+        static let interRegular = "Inter-Regular"
+        static let interMedium = "Inter-Medium"
+    }
 }

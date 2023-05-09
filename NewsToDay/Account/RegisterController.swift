@@ -15,23 +15,24 @@ class RegisterController: UIViewController {
     
     private lazy var header: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24)
+        label.font = UIFont(name: Constants.Font.interSemiBold, size: 24)
         label.text = Constants.String.welcomeToNews
         return label
     }()
     
     private lazy var underHeader: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = UIFont(name: Constants.Font.interRegular, size: 16)
         label.text = Constants.String.hello
         label.numberOfLines = 2
-        label.textColor = .systemGray2
+        label.textColor = .systemGray
         return label
     }()
     
     private lazy var nameTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.name
+        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
         text.delegate = self
         return text
     }()
@@ -39,6 +40,7 @@ class RegisterController: UIViewController {
     private lazy var emailTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.email
+        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
         text.delegate = self
         return text
     }()
@@ -46,6 +48,7 @@ class RegisterController: UIViewController {
     private lazy var passwordFirstTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.password
+        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -54,6 +57,7 @@ class RegisterController: UIViewController {
     private lazy var passwordSecondTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.repeatPas
+        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -62,7 +66,7 @@ class RegisterController: UIViewController {
     private lazy var nameView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -70,7 +74,7 @@ class RegisterController: UIViewController {
     private lazy var emailView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -78,7 +82,7 @@ class RegisterController: UIViewController {
     private lazy var passwordFirstView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -86,7 +90,7 @@ class RegisterController: UIViewController {
     private lazy var passwordSecondView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor.blue.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -94,8 +98,9 @@ class RegisterController: UIViewController {
     private lazy var signButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.signUp, for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: Colors.purplePrimary)
         button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
         button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         return button
     }()
@@ -103,7 +108,7 @@ class RegisterController: UIViewController {
     private lazy var registrButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.haveAnAcc, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont(name: Constants.Font.interMedium, size: 16)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(backToSign), for: .touchUpInside)
         return button
@@ -112,28 +117,28 @@ class RegisterController: UIViewController {
     private lazy var nameImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.person)
-        image.tintColor = .gray
+        image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
     private lazy var emailImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.envelope)
-        image.tintColor = .gray
+        image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
     private lazy var passwordImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
-        image.tintColor = .gray
+        image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
     private lazy var passwordImageTwo: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
-        image.tintColor = .gray
+        image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
@@ -169,6 +174,7 @@ class RegisterController: UIViewController {
     //MARK: Setup Views
     
     private func setupViews() {
+        navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         view.addGestureRecognizer(tapGesture)
         
@@ -218,6 +224,7 @@ class RegisterController: UIViewController {
         nameTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(nameImage.snp.right).offset(26)
+            make.right.equalToSuperview().inset(20)
         }
         
         emailView.snp.makeConstraints { make in
@@ -236,6 +243,7 @@ class RegisterController: UIViewController {
         emailTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(nameImage.snp.right).offset(26)
+            make.right.equalToSuperview().inset(20)
         }
         
         passwordFirstView.snp.makeConstraints { make in
@@ -282,7 +290,7 @@ class RegisterController: UIViewController {
         
         registrButton.snp.makeConstraints { make in
             make.height.equalTo(32)
-            make.width.equalTo(250)
+            make.width.equalTo(270)
             make.bottom.equalToSuperview().inset(42)
             make.centerX.equalToSuperview()
         }
@@ -336,7 +344,6 @@ class RegisterController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 // navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-                print("ok")
             }
         }
     }
