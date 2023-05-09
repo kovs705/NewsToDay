@@ -12,15 +12,15 @@ protocol CategriesViewProtocol: AnyObject {
 }
 
 protocol CategoriesPresenterProtocol: AnyObject {
-    var categories: [Category] { get }
-    init(view: CategriesViewProtocol, categories: [Category])
+    var categories: CategoryManagerProtocol? { get }
+    init(view: CategriesViewProtocol, categories: CategoryManagerProtocol?)
 }
 
 final class CategoriesPresenter: CategoriesPresenterProtocol {
     weak var view: CategriesViewProtocol?
-    var categories: [Category]
+    var categories: CategoryManagerProtocol?
     
-    required init(view: CategriesViewProtocol, categories: [Category]) {
+    required init(view: CategriesViewProtocol, categories: CategoryManagerProtocol?) {
         self.view = view
         self.categories = categories
     }

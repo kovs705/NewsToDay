@@ -29,7 +29,6 @@ final class CategoriesViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        self.title = "Categories"
         setupDiscriptionLabel()
         setupCollectionView()
     }
@@ -87,12 +86,14 @@ extension CategoriesViewController: CategriesViewProtocol {
 
 extension CategoriesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.categories.count
+        return presenter.categories?.all.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categories", for: indexPath) as! CategriesCollectionViewCell
-        let category = presenter.categories[indexPath.row]
+        guard let category = presenter.categories?.all[indexPath.row] else {
+            return cell
+        }
         cell.setTitle(category: category)
         return cell
     }
