@@ -91,7 +91,6 @@ class RegisterController: UIViewController {
         return view
     }()
     
-    
     private lazy var signButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.signUp, for: .normal)
@@ -310,44 +309,44 @@ class RegisterController: UIViewController {
             passwordSecondTextField.isSecureTextEntry = !passwordSecondTextField.isSecureTextEntry
         }
     }
-        
-        @objc private func backToSign() {
-            dismiss(animated: true)
+    
+    @objc private func backToSign() {
+        navigationController?.pushViewController(AccountController(), animated: true)
+    }
+    
+    @objc private func tapButton() {
+        if passwordFirstTextField.text != passwordSecondTextField.text {
+            let alertController = UIAlertController(title: Constants.String.info,
+                                                    message: Constants.String.errorPassword,
+                                                    preferredStyle: .alert)
+            let action = UIAlertAction(title: Constants.String.ok, style: .cancel, handler: nil)
+            alertController.addAction(action)
+            self.present(alertController, animated: true, completion: nil)
         }
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordFirstTextField.text else { return }
         
-        @objc private func tapButton() {
-            if passwordFirstTextField.text != passwordSecondTextField.text {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
                 let alertController = UIAlertController(title: Constants.String.info,
-                                                        message: Constants.String.errorPassword,
+                                                        message: error.localizedDescription,
                                                         preferredStyle: .alert)
                 let action = UIAlertAction(title: Constants.String.ok, style: .cancel, handler: nil)
                 alertController.addAction(action)
                 self.present(alertController, animated: true, completion: nil)
-            }
-            guard let email = emailTextField.text else { return }
-            guard let password = passwordFirstTextField.text else { return }
-            
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    let alertController = UIAlertController(title: Constants.String.info,
-                                                            message: error.localizedDescription,
-                                                            preferredStyle: .alert)
-                    let action = UIAlertAction(title: Constants.String.ok, style: .cancel, handler: nil)
-                    alertController.addAction(action)
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
-                    //                navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-                    print("ok")
-                }
+            } else {
+                // navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+                print("ok")
             }
         }
     }
-    
-    //MARK: Extension UITextFieldDelegate
-    
-    extension RegisterController: UITextFieldDelegate {
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
+}
+
+//MARK: Extension UITextFieldDelegate
+
+extension RegisterController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
+}

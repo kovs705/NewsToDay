@@ -215,7 +215,7 @@ class AccountController: UIViewController {
         
         googleSingIn.snp.makeConstraints { make in
             make.bottom.equalTo(registrButton.snp.top).offset(-64)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview().inset(80)
             make.height.equalTo(56)
         }
     }
