@@ -1,10 +1,5 @@
 import UIKit
 
-protocol SelfConfiguringCell {
-    static var id: String { get }
-    func configure(with title: String)
-}
-
 enum BrowseItem: Hashable {
     case category(String)
     case news(String)
@@ -48,11 +43,21 @@ final class BrowseViewController: UIViewController {
     private func configureDataSouce() {
         dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, itemIdentifier in
             switch itemIdentifier {
-            case let .category(title): return self.configure(CategoryCell.self, with: title, for: indexPath)
-            case let .news(title): return self.configure(NewsCell.self, with: title, for: indexPath)
-            case let .article(title): return self.configure(NewsCell.self, with: title, for: indexPath)
+            case let .category(category):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.id, for: indexPath) as? CategoryCell else { fatalError("Unable to dequeue CategoryCell")}
+                cell.configure(with: category)
+                return cell
+            case let .news(news):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.id, for: indexPath) as? NewsCell else { fatalError("Unable to dequeue NewsCell")}
+                cell.configure(with: news)
+                return cell
+            case let .article(article):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.id, for: indexPath) as? NewsCell else { fatalError("Unable to dequeue NewsCell")}
+                cell.configure(with: article)
+                return cell
             }
         }
+        
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.id, for: indexPath) as! SectionHeaderView
             return headerView
@@ -67,13 +72,6 @@ final class BrowseViewController: UIViewController {
             snapshot.appendItems($0.items, toSection: $0)
         }
         dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    func configure<T: SelfConfiguringCell>(_ cellType: T.Type, with title: String, for indexPath: IndexPath) -> T {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: T.id, for: indexPath) as? T
-        else { fatalError("Unable to dequeue \(cellType)")}
-        cell.configure(with: title)
-        return cell
     }
     
     override func viewDidLoad() {

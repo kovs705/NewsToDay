@@ -1,6 +1,6 @@
 import UIKit
 
-final class CategoryCell: UICollectionViewCell, SelfConfiguringCell {
+final class CategoryCell: UICollectionViewCell {
     static let id = "CategoryCell"
     
     private let titleLabel = UILabel()
