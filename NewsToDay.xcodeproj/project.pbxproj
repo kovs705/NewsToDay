@@ -642,6 +642,7 @@
 				EB6909F72A094044009E0A1C /* AccountController.swift in Sources */,
 				4ECDAAA72A082F4A00E8485C /* User.swift in Sources */,
 				4E4993A92A07AE1B001CBF8C /* NewsService.swift in Sources */,
+				27A988BD2A0A5A9100A0AAD9 /* NewsCell.swift in Sources */,
 				4E15208E2A06C11400E42537 /* ViewController.swift in Sources */,
 				4E15208A2A06C11400E42537 /* AppDelegate.swift in Sources */,
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
