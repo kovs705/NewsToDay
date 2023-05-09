@@ -7,17 +7,17 @@
 
 import Foundation
 
-protocol ApiResponse: Codable {}
+protocol ApiResponse: Decodable {}
 
-struct BaseResponse<T: ApiResponse>: Codable {
+struct BaseResponse<T: ApiResponse>: Decodable {
     let status:       String
     let totalResults: Int
     let articles:     [T]
 }
 
 
-struct SourceResponse: Codable {
-    let id:   String? = nil
+struct SourceResponse: Decodable {
+    let id:   String?
     let name: String?
 }
 
