@@ -47,7 +47,7 @@ final class CategoriesViewController: UIViewController {
                                            collectionViewLayout: layout)
         colletctionView.dataSource = self
         colletctionView.delegate = self
-        colletctionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "categories")
+        colletctionView.register(CategriesCollectionViewCell.self, forCellWithReuseIdentifier: "categories")
     }
     
     //MARK: - Layout
@@ -87,13 +87,13 @@ extension CategoriesViewController: CategriesViewProtocol {
 
 extension CategoriesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return presenter.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categories",
-                                                      for: indexPath)
-        cell.backgroundColor = .systemRed
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categories", for: indexPath) as! CategriesCollectionViewCell
+        let category = presenter.categories[indexPath.row]
+        cell.setTitle(category: category)
         return cell
     }
 }
