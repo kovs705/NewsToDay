@@ -12,7 +12,7 @@ protocol CategriesViewProtocol {
 }
 
 protocol CategoriesPresenterProtocol {
-    init(view: CategriesViewProtocol, network)
+//    init(view: CategriesViewProtocol, network)
 }
 // Possible options: business entertainment general health science sports technology
 class CategoriesPresenter {
