@@ -1,6 +1,6 @@
 import UIKit
 
-final class NewsCell: UICollectionViewCell, SelfConfiguringCell {
+final class NewsCell: UICollectionViewCell {
     static let id = "NewsCell"
     let photoView = UIImageView(image: UIImage(named: "Home"))
     
