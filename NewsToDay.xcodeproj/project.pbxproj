@@ -130,8 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				27A988BA2A0A3F8600A0AAD9 /* BrowseViewController.swift */,
-				27A988BC2A0A5A9100A0AAD9 /* NewsCell.swift */,
-				27A988C02A0A6E9000A0AAD9 /* CategoryCell.swift */,
 				27A988BE2A0A5C8500A0AAD9 /* SectionHeaderView.swift */,
 				27148B612A0B123A00A40B64 /* BrowseViewModel.swift */,
 			);
@@ -206,6 +204,7 @@
 		4E1520D12A06CE8C00E42537 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4EDA2EB82A0B7DDB001F8299 /* Cells */,
 				4E1520942A06C11700E42537 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -342,6 +341,23 @@
 				4E49939F2A07AB61001CBF8C /* Managers */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4EDA2EB82A0B7DDB001F8299 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4EDA2EB92A0B7E44001F8299 /* BrowseCells */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4EDA2EB92A0B7E44001F8299 /* BrowseCells */ = {
+			isa = PBXGroup;
+			children = (
+				27A988BC2A0A5A9100A0AAD9 /* NewsCell.swift */,
+				27A988C02A0A6E9000A0AAD9 /* CategoryCell.swift */,
+			);
+			path = BrowseCells;
 			sourceTree = "<group>";
 		};
 		C801486F2A0844E000EB1E99 /* Categories */ = {
