@@ -8,11 +8,11 @@
 import UIKit
 
 protocol CoordinatorProtocol {
-    static func getCategoriesModule() -> UIViewController
+    func getCategoriesModule() -> UIViewController
 }
 
 class Coordinator: CoordinatorProtocol {
-    static func getCategoriesModule() -> UIViewController {
+    func getCategoriesModule() -> UIViewController {
         let view = CategoriesViewController()
         let categories = CategoryManager()
         let presenter = CategoriesPresenter(view: view,
