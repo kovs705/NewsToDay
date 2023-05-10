@@ -130,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				27A988BA2A0A3F8600A0AAD9 /* BrowseViewController.swift */,
-				27A988BE2A0A5C8500A0AAD9 /* SectionHeaderView.swift */,
 				27148B612A0B123A00A40B64 /* BrowseViewModel.swift */,
 			);
 			path = Browse;
@@ -204,6 +203,7 @@
 		4E1520D12A06CE8C00E42537 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				27A988BE2A0A5C8500A0AAD9 /* SectionHeaderView.swift */,
 				4EDA2EB82A0B7DDB001F8299 /* Cells */,
 				4E1520942A06C11700E42537 /* LaunchScreen.storyboard */,
 			);
