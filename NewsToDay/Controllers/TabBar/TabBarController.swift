@@ -17,15 +17,15 @@ final class TabBarController: UITabBarController {
     
     private func setupTabs() {
         let categories = Coordinator.getCategoriesModule()
-        let test = ViewController()
+        let browse = BrowseViewController()
         
-        let navigationController = setupViewController(categories,
-                                                       title: "Categories",
-                                                       iconSystemName: "square.grid.2x2")
-        let navigationController2 = setupViewController(test,
-                                                        title: "Test",
-                                                        iconSystemName: "bookmark")
-        let tabs = [navigationController, navigationController2] // VCs here
+        let browseNavigationController = setupViewController(browse,
+                                                             title: "Browse",
+                                                             iconSystemName: "house")
+        let categoriesNavigationController = setupViewController(categories,
+                                                                 title: "Categories",
+                                                                 iconSystemName: "square.grid.2x2")
+        let tabs = [browseNavigationController, categoriesNavigationController] // VCs here
         setViewControllers(tabs, animated: true)
     }
     
