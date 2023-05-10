@@ -13,6 +13,8 @@ class RegisterController: UIViewController {
     
     //MARK: UI Elements
     
+    private var originalViewCenter: CGPoint!
+    
     private lazy var header: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.Font.interSemiBold, size: 24)
@@ -150,6 +152,7 @@ class RegisterController: UIViewController {
     private lazy var hideButtonOne: UIButton = {
         let button = UIButton(type: .custom)
         button.tag = Constants.String.eight
+        button.tintColor = UIColor(named: Colors.purplePrimary)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
         button.addTarget(self, action: #selector(hidePressed(sender:)), for: .touchUpInside)
         return button
@@ -157,6 +160,7 @@ class RegisterController: UIViewController {
     
     private lazy var hideButtonTwo: UIButton = {
         let button = UIButton(type: .custom)
+        button.tintColor = UIColor(named: Colors.purplePrimary)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
         button.addTarget(self, action: #selector(hidePressed(sender:)), for: .touchUpInside)
         return button
@@ -174,6 +178,7 @@ class RegisterController: UIViewController {
     //MARK: Setup Views
     
     private func setupViews() {
+        originalViewCenter = view.center
         navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         view.addGestureRecognizer(tapGesture)
@@ -262,6 +267,7 @@ class RegisterController: UIViewController {
         passwordFirstTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(nameImage.snp.right).offset(26)
+            make.right.equalTo(hideButtonTwo.snp.left)
         }
         
         passwordSecondView.snp.makeConstraints { make in
@@ -280,6 +286,7 @@ class RegisterController: UIViewController {
         passwordSecondTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.equalTo(nameImage.snp.right).offset(26)
+            make.right.equalTo(hideButtonOne.snp.left)
         }
         
         signButton.snp.makeConstraints { make in
@@ -331,6 +338,7 @@ class RegisterController: UIViewController {
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)
         }
+        
         guard let email = emailTextField.text else { return }
         guard let password = passwordFirstTextField.text else { return }
         
@@ -355,5 +363,21 @@ extension RegisterController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordSecondTextField {
+            UIView.animate(withDuration: 0.3) {
+                self.view.center = CGPoint(x: self.originalViewCenter.x, y: self.originalViewCenter.y - 150)
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordSecondTextField {
+            UIView.animate(withDuration: 0.3) {
+                self.view.center = self.originalViewCenter
+            }
+        }
     }
 }
