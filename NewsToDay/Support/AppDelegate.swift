@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import GoogleSignIn
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {

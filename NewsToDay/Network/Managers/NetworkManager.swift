@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol NetworkmanagerProtocol {
+protocol NetworkManagerProtocol {
     func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void)
 }
 
-class Networkmanager: NetworkmanagerProtocol {
+class NetworkManager: NetworkManagerProtocol {
     private var baseURL: String = "https://newsapi.org/v2"
     // cache for image?
     let decoder = JSONDecoder()

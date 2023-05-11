@@ -9,28 +9,46 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //MARK: - Property
+    
+    var coordinator: CoordinatorProtocol?
+    
+    //MARK: - Init
+    
+    init(coordinator: CoordinatorProtocol) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
         setupTabs()
         setupTabBar()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Private Methods
+    
     private func setupTabs() {
-        let categories = Coordinator.getCategoriesModule()
-        let test = ViewController()
+        let categories = coordinator?.getCategoriesModule()
+        let browse = BrowseViewController()
+        var tabs: [UINavigationController] = []
         
-        let navigationController = setupViewController(categories,
-                                                       title: "Categories",
-                                                       iconSystemName: "square.grid.2x2")
-        let navigationController2 = setupViewController(test,
-                                                        title: "Test",
-                                                        iconSystemName: "bookmark")
-        let tabs = [navigationController, navigationController2] // VCs here
+        if let browseNavigationController = setupViewController(browse,
+                                                                title: "Browse",
+                                                                iconSystemName: "house") {
+            tabs.append(browseNavigationController)
+        }
+        if let categoriesNavigationController = setupViewController(categories,
+                                                                    title: "Categories",
+                                                                    iconSystemName: "square.grid.2x2") {
+            tabs.append(categoriesNavigationController)
+        }
         setViewControllers(tabs, animated: true)
     }
     
-    private func setupViewController(_ viewController: UIViewController,
-                                     title: String, iconSystemName: String) -> UINavigationController {
+    private func setupViewController(_ viewController: UIViewController?,
+                                     title: String, iconSystemName: String) -> UINavigationController? {
+        guard let viewController else { return nil }
         viewController.title = title
         viewController.tabBarItem.image = UIImage(systemName: iconSystemName)?.withBaselineOffset(fromBottom: 16)
         let navigationController = UINavigationController(rootViewController: viewController)
@@ -40,9 +58,11 @@ final class TabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
-        tabBar.layer.borderColor = UIColor(named: Colors.greyLighter)?.cgColor
-        tabBar.layer.borderWidth = 1
         tabBar.layer.cornerRadius = 12
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        tabBar.layer.masksToBounds = true
+
+        
         tabBar.tintColor = UIColor(named: Colors.purplePrimary)
         tabBar.unselectedItemTintColor = UIColor(named: Colors.greyLight)
         removeTabbarItemsText()
