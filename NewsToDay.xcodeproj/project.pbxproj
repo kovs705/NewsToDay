@@ -125,7 +125,7 @@
 		EB6909F62A094044009E0A1C /* AccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		EB6909F82A09409D009E0A1C /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		EB6909FA2A095261009E0A1C /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
-		EBC2EFA42A09682E008A147B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		EBC2EFA42A09682E008A147B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "NewsToDay/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		EFE36161B5FED3AAC5D75BDE /* Pods_NewsToDay_NewsToDayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsToDay_NewsToDayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2ABDD0D52260543D5BC2FF /* Pods-NewsToDay-NewsToDayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsToDay-NewsToDayUITests.debug.xcconfig"; path = "Target Support Files/Pods-NewsToDay-NewsToDayUITests/Pods-NewsToDay-NewsToDayUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,13 +184,10 @@
 		4E1520882A06C11400E42537 /* NewsToDay */ = {
 			isa = PBXGroup;
 			children = (
-				EB6909F52A094002009E0A1C /* Account */,
-				4E49939D2A07A902001CBF8C /* APIobj.plist */,
-				4E1520D22A06CE9400E42537 /* Controllers */,
-				EB28CFE22A0A2F4600C847CE /* credentials.plist */,
-				EBC2EFA42A09682E008A147B /* GoogleService-Info.plist */,
-				4E1520972A06C11700E42537 /* Info.plist */,
 				4E1520E02A06CF2300E42537 /* Links.md */,
+				EB6909F52A094002009E0A1C /* Account */,
+				4E1520D22A06CE9400E42537 /* Controllers */,
+				C8F160032A0D422D00C63C6C /* Plist */,
 				4E4993982A07A5E7001CBF8C /* Model */,
 				4E4993AA2A07AF75001CBF8C /* Network */,
 				4E1520D02A06CE7F00E42537 /* Support */,
@@ -223,9 +220,7 @@
 				4E1520892A06C11400E42537 /* AppDelegate.swift */,
 				C8F15FE52A0D250300C63C6C /* Coordinator.swift */,
 				4E15208B2A06C11400E42537 /* SceneDelegate.swift */,
-				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 				4E1520922A06C11700E42537 /* Assets.xcassets */,
-				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -283,7 +278,6 @@
 		4E1520E22A06D4E100E42537 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C8F15FDC2A095EA500C63C6C /* CategoryManager.swift */,
 				4E1520E32A06D50200E42537 /* Constants.swift */,
 				4E1520E62A06D89E00E42537 /* UIHelper.swift */,
 			);
@@ -398,6 +392,17 @@
 				C8F15FFE2A0D25E900C63C6C /* CategriesCollectionViewCell.swift .swift */,
 			);
 			path = CategoryCell;
+			sourceTree = "<group>";
+		};
+		C8F160032A0D422D00C63C6C /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				EB28CFE22A0A2F4600C847CE /* credentials.plist */,
+				EBC2EFA42A09682E008A147B /* GoogleService-Info.plist */,
+				4E49939D2A07A902001CBF8C /* APIobj.plist */,
+				4E1520972A06C11700E42537 /* Info.plist */,
+			);
+			name = Plist;
 			sourceTree = "<group>";
 		};
 		E0A5389F6FC1ADCA2E68250A /* Pods */ = {
@@ -675,13 +680,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84AA10732A08F02100073547 /* TermsConditionsVC.swift in Sources */,
 				4E4993A12A07AB73001CBF8C /* NetworkManager.swift in Sources */,
 				4E4993A52A07AC1F001CBF8C /* NewsError.swift in Sources */,
-				C80148732A0851FD00EB1E99 /* Coordinator.swift in Sources */,
-				C80148712A084DED00EB1E99 /* CategoriesPresenter.swift in Sources */,
 				4E4993A32A07AB84001CBF8C /* PersistenceManager.swift in Sources */,
-				C8F15FDB2A095E7B00C63C6C /* Category.swift in Sources */,
 				4E49939A2A07A7FC001CBF8C /* NewsModel.swift in Sources */,
 				4E49939C2A07A84C001CBF8C /* NewsResponse.swift in Sources */,
 				EB6909F92A09409D009E0A1C /* Const.swift in Sources */,
