@@ -223,7 +223,9 @@
 				4E1520892A06C11400E42537 /* AppDelegate.swift */,
 				C8F15FE52A0D250300C63C6C /* Coordinator.swift */,
 				4E15208B2A06C11400E42537 /* SceneDelegate.swift */,
+				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 				4E1520922A06C11700E42537 /* Assets.xcassets */,
+				C80148722A0851FD00EB1E99 /* Coordinator.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -281,6 +283,7 @@
 		4E1520E22A06D4E100E42537 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C8F15FDC2A095EA500C63C6C /* CategoryManager.swift */,
 				4E1520E32A06D50200E42537 /* Constants.swift */,
 				4E1520E62A06D89E00E42537 /* UIHelper.swift */,
 			);
@@ -672,9 +675,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AA10732A08F02100073547 /* TermsConditionsVC.swift in Sources */,
 				4E4993A12A07AB73001CBF8C /* NetworkManager.swift in Sources */,
 				4E4993A52A07AC1F001CBF8C /* NewsError.swift in Sources */,
+				C80148732A0851FD00EB1E99 /* Coordinator.swift in Sources */,
+				C80148712A084DED00EB1E99 /* CategoriesPresenter.swift in Sources */,
 				4E4993A32A07AB84001CBF8C /* PersistenceManager.swift in Sources */,
+				C8F15FDB2A095E7B00C63C6C /* Category.swift in Sources */,
 				4E49939A2A07A7FC001CBF8C /* NewsModel.swift in Sources */,
 				4E49939C2A07A84C001CBF8C /* NewsResponse.swift in Sources */,
 				EB6909F92A09409D009E0A1C /* Const.swift in Sources */,
