@@ -12,7 +12,7 @@ final class CategoriesViewController: UIViewController {
     
     //MARK: - Property
     
-    var presenter: CategoriesPresenterProtocol! 
+    var presenter: CategoriesPresenterProtocol!
     
     //MARK: - UI Elements
     
@@ -46,7 +46,7 @@ final class CategoriesViewController: UIViewController {
                                            collectionViewLayout: layout)
         colletctionView.dataSource = self
         colletctionView.delegate = self
-        colletctionView.register(CategriesCollectionViewCell.self, forCellWithReuseIdentifier: "categories")
+        colletctionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "categories")
     }
     
     //MARK: - Layout
@@ -90,7 +90,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categories", for: indexPath) as! CategriesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categories", for: indexPath) as! CategoriesCollectionViewCell
         guard let category = presenter.categories?.all[indexPath.row] else {
             return cell
         }

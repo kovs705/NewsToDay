@@ -11,7 +11,6 @@ protocol CategriesViewProtocol: AnyObject {
     
 }
 
-
 protocol CategoriesPresenterProtocol: AnyObject {
     var categories: CategoryManagerProtocol? { get }
     init(view: CategriesViewProtocol, categories: CategoryManagerProtocol?)
