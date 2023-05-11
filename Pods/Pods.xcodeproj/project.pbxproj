@@ -29289,6 +29289,22 @@
 			};
 			name = Debug;
 		};
+		2D18E25594C3B872AC9B429827A12470 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A03B3CBBBCA22B7C8EF1BE0717ED2C58 /* gRPC-C++.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				IBSC_MODULE = grpcpp;
+				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = "gRPCCertificates-Cpp";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		314964B91BFC6EAA712FE6B92F979EC2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B97DDBDD081597E3B4A03FA11F17D2F5 /* Libuv-gRPC.debug.xcconfig */;
@@ -29567,6 +29583,22 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4E50111966F545B85137A6CDBD48B8B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EB7CEE98107C835C9F842BF534DEB56 /* GoogleSignIn.debug.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				IBSC_MODULE = GoogleSignIn;
+				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = GoogleSignIn;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -29882,16 +29914,15 @@
 			};
 			name = Debug;
 		};
-		7F79BA6CAD5C7A39BC07E9CC0541EB5E /* Release */ = {
+		8127840805C6DA4E1833D0DD0F3BE884 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A03B3CBBBCA22B7C8EF1BE0717ED2C58 /* gRPC-C++.release.xcconfig */;
+			baseConfigurationReference = AC480D80645A88B60061AE716008689E /* GoogleSignIn.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
-				IBSC_MODULE = grpcpp;
-				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = "gRPCCertificates-Cpp";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
+				IBSC_MODULE = GoogleSignIn;
+				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = GoogleSignIn;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -30651,23 +30682,6 @@
 			};
 			name = Release;
 		};
-		C2B0FE9095D57BB01EF3A85850B1AF4D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11F61A6DEA1D155906180699F71D7C39 /* gRPC-C++.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
-				IBSC_MODULE = grpcpp;
-				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = "gRPCCertificates-Cpp";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		C395157066247A408355225E6F61ADE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D32DBC675820378F2E678A5ED2302D86 /* Pods-NewsToDay.release.xcconfig */;
@@ -30703,23 +30717,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C8F9A73BDB6EF7FB012147B98DC00B42 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC480D80645A88B60061AE716008689E /* GoogleSignIn.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
-				IBSC_MODULE = GoogleSignIn;
-				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = GoogleSignIn;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -30897,16 +30894,15 @@
 			};
 			name = Release;
 		};
-		E927269A55324254178A3BCA37C1A9ED /* Debug */ = {
+		EAB3AFC25D7F9350A376D1757F781F9E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9EB7CEE98107C835C9F842BF534DEB56 /* GoogleSignIn.debug.xcconfig */;
+			baseConfigurationReference = 11F61A6DEA1D155906180699F71D7C39 /* gRPC-C++.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGNING_ALLOWED = NO;
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/GoogleSignIn";
-				IBSC_MODULE = GoogleSignIn;
-				INFOPLIST_FILE = "Target Support Files/GoogleSignIn/ResourceBundle-GoogleSignIn-GoogleSignIn-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = GoogleSignIn;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/gRPC-C++";
+				IBSC_MODULE = grpcpp;
+				INFOPLIST_FILE = "Target Support Files/gRPC-C++/ResourceBundle-gRPCCertificates-Cpp-gRPC-C++-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = "gRPCCertificates-Cpp";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -31054,8 +31050,8 @@
 		687D6DEBAF03297B9B317CDDB1DCD435 /* Build configuration list for PBXNativeTarget "GoogleSignIn-GoogleSignIn" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E927269A55324254178A3BCA37C1A9ED /* Debug */,
-				C8F9A73BDB6EF7FB012147B98DC00B42 /* Release */,
+				4E50111966F545B85137A6CDBD48B8B9 /* Debug */,
+				8127840805C6DA4E1833D0DD0F3BE884 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -31126,8 +31122,8 @@
 		BE75010C88C609D10615C373B80545EE /* Build configuration list for PBXNativeTarget "gRPC-C++-gRPCCertificates-Cpp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C2B0FE9095D57BB01EF3A85850B1AF4D /* Debug */,
-				7F79BA6CAD5C7A39BC07E9CC0541EB5E /* Release */,
+				EAB3AFC25D7F9350A376D1757F781F9E /* Debug */,
+				2D18E25594C3B872AC9B429827A12470 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
