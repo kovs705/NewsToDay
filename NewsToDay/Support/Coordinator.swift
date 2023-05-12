@@ -9,6 +9,7 @@ import UIKit
 
 protocol CoordinatorProtocol {
     func getCategoriesModule() -> UIViewController
+    func getResultModule() -> UIViewController
 }
 
 class Coordinator: CoordinatorProtocol {
@@ -17,6 +18,13 @@ class Coordinator: CoordinatorProtocol {
         let categories = CategoryManager()
         let presenter = CategoriesPresenter(view: view,
                                             categories: categories)
+        view.presenter = presenter
+        return view
+    }
+    
+    func getResultModule() -> UIViewController {
+        let view = ResultViewController()
+        let presenter = ResultPresenter(view: view)
         view.presenter = presenter
         return view
     }
