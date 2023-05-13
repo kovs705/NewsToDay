@@ -36,7 +36,7 @@ final class CategoriesViewController: UIViewController {
     private func setupDiscriptionLabel() {
         discriptionLabel.text = "Thousands of articles in each category"
         discriptionLabel.textColor = UIColor(named: Colors.greyPrimary)
-        discriptionLabel.font = UIFont(name: Fonts.regular, size: 16)
+        discriptionLabel.font = UIFont(name: Constants.Font.interRegular, size: 16)
     }
     
     private func setupCollectionView() {
