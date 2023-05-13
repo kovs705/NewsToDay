@@ -46,7 +46,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     private func setupLabel() {
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont(name: Fonts.semiBold, size: 16)
+        titleLabel.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
         titleLabel.textColor = UIColor(named: Colors.greyDark)
     }
     

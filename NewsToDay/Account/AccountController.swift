@@ -136,20 +136,12 @@ class AccountController: UIViewController {
         view.backgroundColor = .white
         view.addGestureRecognizer(tapGesture)
         
-        view.addSubview(header)
-        view.addSubview(underHeader)
-        view.addSubview(emailView)
-        view.addSubview(passwordView)
-        view.addSubview(signButton)
-        view.addSubview(registrButton)
-        view.addSubview(googleSingIn)
         
-        emailView.addSubview(emailTextField)
-        emailView.addSubview(emailImage)
+        view.addSubviews(header, underHeader, emailView, passwordView, signButton, registrButton, googleSingIn)
         
-        passwordView.addSubview(passwordTextField)
-        passwordView.addSubview(passwordImage)
-        passwordView.addSubview(hideButton)
+        emailView.addSubviews(emailTextField, emailImage)
+        
+        passwordView.addSubviews(passwordTextField, passwordImage, hideButton)
         
         header.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
