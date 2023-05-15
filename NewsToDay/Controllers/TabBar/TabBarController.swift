@@ -31,6 +31,7 @@ final class TabBarController: UITabBarController {
     private func setupTabs() {
         let categories = coordinator?.getCategoriesModule()
         let browse = BrowseViewController()
+        let profile = ProfileVC()
         var tabs: [UINavigationController] = []
         
         if let browseNavigationController = setupViewController(browse,
@@ -42,6 +43,10 @@ final class TabBarController: UITabBarController {
                                                                     title: "Categories",
                                                                     iconSystemName: "square.grid.2x2") {
             tabs.append(categoriesNavigationController)
+        }
+        
+        if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "house") {
+            tabs.append(blabla)
         }
         setViewControllers(tabs, animated: true)
     }

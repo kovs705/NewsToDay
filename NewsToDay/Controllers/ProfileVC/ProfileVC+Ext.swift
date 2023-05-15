@@ -120,16 +120,21 @@ class ProfileExt: UIViewController {
     
     func setButtonLanguage(){
         
-        languageButton.setTitle("Language", for: .normal)
-        languageButton.layer.cornerRadius = 15
-        languageButton.layer.masksToBounds=true
+        let customFont = UIFont(name: "Inter-Medium", size: 24)
         
-        if let customFont = UIFont(name: "Inter-Medium", size: 24) {
-            languageButton.titleLabel?.font = customFont
-        }
-        //        else{
-        //            label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        //        }
+        let label1 = UILabel()
+        label1.text = "Language"
+        label1.textAlignment = .left
+        label1.font = customFont
+        
+        let stackView = UIStackView()
+        stackView.alignment = .fill
+        stackView.spacing = 35
+        
+        
+        languageButton.setTitle("Language", for: .normal)
+        languageButton.layer.cornerRadius  = 15
+        languageButton.layer.masksToBounds = true
         
         languageButton.setTitleColor(UIColor(named: "GreyDark"), for: .normal)
         languageButton.backgroundColor = UIColor(named: "greyLighter")
@@ -145,7 +150,17 @@ class ProfileExt: UIViewController {
             make.top.equalToSuperview().inset(252)
         }
         
-        setImageViewForButton()
+        // создать лэйбл для текста слева
+        // создать лэйбл для иконки справа
+        // создать stackView с alignment fill (?)
+        // дать правому лэйблу с иконкой фиксированную ширину, не трогая левый лэйбл
+        // проверить, будет ли занимать левый лэйбл всё пространство
+        
+        // stackView top - 0, bottom - 0, leading - 20, trailing - 20
+        
+        
+        
+        // setImageViewForButton()
     }
     
     func setImageViewForButton(){
