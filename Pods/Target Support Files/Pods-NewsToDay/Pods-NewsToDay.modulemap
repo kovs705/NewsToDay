@@ -1,6 +1,0 @@
-framework module Pods_NewsToDay {
-  umbrella header "Pods-NewsToDay-umbrella.h"
-
-  export *
-  module * { export * }
-}

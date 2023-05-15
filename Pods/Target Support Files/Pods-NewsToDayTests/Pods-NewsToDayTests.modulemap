@@ -1,6 +1,0 @@
-framework module Pods_NewsToDayTests {
-  umbrella header "Pods-NewsToDayTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
