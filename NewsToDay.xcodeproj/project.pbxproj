@@ -46,6 +46,8 @@
 		780AB0E34213902B48BFBF8F /* Pods_NewsToDay_NewsToDayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE36161B5FED3AAC5D75BDE /* Pods_NewsToDay_NewsToDayUITests.framework */; };
 		8432B2882A1230F100B2FFF0 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2872A1230F100B2FFF0 /* ProfileVC.swift */; };
 		B1F59CC7C6885DE53180EF6C /* Pods_NewsToDayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B536B7C0513D60E17CEEC5 /* Pods_NewsToDayTests.framework */; };
+		C81C1F2A2A126CF900A974B0 /* CategoriesOnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F292A126CF900A974B0 /* CategoriesOnboardingPresenter.swift */; };
+		C81C1F2C2A126D6F00A974B0 /* CategoriesOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F2B2A126D6F00A974B0 /* CategoriesOnboardingViewController.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
 		C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */; };
 		C89F27232A0E519A00508FF9 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */; };
@@ -128,6 +130,8 @@
 		50B6D4A0D03BABB6C97770A4 /* Pods-NewsToDayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsToDayTests.release.xcconfig"; path = "Target Support Files/Pods-NewsToDayTests/Pods-NewsToDayTests.release.xcconfig"; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		927740ED075D3E786DB6157F /* Pods-NewsToDayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsToDayTests.debug.xcconfig"; path = "Target Support Files/Pods-NewsToDayTests/Pods-NewsToDayTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C81C1F292A126CF900A974B0 /* CategoriesOnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingPresenter.swift; sourceTree = "<group>"; };
+		C81C1F2B2A126D6F00A974B0 /* CategoriesOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingViewController.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		4E1520D22A06CE9400E42537 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C81C1F282A126A8400A974B0 /* Onboarding */,
 				8432B2862A1230F100B2FFF0 /* ProfileVC */,
 				4EB149CA2A121499002A6362 /* Detail */,
 				EB6909F52A094002009E0A1C /* Account&Register */,
@@ -405,6 +410,15 @@
 				4EB149CF2A123508002A6362 /* ProfilePresenter.swift */,
 			);
 			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		C81C1F282A126A8400A974B0 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C81C1F292A126CF900A974B0 /* CategoriesOnboardingPresenter.swift */,
+				C81C1F2B2A126D6F00A974B0 /* CategoriesOnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		C89F271C2A0E4E1C00508FF9 /* Result */ = {
@@ -769,6 +783,7 @@
 				C8F15FF12A0D255200C63C6C /* BrowseViewController.swift in Sources */,
 				4E1520E42A06D50200E42537 /* Constants.swift in Sources */,
 				EB6909F72A094044009E0A1C /* AccountController.swift in Sources */,
+				C81C1F2A2A126CF900A974B0 /* CategoriesOnboardingPresenter.swift in Sources */,
 				C8F15FE62A0D250300C63C6C /* Coordinator.swift in Sources */,
 				C8F160012A0D25E900C63C6C /* NewsCell.swift in Sources */,
 				4EB149CC2A1214C4002A6362 /* DetailPresenter.swift in Sources */,
@@ -794,6 +809,7 @@
 				4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */,
 				C8F15FE92A0D253100C63C6C /* TermsConditionsVC.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
+				C81C1F2C2A126D6F00A974B0 /* CategoriesOnboardingViewController.swift in Sources */,
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* UIHelper.swift in Sources */,
 				C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */,

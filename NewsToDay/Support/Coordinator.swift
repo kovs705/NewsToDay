@@ -10,6 +10,7 @@ import UIKit
 protocol CoordinatorProtocol {
     func getCategoriesModule() -> UIViewController
     func getResultModule() -> UIViewController
+    func getCategoriesOnboardingModule() -> UIViewController
 }
 
 class Coordinator: CoordinatorProtocol {
@@ -25,6 +26,15 @@ class Coordinator: CoordinatorProtocol {
     func getResultModule() -> UIViewController {
         let view = ResultViewController()
         let presenter = ResultPresenter(view: view)
+        view.presenter = presenter
+        return view
+    }
+    
+    func getCategoriesOnboardingModule() -> UIViewController {
+        let view = CategoriesOnboardingViewController()
+        let categories = CategoryManager()
+        let presenter = CategoriesOnboardingPresenter(view: view,
+                                                      categories: categories)
         view.presenter = presenter
         return view
     }
