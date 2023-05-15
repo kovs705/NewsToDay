@@ -260,6 +260,7 @@
 		4E1520D22A06CE9400E42537 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C81C1F282A126A8400A974B0 /* Onboarding */,
 				8432B2862A1230F100B2FFF0 /* ProfileVC */,
 				4EB149CA2A121499002A6362 /* Detail */,
 				EB6909F52A094002009E0A1C /* Account&Register */,
@@ -660,6 +661,7 @@
 				4E1520E42A06D50200E42537 /* Constants.swift in Sources */,
 				C81C1F3D2A13951200A974B0 /* Endpoint.swift in Sources */,
 				EB6909F72A094044009E0A1C /* AccountController.swift in Sources */,
+				C81C1F2A2A126CF900A974B0 /* CategoriesOnboardingPresenter.swift in Sources */,
 				C8F15FE62A0D250300C63C6C /* Coordinator.swift in Sources */,
 				C8F160012A0D25E900C63C6C /* NewsCell.swift in Sources */,
 				4EB149CC2A1214C4002A6362 /* DetailPresenter.swift in Sources */,
@@ -689,6 +691,7 @@
 				C8F15FE92A0D253100C63C6C /* TermsConditionsVC.swift in Sources */,
 				C81C1F3B2A1394B500A974B0 /* NewsNetworkManager.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
+				C81C1F2C2A126D6F00A974B0 /* CategoriesOnboardingViewController.swift in Sources */,
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* UIHelper.swift in Sources */,
 				C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */,
