@@ -16,9 +16,6 @@ class NetworkManager: NetworkManagerProtocol {
     // cache for image?
     let decoder = JSONDecoder()
     
-    private init() {}
-    
-    
     func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void) {
         let endPoint = baseURL + "\(NewsService.shared.apiKey)" // здесь будет идти проверка существования API в .plist
         

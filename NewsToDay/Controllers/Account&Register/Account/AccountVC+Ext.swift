@@ -1,8 +1,8 @@
 //
-//  AccountController.swift
+//  AccountVC+Ext.swift
 //  NewsToDay
 //
-//  Created by sidzhe on 08.05.2023.
+//  Created by Kovs on 13.05.2023.
 //
 
 import UIKit
@@ -11,19 +11,28 @@ import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
 
+// MARK: Extension UITextFieldDelegate
+extension AccountVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
 
-class AccountController: UIViewController {
+class AccountVC: UIViewController {
     
-    //MARK: UI Elements
+    var presenter: AccountPresenter!
     
-    private lazy var header: UILabel = {
+    // MARK: - UI Properties
+    
+    lazy var header: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.Font.interSemiBold, size: 24)
         label.text = Constants.String.welcome
         return label
     }()
     
-    private lazy var underHeader: UILabel = {
+    lazy var underHeader: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.Font.interRegular, size: 16)
         label.text = Constants.String.iAm
@@ -32,7 +41,7 @@ class AccountController: UIViewController {
         return label
     }()
     
-    private lazy var emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.email
         text.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -40,7 +49,7 @@ class AccountController: UIViewController {
         return text
     }()
     
-    private lazy var passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.password
         text.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -49,7 +58,7 @@ class AccountController: UIViewController {
         return text
     }()
     
-    private lazy var emailView: UIView = {
+    lazy var emailView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
@@ -57,7 +66,7 @@ class AccountController: UIViewController {
         return view
     }()
     
-    private lazy var passwordView: UIView = {
+    lazy var passwordView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
@@ -65,7 +74,7 @@ class AccountController: UIViewController {
         return view
     }()
     
-    private lazy var signButton: UIButton = {
+    lazy var signButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.signIn, for: .normal)
         button.backgroundColor = UIColor(named: Colors.purplePrimary)
@@ -75,17 +84,17 @@ class AccountController: UIViewController {
         return button
     }()
     
-    private lazy var googleSingIn: UIButton = {
+    lazy var googleSingIn: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.google, for: .normal)
         button.backgroundColor = UIColor(named: Colors.purplePrimary)
         button.layer.cornerRadius = 15
         button.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
-        button.addTarget(self, action: #selector(googleSign), for: .touchUpInside)
+        button.addTarget(self, action: #selector(presenter.googleSign), for: .touchUpInside)
         return button
     }()
     
-    private lazy var registrButton: UIButton = {
+    lazy var registrButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.dontAc, for: .normal)
         button.titleLabel?.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -94,7 +103,7 @@ class AccountController: UIViewController {
         return button
     }()
     
-    private lazy var hideButton: UIButton = {
+    lazy var hideButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
         button.tintColor = UIColor(named: Colors.purplePrimary)
@@ -102,37 +111,33 @@ class AccountController: UIViewController {
         return button
     }()
     
-    private lazy var emailImage: UIImageView = {
+    lazy var emailImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.envelope)
         image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
-    private lazy var passwordImage: UIImageView = {
+    lazy var passwordImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
         image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
-    private lazy var tapGesture: UITapGestureRecognizer = {
+    lazy var tapGesture: UITapGestureRecognizer = {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         return tapGesture
     }()
     
-    //MARK: Init
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupViews()
-        
-    }
+    
+    
+    
     
     //MARK: Setup Views
     
-    private func setupViews() {
+    func setupViews() {
         view.backgroundColor = .white
         view.addGestureRecognizer(tapGesture)
         
@@ -216,61 +221,7 @@ class AccountController: UIViewController {
             make.height.equalTo(56)
         }
     }
-    
-    //MARK: Google sign in method
-    
-    @objc private func googleSign() {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
-            guard error == nil else { return }
-            guard let user = result?.user, let idToken = user.idToken?.tokenString else { return }
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                           accessToken: user.accessToken.tokenString)
-            Auth.auth().signIn(with: credential) { result, error in
-                self.navigationController?.pushViewController(RegisterController(), animated: true)
-            }
-        }
-    }
-    
-    //MARK: objc methods
-    
-    @objc private func hidePressed() {
-        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
-    }
-    
-    @objc private func tapButton(sender: UIButton) {
-        if sender.currentTitle == Constants.String.signIn {
-            guard let email = emailTextField.text else { return }
-            guard let password = passwordTextField.text else { return }
-            
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    let alertController = UIAlertController(title: Constants.String.info,
-                                                            message: error.localizedDescription,
-                                                            preferredStyle: .alert)
-                    let action = UIAlertAction(title: Constants.String.ok, style: .cancel, handler: nil)
-                    alertController.addAction(action)
-                    self.present(alertController, animated: true, completion: nil)
-                } else {
-                    //navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-                    print("ok")
-                }
-            }
-        } else {
-            navigationController?.pushViewController(RegisterController(), animated: true)
-        }
-        
-    }
-    
 }
 
-//MARK: Extension UITextFieldDelegate
 
-extension AccountController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+    

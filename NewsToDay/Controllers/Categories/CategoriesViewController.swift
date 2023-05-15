@@ -16,8 +16,8 @@ final class CategoriesViewController: UIViewController {
     
     //MARK: - UI Elements
     
-    private var colletctionView: UICollectionView!
-    private var discriptionLabel = UILabel()
+    private var collectionView: UICollectionView!
+    private var descriptionLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +34,19 @@ final class CategoriesViewController: UIViewController {
     }
     
     private func setupDiscriptionLabel() {
-        discriptionLabel.text = "Thousands of articles in each category"
-        discriptionLabel.textColor = UIColor(named: Colors.greyPrimary)
-        discriptionLabel.font = UIFont(name: Constants.Font.interRegular, size: 16)
+        descriptionLabel.text = "Thousands of articles in each category"
+        descriptionLabel.textColor = UIColor(named: Colors.greyPrimary)
+        descriptionLabel.font = UIFont(name: Constants.Font.interRegular, size: 16)
     }
     
     private func setupCollectionView() {
         let layout = UIHelper.createTwoColumnLayout(in: view)
         
-        colletctionView = UICollectionView(frame: .zero,
+        collectionView = UICollectionView(frame: .zero,
                                            collectionViewLayout: layout)
-        colletctionView.dataSource = self
-        colletctionView.delegate = self
-        colletctionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "categories")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "categories")
     }
     
     //MARK: - Layout
@@ -57,18 +57,18 @@ final class CategoriesViewController: UIViewController {
     }
     
     private func addSubViews() {
-        let views: [UIView] = [colletctionView, discriptionLabel]
+        let views: [UIView] = [collectionView, descriptionLabel]
         views.forEach { self.view.addSubview($0) }
     }
     
     private func makeConstraints() {
-        colletctionView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(32)
             make.leading.equalTo(view)
             make.trailing.equalTo(view)
             make.bottom.equalTo(view)
         }
-        discriptionLabel.snp.makeConstraints { make in
+        descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
             make.leading.equalTo(view).inset(16)
             make.width.equalTo(view)
@@ -78,7 +78,7 @@ final class CategoriesViewController: UIViewController {
 
 //MARK: - CategriesViewProtocol
 
-extension CategoriesViewController: CategriesViewProtocol {
+extension CategoriesViewController: CategoriesViewProtocol {
     
 }
 
