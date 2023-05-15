@@ -7,20 +7,20 @@
 
 import Foundation
 
-protocol CategriesViewProtocol: AnyObject {
+protocol CategoriesViewProtocol: AnyObject {
     
 }
 
 protocol CategoriesPresenterProtocol: AnyObject {
     var categories: CategoryManagerProtocol? { get }
-    init(view: CategriesViewProtocol, categories: CategoryManagerProtocol?)
+    init(view: CategoriesViewProtocol, categories: CategoryManagerProtocol?)
 }
 
 final class CategoriesPresenter: CategoriesPresenterProtocol {
-    weak var view: CategriesViewProtocol?
+    weak var view: CategoriesViewProtocol?
     var categories: CategoryManagerProtocol?
     
-    required init(view: CategriesViewProtocol, categories: CategoryManagerProtocol?) {
+    required init(view: CategoriesViewProtocol, categories: CategoryManagerProtocol?) {
         self.view = view
         self.categories = categories
     }

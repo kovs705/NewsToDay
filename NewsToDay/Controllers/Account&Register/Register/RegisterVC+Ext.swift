@@ -1,28 +1,53 @@
 //
-//  RegisterController.swift
+//  RegisterVC+Ext.swift
 //  NewsToDay
 //
-//  Created by sidzhe on 08.05.2023.
+//  Created by Kovs on 15.05.2023.
 //
 
 import UIKit
 import SnapKit
 import FirebaseAuth
 
-class RegisterController: UIViewController {
+//MARK: Extension UITextFieldDelegate
+extension RegisterVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
-    //MARK: UI Elements
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordSecondTextField {
+            UIView.animate(withDuration: 0.3) {
+                self.view.center = CGPoint(x: self.originalViewCenter.x, y: self.originalViewCenter.y - 150)
+            }
+        }
+    }
     
-    private var originalViewCenter: CGPoint!
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordSecondTextField {
+            UIView.animate(withDuration: 0.3) {
+                self.view.center = self.originalViewCenter
+            }
+        }
+    }
+}
+
+
+// MARK: - RegisterVC
+class RegisterVC: UIViewController {
     
-    private lazy var header: UILabel = {
+    var originalViewCenter: CGPoint!
+    var presenter: RegisterPresenter!
+    
+    lazy var header: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.Font.interSemiBold, size: 24)
         label.text = Constants.String.welcomeToNews
         return label
     }()
     
-    private lazy var underHeader: UILabel = {
+    lazy var underHeader: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.Font.interRegular, size: 16)
         label.text = Constants.String.hello
@@ -31,7 +56,7 @@ class RegisterController: UIViewController {
         return label
     }()
     
-    private lazy var nameTextField: UITextField = {
+    lazy var nameTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.name
         text.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -39,7 +64,7 @@ class RegisterController: UIViewController {
         return text
     }()
     
-    private lazy var emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.email
         text.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -47,7 +72,7 @@ class RegisterController: UIViewController {
         return text
     }()
     
-    private lazy var passwordFirstTextField: UITextField = {
+    lazy var passwordFirstTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.password
         text.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -56,7 +81,7 @@ class RegisterController: UIViewController {
         return text
     }()
     
-    private lazy var passwordSecondTextField: UITextField = {
+    lazy var passwordSecondTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.repeatPas
         text.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -65,7 +90,7 @@ class RegisterController: UIViewController {
         return text
     }()
     
-    private lazy var nameView: UIView = {
+    lazy var nameView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
@@ -73,7 +98,7 @@ class RegisterController: UIViewController {
         return view
     }()
     
-    private lazy var emailView: UIView = {
+    lazy var emailView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
@@ -81,7 +106,7 @@ class RegisterController: UIViewController {
         return view
     }()
     
-    private lazy var passwordFirstView: UIView = {
+    lazy var passwordFirstView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
@@ -89,7 +114,7 @@ class RegisterController: UIViewController {
         return view
     }()
     
-    private lazy var passwordSecondView: UIView = {
+    lazy var passwordSecondView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
         view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
@@ -97,7 +122,7 @@ class RegisterController: UIViewController {
         return view
     }()
     
-    private lazy var signButton: UIButton = {
+    lazy var signButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.signUp, for: .normal)
         button.backgroundColor = UIColor(named: Colors.purplePrimary)
@@ -107,7 +132,7 @@ class RegisterController: UIViewController {
         return button
     }()
     
-    private lazy var registrButton: UIButton = {
+    lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.haveAnAcc, for: .normal)
         button.titleLabel?.font = UIFont(name: Constants.Font.interMedium, size: 16)
@@ -116,40 +141,40 @@ class RegisterController: UIViewController {
         return button
     }()
     
-    private lazy var nameImage: UIImageView = {
+    lazy var nameImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.person)
         image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
-    private lazy var emailImage: UIImageView = {
+    lazy var emailImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.envelope)
         image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
-    private lazy var passwordImage: UIImageView = {
+    lazy var passwordImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
         image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
-    private lazy var passwordImageTwo: UIImageView = {
+    lazy var passwordImageTwo: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
         image.tintColor = UIColor(named: Colors.purplePrimary)
         return image
     }()
     
-    private lazy var tapGesture: UITapGestureRecognizer = {
+    lazy var tapGesture: UITapGestureRecognizer = {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         return tapGesture
     }()
     
-    private lazy var hideButtonOne: UIButton = {
+    lazy var hideButtonOne: UIButton = {
         let button = UIButton(type: .custom)
         button.tag = Constants.String.eight
         button.tintColor = UIColor(named: Colors.purplePrimary)
@@ -158,7 +183,7 @@ class RegisterController: UIViewController {
         return button
     }()
     
-    private lazy var hideButtonTwo: UIButton = {
+    lazy var hideButtonTwo: UIButton = {
         let button = UIButton(type: .custom)
         button.tintColor = UIColor(named: Colors.purplePrimary)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
@@ -166,42 +191,24 @@ class RegisterController: UIViewController {
         return button
     }()
     
-    //MARK: Init
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupViews()
-        
-    }
+    // MARK: - Setup Views
     
-    //MARK: Setup Views
-    
-    private func setupViews() {
+    func setupViews() {
         originalViewCenter = view.center
         navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         view.addGestureRecognizer(tapGesture)
         
-        view.addSubview(header)
-        view.addSubview(underHeader)
-        view.addSubview(nameView)
-        view.addSubview(emailView)
-        view.addSubview(passwordFirstView)
-        view.addSubview(passwordSecondView)
-        view.addSubview(signButton)
-        view.addSubview(registrButton)
+        view.addSubviews(header, underHeader, nameView, emailView, passwordFirstView, passwordSecondView, signButton, registerButton)
         
-        nameView.addSubview(nameImage)
-        nameView.addSubview(nameTextField)
-        emailView.addSubview(emailImage)
-        emailView.addSubview(emailTextField)
-        passwordFirstView.addSubview(passwordImage)
-        passwordFirstView.addSubview(passwordFirstTextField)
-        passwordFirstView.addSubview(hideButtonOne)
-        passwordSecondView.addSubview(passwordImageTwo)
-        passwordSecondView.addSubview(passwordSecondTextField)
-        passwordSecondView.addSubview(hideButtonTwo)
+        nameView.addSubviews(nameImage, nameTextField)
+        
+        emailView.addSubviews(emailImage, emailTextField)
+        
+        passwordFirstView.addSubviews(passwordImage, passwordFirstTextField, hideButtonOne)
+        
+        passwordSecondView.addSubviews(passwordImageTwo, passwordSecondTextField, hideButtonTwo)
         
         header.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
@@ -295,7 +302,7 @@ class RegisterController: UIViewController {
             make.height.equalTo(56)
         }
         
-        registrButton.snp.makeConstraints { make in
+        registerButton.snp.makeConstraints { make in
             make.height.equalTo(32)
             make.width.equalTo(270)
             make.bottom.equalToSuperview().inset(42)
@@ -312,72 +319,6 @@ class RegisterController: UIViewController {
             make.size.equalTo(25)
             make.right.equalToSuperview().inset(20)
             make.centerY.equalToSuperview()
-        }
-    }
-    
-    //MARK: Objec methods
-    
-    @objc private func hidePressed(sender: UIButton) {
-        if sender.tag == Constants.String.eight {
-            passwordFirstTextField.isSecureTextEntry = !passwordFirstTextField.isSecureTextEntry
-        } else {
-            passwordSecondTextField.isSecureTextEntry = !passwordSecondTextField.isSecureTextEntry
-        }
-    }
-    
-    @objc private func backToSign() {
-        navigationController?.pushViewController(AccountController(), animated: true)
-    }
-    
-    @objc private func tapButton() {
-        if passwordFirstTextField.text != passwordSecondTextField.text {
-            let alertController = UIAlertController(title: Constants.String.info,
-                                                    message: Constants.String.errorPassword,
-                                                    preferredStyle: .alert)
-            let action = UIAlertAction(title: Constants.String.ok, style: .cancel, handler: nil)
-            alertController.addAction(action)
-            self.present(alertController, animated: true, completion: nil)
-        }
-        
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordFirstTextField.text else { return }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                let alertController = UIAlertController(title: Constants.String.info,
-                                                        message: error.localizedDescription,
-                                                        preferredStyle: .alert)
-                let action = UIAlertAction(title: Constants.String.ok, style: .cancel, handler: nil)
-                alertController.addAction(action)
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                // navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-            }
-        }
-    }
-}
-
-//MARK: Extension UITextFieldDelegate
-
-extension RegisterController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == passwordSecondTextField {
-            UIView.animate(withDuration: 0.3) {
-                self.view.center = CGPoint(x: self.originalViewCenter.x, y: self.originalViewCenter.y - 150)
-            }
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == passwordSecondTextField {
-            UIView.animate(withDuration: 0.3) {
-                self.view.center = self.originalViewCenter
-            }
         }
     }
 }
