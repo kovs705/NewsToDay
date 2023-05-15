@@ -19,6 +19,8 @@ final class CategoriesViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var descriptionLabel = UILabel()
     
+    //MARK: - UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -94,7 +96,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
         guard let category = presenter.categories?.all[indexPath.row] else {
             return cell
         }
-        cell.setTitle(category: category)
+        cell.setTitle(category: category, type: .standard)
         return cell
     }
 }
