@@ -47,9 +47,10 @@
 		C81C1F2F2A128F6400A974B0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F2E2A128F6400A974B0 /* FirebaseAuth */; };
 		C81C1F312A128F6400A974B0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F302A128F6400A974B0 /* FirebaseFirestore */; };
 		C81C1F342A12923B00A974B0 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F332A12923B00A974B0 /* GoogleSignIn */; };
-		C81C1F3B2A1394B500A974B0 /* NewsNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F3A2A1394B500A974B0 /* NewsNetworkManager.swift */; };
+		C81C1F3B2A1394B500A974B0 /* NewsNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */; };
 		C81C1F3D2A13951200A974B0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F3C2A13951200A974B0 /* Endpoint.swift */; };
 		C81C1F412A139F6100A974B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C81C1F402A139F6100A974B0 /* GoogleService-Info.plist */; };
+		C89DE4C72A13C9EF00C500B1 /* NewsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
 		C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */; };
 		C89F27232A0E519A00508FF9 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */; };
@@ -128,9 +129,10 @@
 		4EE9C2552A10226A00691420 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVC+Ext.swift"; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		C81C1F3A2A1394B500A974B0 /* NewsNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkManager.swift; sourceTree = "<group>"; };
+		C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkClient.swift; sourceTree = "<group>"; };
 		C81C1F3C2A13951200A974B0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C81C1F402A139F6100A974B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkService.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -352,7 +354,8 @@
 			children = (
 				4E4993A72A07AE0C001CBF8C /* Service */,
 				4E49939F2A07AB61001CBF8C /* Managers */,
-				C81C1F3A2A1394B500A974B0 /* NewsNetworkManager.swift */,
+				C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */,
+				C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */,
 				C81C1F3C2A13951200A974B0 /* Endpoint.swift */,
 			);
 			path = Network;
@@ -666,12 +669,13 @@
 				4E15208E2A06C11400E42537 /* ViewController.swift in Sources */,
 				C8F160022A0D25E900C63C6C /* CategriesCollectionViewCell.swift .swift in Sources */,
 				4E15208A2A06C11400E42537 /* AppDelegate.swift in Sources */,
+				C89DE4C72A13C9EF00C500B1 /* NewsNetworkService.swift in Sources */,
 				4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */,
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
 				EB6909FB2A095261009E0A1C /* RegisterController.swift in Sources */,
 				4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */,
 				C8F15FE92A0D253100C63C6C /* TermsConditionsVC.swift in Sources */,
-				C81C1F3B2A1394B500A974B0 /* NewsNetworkManager.swift in Sources */,
+				C81C1F3B2A1394B500A974B0 /* NewsNetworkClient.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* UIHelper.swift in Sources */,
