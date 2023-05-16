@@ -13,7 +13,9 @@ protocol PersistenceManagerProtocol {
     static func save(bookmarks: [News]) -> NewsError?
 }
 
+
 enum PersistenceActionType { case add, remove }
+
 
 class PersistenceManager: PersistenceManagerProtocol {
     static private let defaults = UserDefaults.standard
@@ -24,6 +26,7 @@ class PersistenceManager: PersistenceManagerProtocol {
     
     private init() {}
     
+    // MARK: - Добавление или удаление избранного, принимает в функцию новость, выбирается случай, либо add либо remove
     static func updateWith(bookmark: News, actionType: PersistenceActionType, completed: @escaping (NewsError?) -> Void) {
         retreiveNews { result in
             switch result {
@@ -53,7 +56,8 @@ class PersistenceManager: PersistenceManagerProtocol {
             }
         }
     }
-
+    
+ // MARK: - Получение избранных новостей в виде [News], либо ошибка
     static func retreiveNews(completed: @escaping (Result<[News], NewsError>) -> Void) {
         guard let bookmarksData = defaults.object(forKey: Keys.bookmarks) as? Data else {
             // if nil = no favorites

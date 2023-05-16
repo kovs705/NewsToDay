@@ -7,6 +7,10 @@
 
 import Foundation
 
+// Example of searching:
+// https://newsapi.org/v2/everything?q=bitcoin&apiKey=8e4cb38d557a45798ecdfa5b7c61f16e
+
+
 protocol NetworkManagerProtocol {
     func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void)
 }
@@ -16,10 +20,23 @@ class NetworkManager: NetworkManagerProtocol {
     // cache for image?
     let decoder = JSONDecoder()
     
+    var apiKey: String {
+        get {
+            guard let filePath = Bundle.main.path(forResource: "APIConfig", ofType: "plist") else {
+                fatalError("Couldn't find file 'APIConfig.plist'.")
+            }
+            let plist = NSDictionary(contentsOfFile: filePath)
+            guard let value = plist?.object(forKey: "API_KEY") as? String else {
+                fatalError(NewsError.apiKeyMissing.rawValue)
+            }
+            return value
+        }
+    }
+    
     func getNews(for api: String, completed: @escaping (Result<[News], NewsError>) -> Void) {
-        let endPoint = baseURL + "\(NewsService.shared.apiKey)" // здесь будет идти проверка существования API в .plist
+        let components = "\(baseURL)/top-headlines?country=us&apiKey=\(apiKey)"
         
-        guard let url = URL(string: endPoint) else {
+        guard let url = URL(string: components) else {
             completed(.failure(.apiKeyInvalid)) // что-то не так в финальной ссылке с API
             return
         }
