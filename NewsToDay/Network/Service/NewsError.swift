@@ -20,6 +20,7 @@ enum NewsError: String, Error {
     case sourcesTooMany = "You have requested too many sources in a single request. Try splitting the request into 2 smaller requests."
     case sourceDoesNotExist = "You have requested a source which does not exist."
     case unexpectedError = "This shouldn't happen, and if it does then it's our fault, not yours. Try the request again shortly."
+    case invalidURL = "This URL is invlid."
     
 // MARK: -  My custom cases
     case unableToComplete = "Unable to complete your request. Please check your internet connection"
