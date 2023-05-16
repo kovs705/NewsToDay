@@ -35,7 +35,7 @@ final class NewsService {
         }
         
         let decoder = JSONDecoder()
-        let result = try decoder.decode(BaseResponse<NewsResponse>.self, from: data)
+        let result = try decoder.decode(BaseResponse<HeadlineResponse>.self, from: data)
         
         return result.articles.map { article in
             article.toNews()

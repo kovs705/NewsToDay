@@ -11,11 +11,11 @@ protocol NewsNetworkClientProtocol {
     func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type, queryItems: [URLQueryItem]) async -> Result<T, NewsError>
 }
 
-class NewsNetworkClient: NewsNetworkClientProtocol {
+final class NewsNetworkClient: NewsNetworkClientProtocol {
     let decoder = JSONDecoder()
     private var apiKey: String {
         get {
-            guard let filePath = Bundle.main.path(forResource: "APIConfig", ofType: "plist") else {
+            guard let filePath = Bundle.main.path(forResource: "APIobj", ofType: "plist") else {
                 fatalError("Couldn't find file 'APIConfig.plist'.")
             }
             let plist = NSDictionary(contentsOfFile: filePath)
@@ -44,7 +44,9 @@ class NewsNetworkClient: NewsNetworkClientProtocol {
                 }
                 return .success(decoded)
             case 401: return .failure(.unauthorized)
-            default: return.failure(.unexpectedError)
+            default:
+                print(response)
+                return.failure(.unexpectedError)
             }
         } catch {
             return.failure(.unexpectedError)
