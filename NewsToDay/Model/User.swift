@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct User: Codable {
+struct User {
     let id: String
     let uid: String
-    let categories: [Category]
+    let categories: [Category]?
 }
-
