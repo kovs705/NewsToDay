@@ -7,4 +7,9 @@
 
 import Foundation
 
+struct User: Codable {
+    let id: String
+    let uid: String
+    let categories: [Category]
+}
 

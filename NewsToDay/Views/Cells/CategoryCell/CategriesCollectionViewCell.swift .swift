@@ -12,6 +12,13 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UI Elements
     
+    var isChecked: Bool = false {
+          didSet {
+              // ui to show for the user
+              // checkmarkImageView.isHidden = !isChecked
+          }
+      }
+    
     var titleLabel = UILabel()
     
     override init(frame: CGRect) {
