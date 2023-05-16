@@ -8,6 +8,6 @@
 import Foundation
 
 enum Endpoint: String {
-    case topHeadlines
+    case topHeadlines = "top-headlines"
     case everything 
 }
