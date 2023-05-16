@@ -37,6 +37,41 @@ enum Categories {
     static let technology = "technology"
 }
 
+enum Web {
+    enum Countries {
+        static let ar = "ar"
+        static let de = "de"
+        static let en = "en"
+        static let es = "es"
+        static let fr = "fr"
+        static let he = "he"
+        static let it = "it"
+        static let nl = "nl"
+        static let no = "no"
+        static let pt = "pt"
+        static let ru = "ru"
+        static let sv = "sv"
+        static let ud = "ud"
+        static let zh = "zh"
+    }
+    
+    enum sortBy {
+        
+        // Default - publishedAt
+        
+        /// articles more closely related to q come first
+        static let relevancy = "relevancy"
+        /// articles from popular sources and publishers come first
+        static let popularity = "popularity"
+        /// newest articles come first
+        static let publishedAt = "publishedAt"
+        
+    }
+    
+    // pageSize - maximum 100
+    // page - from 1
+}
+
 enum Constants {
     enum Font {
         static let interSemiBold = "Inter-SemiBold"
