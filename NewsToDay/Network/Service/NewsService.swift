@@ -8,8 +8,7 @@
 import Foundation
 
 
-class NewsService {
-    
+final class NewsService {
     private var baseURL: String = "https://newsapi.org/v2"
     var apiKey: String {
         get {
@@ -24,11 +23,10 @@ class NewsService {
         }
     }
     
-    static let shared = NewsService()
-    
     func getHeadline() async throws -> [News] {
-        let components = URLComponents(string: "\(baseURL)/top-headlines?country=us&apiKey=\(apiKey)")!
-    
+//        let components = URLComponents(string: "\(baseURL)/top-headlines?country=us&apiKey=\(apiKey)")!
+        let components = URLComponents()
+        components
         
         let request = URLRequest(url: components.url!)
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -43,6 +41,4 @@ class NewsService {
             article.toNews()
         }
     }
-    
-    
 }
