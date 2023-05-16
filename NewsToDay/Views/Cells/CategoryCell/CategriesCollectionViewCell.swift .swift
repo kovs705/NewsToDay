@@ -48,6 +48,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     private func setupCellForOnboarding() {
         backgroundColor = UIColor(named: Colors.greyLighter)
         self.layer.cornerRadius = 12
+        selectedBackgroundView?.backgroundColor = UIColor(named: Colors.purplePrimary)
+        selectedBackgroundView?.layer.cornerRadius = 12
     }
     
     private func setupLabel() {

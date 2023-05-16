@@ -46,6 +46,8 @@
 		C81C1F2F2A128F6400A974B0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F2E2A128F6400A974B0 /* FirebaseAuth */; };
 		C81C1F312A128F6400A974B0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F302A128F6400A974B0 /* FirebaseFirestore */; };
 		C81C1F342A12923B00A974B0 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F332A12923B00A974B0 /* GoogleSignIn */; };
+		C81C1F382A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */; };
+		C81C1F392A129C6C00A974B0 /* CategoriesOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
 		C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */; };
 		C89F27232A0E519A00508FF9 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */; };
@@ -123,6 +125,8 @@
 		4EE9C2552A10226A00691420 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVC+Ext.swift"; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingPresenter.swift; sourceTree = "<group>"; };
+		C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingViewController.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				C8F15FED2A0D255200C63C6C /* Categories */,
 				C8F15FE72A0D253100C63C6C /* Terms & ConditionsVC */,
 				4E1520D42A06CED600E42537 /* TabBar */,
+				C81C1F352A129C6C00A974B0 /* Onboarding */,
 				4E1520D32A06CECA00E42537 /* MainVC */,
 			);
 			path = Controllers;
@@ -385,6 +390,16 @@
 			);
 			path = ProfileVC;
 			sourceTree = "<group>";
+		};
+		C81C1F352A129C6C00A974B0 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */,
+				C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */,
+			);
+			name = Onboarding;
+			path = NewsToDay/Controllers/Onboarding;
+			sourceTree = SOURCE_ROOT;
 		};
 		C89F271C2A0E4E1C00508FF9 /* Result */ = {
 			isa = PBXGroup;
@@ -650,6 +665,7 @@
 				C8F15FF72A0D259400C63C6C /* CategoryManager.swift in Sources */,
 				4E15208E2A06C11400E42537 /* ViewController.swift in Sources */,
 				C8F160022A0D25E900C63C6C /* CategriesCollectionViewCell.swift .swift in Sources */,
+				C81C1F382A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift in Sources */,
 				4E15208A2A06C11400E42537 /* AppDelegate.swift in Sources */,
 				4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */,
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
@@ -660,6 +676,7 @@
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* UIHelper.swift in Sources */,
 				C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */,
+				C81C1F392A129C6C00A974B0 /* CategoriesOnboardingViewController.swift in Sources */,
 				4EB149D22A123835002A6362 /* ProfileVC+Ext.swift in Sources */,
 				4ECDAAA22A082CEB00E8485C /* MainVC.swift in Sources */,
 				C8F15FF52A0D256C00C63C6C /* Category.swift in Sources */,
