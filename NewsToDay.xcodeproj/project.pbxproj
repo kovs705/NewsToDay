@@ -48,7 +48,6 @@
 		C81C1F312A128F6400A974B0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F302A128F6400A974B0 /* FirebaseFirestore */; };
 		C81C1F342A12923B00A974B0 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F332A12923B00A974B0 /* GoogleSignIn */; };
 		C81C1F3B2A1394B500A974B0 /* NewsNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */; };
-		C81C1F3D2A13951200A974B0 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C1F3C2A13951200A974B0 /* Endpoint.swift */; };
 		C81C1F412A139F6100A974B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C81C1F402A139F6100A974B0 /* GoogleService-Info.plist */; };
 		C89DE4C72A13C9EF00C500B1 /* NewsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
@@ -130,7 +129,6 @@
 		4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVC+Ext.swift"; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkClient.swift; sourceTree = "<group>"; };
-		C81C1F3C2A13951200A974B0 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		C81C1F402A139F6100A974B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsNetworkService.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
@@ -356,7 +354,6 @@
 				4E49939F2A07AB61001CBF8C /* Managers */,
 				C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */,
 				C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */,
-				C81C1F3C2A13951200A974B0 /* Endpoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -647,7 +644,6 @@
 				4E49939C2A07A84C001CBF8C /* NewsResponse.swift in Sources */,
 				C8F15FF12A0D255200C63C6C /* BrowseViewController.swift in Sources */,
 				4E1520E42A06D50200E42537 /* Constants.swift in Sources */,
-				C81C1F3D2A13951200A974B0 /* Endpoint.swift in Sources */,
 				EB6909F72A094044009E0A1C /* AccountController.swift in Sources */,
 				C8F15FE62A0D250300C63C6C /* Coordinator.swift in Sources */,
 				C8F160012A0D25E900C63C6C /* NewsCell.swift in Sources */,
