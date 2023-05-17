@@ -8,7 +8,7 @@
 import UIKit
 
 final class CategoriesOnboardingViewController: UIViewController {
-
+    
     //MARK: - Property
     
     var presenter: CategoriesOnboardingPresenterProtocol!
@@ -17,6 +17,7 @@ final class CategoriesOnboardingViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var descriptionLabel = UILabel()
+    private var getStartedButton = UIButton()
     
     //MARK: - UIViewController Lifecycle
     
@@ -33,6 +34,7 @@ final class CategoriesOnboardingViewController: UIViewController {
         self.title = "Select your favorite topics"
         setupDiscriptionLabel()
         setupCollectionView()
+        setupGetStartedButton()
     }
     
     private func setupDiscriptionLabel() {
@@ -42,6 +44,16 @@ final class CategoriesOnboardingViewController: UIViewController {
         descriptionLabel.numberOfLines = 2
     }
     
+    private func setupGetStartedButton() {
+        getStartedButton = UIButton(type: .system)
+        getStartedButton.backgroundColor = UIColor(named: Colors.purplePrimary)
+        getStartedButton.layer.cornerRadius = 12
+        getStartedButton.setTitle("Get Started", for: .normal)
+        getStartedButton.tintColor = .white
+        getStartedButton.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
+        getStartedButton.isEnabled = false
+    }
+    
     private func setupCollectionView() {
         let layout = UIHelper.createTwoColumnLayout(in: view)
         
@@ -49,6 +61,7 @@ final class CategoriesOnboardingViewController: UIViewController {
                                            collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
         collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "CategoriesOnboardingViewController")
     }
     
@@ -60,7 +73,7 @@ final class CategoriesOnboardingViewController: UIViewController {
     }
     
     private func addSubViews() {
-        let views: [UIView] = [collectionView, descriptionLabel]
+        let views: [UIView] = [collectionView, getStartedButton, descriptionLabel]
         views.forEach { self.view.addSubview($0) }
     }
     
@@ -69,6 +82,11 @@ final class CategoriesOnboardingViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
             make.leading.equalTo(view).inset(16)
             make.width.equalTo(view)
+        }
+        getStartedButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(16)
+            make.leading.trailing.equalTo(view).inset(20)
+            make.height.equalTo(56)
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(32)
@@ -82,7 +100,9 @@ final class CategoriesOnboardingViewController: UIViewController {
 //MARK: - CategoriesOnboardingViewProtocol
 
 extension CategoriesOnboardingViewController: CategoriesOnboardingViewProtocol {
-    
+    func disableButton(isEnabled: Bool) {
+        getStartedButton.isEnabled = isEnabled
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -105,5 +125,21 @@ extension CategoriesOnboardingViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 
 extension CategoriesOnboardingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let category = presenter.categories?.all[indexPath.row] else { return }
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell {
+            cell.didSelected()
+            presenter.select(category)
+            cell.isSelected = true
+        }
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let category = presenter.categories?.all[indexPath.row] else { return }
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoriesCollectionViewCell {
+            cell.didDeselected()
+            presenter.deselect(category)
+            cell.isSelected = false
+        }
+    }
 }

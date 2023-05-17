@@ -8,22 +8,45 @@
 import Foundation
 
 protocol CategoriesOnboardingViewProtocol: AnyObject {
-    
+    func disableButton(isEnabled: Bool)
 }
 
 protocol CategoriesOnboardingPresenterProtocol: AnyObject {
     init(view: CategoriesOnboardingViewProtocol, categories: CategoryManagerProtocol?)
     var categories: CategoryManagerProtocol? { get }
+    func select(_ category: Category)
+    func deselect(_ category: Category)
 }
 
 class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol {
     weak var view: CategoriesOnboardingViewProtocol?
     var categories: CategoryManagerProtocol?
+    var selectedCategories: [Category] = []
     
     required init(view: CategoriesOnboardingViewProtocol, categories: CategoryManagerProtocol?) {
         self.view = view
         self.categories = categories
     }
     
+    func select(_ category: Category) {
+        selectedCategories.append(category)
+        updateButton()
+    }
     
+    func deselect(_ category: Category) {
+        if let index = selectedCategories.firstIndex(of: category) {
+            selectedCategories.remove(at: index)
+        }
+        updateButton()
+    }
+    
+    //MARK: - Private Methods
+
+    private func updateButton() {
+        if selectedCategories.isEmpty {
+            view?.disableButton(isEnabled: false)
+        } else {
+            view?.disableButton(isEnabled: true)
+        }
+    }
 }
