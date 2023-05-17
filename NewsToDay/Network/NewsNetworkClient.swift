@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NewsNetworkClientProtocol {
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type, queryItems: [URLQueryItem]) async -> Result<T, NewsError>
+    func sendRequest<T: Decodable>(endpoint: Web.Endpoint, responseModel: T.Type, queryItems: [URLQueryItem]) async -> Result<T, NewsError>
 }
 
 final class NewsNetworkClient: NewsNetworkClientProtocol {
@@ -26,7 +26,7 @@ final class NewsNetworkClient: NewsNetworkClientProtocol {
         }
     }
     
-    func sendRequest<T: Decodable>(endpoint: Endpoint, responseModel: T.Type, queryItems: [URLQueryItem]) async -> Result<T, NewsError> {
+    func sendRequest<T: Decodable>(endpoint: Web.Endpoint, responseModel: T.Type, queryItems: [URLQueryItem]) async -> Result<T, NewsError> {
         guard let url = getUrl(endpoint: endpoint, queryItems: queryItems) else { return .failure(.invalidURL) }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -44,16 +44,14 @@ final class NewsNetworkClient: NewsNetworkClientProtocol {
                 }
                 return .success(decoded)
             case 401: return .failure(.unauthorized)
-            default:
-                print(response)
-                return.failure(.unexpectedError)
+            default: return.failure(.unexpectedError)
             }
         } catch {
             return.failure(.unexpectedError)
         }
     }
     
-    private func getUrl(endpoint: Endpoint, queryItems: [URLQueryItem]) -> URL? {
+    private func getUrl(endpoint: Web.Endpoint, queryItems: [URLQueryItem]) -> URL? {
         var urlComponents = URLComponents()
         var defaultQueryItems = [URLQueryItem(name: "apiKey", value: apiKey)]
         defaultQueryItems.append(contentsOf: queryItems)
@@ -61,7 +59,6 @@ final class NewsNetworkClient: NewsNetworkClientProtocol {
         urlComponents.host = "newsapi.org"
         urlComponents.path = "/v2/" + endpoint.rawValue
         urlComponents.queryItems = defaultQueryItems
-        
         return urlComponents.url
     }
 }
