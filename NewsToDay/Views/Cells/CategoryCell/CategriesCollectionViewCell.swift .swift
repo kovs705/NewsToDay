@@ -27,13 +27,23 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     func setTitle(category: Category, type: CategoriesCellType) {
         titleLabel.text = "\(category.icon)  \(category.name.capitalized)"
-        setupLabel()
+        setupLabel(textColor: UIColor(named: Colors.greyDark))
         switch type {
         case .onboarding:
             setupCellForOnboarding()
         case .standard:
             setupCellForStandart()
         }
+    }
+    
+    func didSelected() {
+        setupLabel(textColor: .white)
+        backgroundColor = UIColor(named: Colors.purplePrimary)
+    }
+    
+    func didDeselected() {
+        setupLabel(textColor: UIColor(named: Colors.greyDark))
+        backgroundColor = UIColor(named: Colors.greyLighter)
     }
     
     //MARK: - SetupUI
@@ -48,14 +58,17 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     private func setupCellForOnboarding() {
         backgroundColor = UIColor(named: Colors.greyLighter)
         self.layer.cornerRadius = 12
-        selectedBackgroundView?.backgroundColor = UIColor(named: Colors.purplePrimary)
-        selectedBackgroundView?.layer.cornerRadius = 12
     }
     
-    private func setupLabel() {
+    private func setupLabel(textColor: UIColor?) {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
-        titleLabel.textColor = UIColor(named: Colors.greyDark)
+        titleLabel.textColor = textColor
+    }
+    
+    enum CategoriesCellType {
+        case onboarding
+        case standard
     }
     
     //MARK: - Layout
@@ -70,10 +83,5 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(contentView).inset(4)
             make.trailing.equalTo(contentView).inset(4)
         }
-    }
-    
-    enum CategoriesCellType {
-        case onboarding
-        case standard
     }
 }
