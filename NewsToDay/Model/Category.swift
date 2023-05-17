@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Category {
+struct Category: Equatable {
     let name: String
     let icon: String
 }
