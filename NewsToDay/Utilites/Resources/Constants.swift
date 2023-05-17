@@ -90,6 +90,7 @@ enum Constants {
         static let info = "Information"
         static let password = "Password"
         static let email = "Email Adress"
+        static let usersData = "usersData"
         static let repeatPas = "Repeat password"
         static let welcome = "Welcome Back 👋"
         static let google = "Sign in with Google"

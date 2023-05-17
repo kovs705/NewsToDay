@@ -9,6 +9,6 @@ import Foundation
 
 struct User {
     let id: String
-    let uid: String
+    let local: String
     let categories: [Category]?
 }
