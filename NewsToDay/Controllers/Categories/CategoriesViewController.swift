@@ -42,7 +42,7 @@ final class CategoriesViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        let layout = UIHelper.createTwoColumnLayout(in: view)
+        let layout = CategoriesLayout.createTwoColumnLayout(in: view)
         
         collectionView = UICollectionView(frame: .zero,
                                            collectionViewLayout: layout)

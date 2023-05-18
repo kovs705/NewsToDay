@@ -1,5 +1,5 @@
 //
-//  UIHelper.swift
+//  CategoriesLayout.swift
 //  NewsToDay
 //
 //  Created by Kovs on 06.05.2023.
@@ -7,8 +7,7 @@
 
 import UIKit
 
-enum UIHelper {
-    
+struct CategoriesLayout {
     static func createTwoColumnLayout(in view: UIView) -> UICollectionViewLayout {
         let width = view.bounds.width
         let padding: CGFloat = 16
@@ -26,14 +25,5 @@ enum UIHelper {
                                                right: padding)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         return flowLayout
-    }
-}
-
-extension UIView {
-    
-    func addSubviews(_ views: UIView...) {
-        for view in views {
-            addSubview(view)
-        }
     }
 }
