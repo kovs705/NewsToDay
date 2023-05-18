@@ -10,8 +10,6 @@ import SnapKit
 
 class DetailVC: UIViewController {
     
-    var label = UILabel(textColor: <#T##Colors#>, textSize: <#T##CGFloat#>, font: <#T##Font#>, numberOfLines: <#T##Int#>)
-    
     var presenter: DetailViewPresenterProtocol!
     
     override func viewDidLoad() {
