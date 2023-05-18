@@ -38,10 +38,7 @@ class NewsNetworkManager {
         
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let result = try decoder.decode(BaseResponse<NewsResponse>.self, from: data)
-        
-        return result.articles.map { article in
-            article.toNews()
-        }
+        return .failure(.unexpectedError)
     }
     
     private func getUrl(endpoint: Endpoint, queryItems: [URLQueryItem]) -> URL? {
