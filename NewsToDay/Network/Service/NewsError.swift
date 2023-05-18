@@ -21,6 +21,7 @@ enum NewsError: String, Error {
     case sourceDoesNotExist = "You have requested a source which does not exist."
     case unexpectedError = "This shouldn't happen, and if it does then it's our fault, not yours. Try the request again shortly."
     case invalidURL = "This URL is invlid."
+    case unauthorized = "Your API key was missing from the request, or wasn't correct."
     
 // MARK: -  My custom cases
     case unableToComplete = "Unable to complete your request. Please check your internet connection"

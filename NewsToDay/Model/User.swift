@@ -9,6 +9,8 @@ import Foundation
 
 struct User {
     let id: String
-    let uid: String
     let categories: [Category]?
+    let region: Web.Region?
 }
+
+

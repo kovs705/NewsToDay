@@ -10,40 +10,37 @@ import Foundation
 protocol ApiResponse: Decodable {}
 
 struct BaseResponse<T: ApiResponse>: Decodable {
-    let status:       String
+    let status: String
     let totalResults: Int
-    let articles:     [T]
+    let articles: [T]
 }
 
-
 struct SourceResponse: Decodable {
-    let id:   String?
+    let id: String?
     let name: String?
 }
 
-
-struct NewsResponse: ApiResponse {
-    let source:             SourceResponse
-    let author:             String?
+struct HeadlineResponse: ApiResponse {
+    let source: SourceResponse
+    let author: String?
     let title, description: String?
-    let url:                String
-    let urlToImage:         String
-    let publishedAt:        String
-    let content:            String?
+    let url: String
+    let urlToImage: String
+    let publishedAt: String
+    let content: String?
 }
 
-
-extension NewsResponse {
+extension HeadlineResponse {
     func toNews() -> News {
         return News(
-            source:      Source(id: self.source.id, name: self.source.name ?? ""),
-            author:      self.author ?? "",
-            title:       self.title ?? "",
+            source: Source(id: self.source.id, name: self.source.name ?? ""),
+            author: self.author ?? "",
+            title: self.title ?? "",
             description: self.description ?? "",
-            url:         self.url,
-            urlToImage:  self.urlToImage,
+            url: self.url,
+            urlToImage: self.urlToImage,
             publishedAt: self.publishedAt,
-            content:     self.content ?? ""
+            content: self.content ?? ""
         )
     }
 }

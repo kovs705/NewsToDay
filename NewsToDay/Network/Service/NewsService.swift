@@ -26,7 +26,6 @@ final class NewsService {
     func getHeadline() async throws -> [News] {
 //        let components = URLComponents(string: "\(baseURL)/top-headlines?country=us&apiKey=\(apiKey)")!
         let components = URLComponents()
-        components
         
         let request = URLRequest(url: components.url!)
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -35,7 +34,7 @@ final class NewsService {
         }
         
         let decoder = JSONDecoder()
-        let result = try decoder.decode(BaseResponse<NewsResponse>.self, from: data)
+        let result = try decoder.decode(BaseResponse<HeadlineResponse>.self, from: data)
         
         return result.articles.map { article in
             article.toNews()

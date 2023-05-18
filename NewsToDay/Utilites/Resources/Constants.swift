@@ -38,21 +38,61 @@ enum Categories {
 }
 
 enum Web {
-    enum Countries {
-        static let ar = "ar"
-        static let de = "de"
-        static let en = "en"
-        static let es = "es"
-        static let fr = "fr"
-        static let he = "he"
-        static let it = "it"
-        static let nl = "nl"
-        static let no = "no"
-        static let pt = "pt"
-        static let ru = "ru"
-        static let sv = "sv"
-        static let ud = "ud"
-        static let zh = "zh"
+    enum Region: String {
+        case uae = "ae"
+        case argentina = "ar"
+        case austria = "at"
+        case australia = "au"
+        case belgium = "be"
+        case country = "bg"
+        case bulgaria = "br"
+        case canada = "ca"
+        case switzerland = "ch"
+        case china = "cn"
+        case colombia = "co"
+        case cuba = "cu"
+        case czechia = "cz"
+        case germany = "de"
+        case egypt = "eg"
+        case france = "fr"
+        case britain = "gb"
+        case greece = "gr"
+        case hongKong = "hk"
+        case hungary = "hu"
+        case indonesia = "id"
+        case ireland = "ie"
+        case israel = "il"
+        case india = "in"
+        case italy = "it"
+        case japan = "jp"
+        case southKorea = "kr"
+        case lithuania = "lt"
+        case latvia = "lv"
+        case morocco = "ma"
+        case mexico = "mx"
+        case malaysia = "my"
+        case nigeria = "ng"
+        case netherlands = "nl"
+        case norway = "no"
+        case newZealand = "nz"
+        case philippines = "ph"
+        case poland = "pl"
+        case portugal = "pt"
+        case romania = "ro"
+        case serbia = "rs"
+        case russia = "ru"
+        case saudiArabia = "sa"
+        case sweden = "se"
+        case singapore = "sg"
+        case slovenia = "si"
+        case slovakia = "sk"
+        case togo = "th"
+        case turkiye = "tr"
+        case taiwan = "tw"
+        case ukraine = "ua"
+        case unitedStates = "us"
+        case venezuela = "ve"
+        case southAfrica = "za"
     }
     
     enum sortBy {
@@ -67,6 +107,12 @@ enum Web {
         static let publishedAt = "publishedAt"
         
     }
+    
+    enum Endpoint: String {
+        case topHeadlines = "top-headlines"
+        case everything
+    }
+
     
     // pageSize - maximum 100
     // page - from 1
