@@ -16,6 +16,14 @@ class ProfileVC: ProfileExt {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presenter.calculate()
+    }
+    
+}
+
+extension ProfileVC: ProfileViewProtocol {
+    func show() {
+        // UI code here
         addSubviews()
         
         setBackground()
@@ -25,7 +33,10 @@ class ProfileVC: ProfileExt {
         setEmailUser()
         setButtonLanguage()
         setTermsAndConditionsButton()
+        
+        print("UI Code completed")
     }
+    
     
 }
 

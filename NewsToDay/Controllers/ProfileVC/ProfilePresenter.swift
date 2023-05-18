@@ -29,6 +29,7 @@ class ProfilePresenter: ProfilePresenterProtocol {
     
     func calculate() {
         // 2 + 2 = 5
+        print("Calculated")
         
         self.view?.show()
     }

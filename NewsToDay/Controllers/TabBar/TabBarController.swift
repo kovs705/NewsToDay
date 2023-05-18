@@ -31,7 +31,11 @@ final class TabBarController: UITabBarController {
     private func setupTabs() {
         let categories = coordinator?.getCategoriesModule()
         let browse = BrowseViewController()
-        let profile = ProfileVC()
+        let profile = coordinator?.getProfileModule()
+        
+        let account = coordinator?.getAccountVCModule()
+        let register = coordinator?.getRegisterVCModule()
+        
         var tabs: [UINavigationController] = []
         
         if let browseNavigationController = setupViewController(browse,
@@ -48,6 +52,7 @@ final class TabBarController: UITabBarController {
         if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "house") {
             tabs.append(blabla)
         }
+        
         setViewControllers(tabs, animated: true)
     }
     
