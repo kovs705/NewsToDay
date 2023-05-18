@@ -56,7 +56,7 @@ class Coordinator: CoordinatorProtocol {
         let view = DetailVC()
         let presenter = DetailPresenter(view: view, news: news)
         
-        view.presenter = presenter
+//        view.presenter = presenter
         return view
     }
     

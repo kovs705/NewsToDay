@@ -38,15 +38,15 @@ class BookmarksTableViewCell: UITableViewCell {
     private func setupNewsTitle(_ text: String) {
         newsTitle.text = text
         newsTitle.numberOfLines = 2
-        newsTitle.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
-        newsTitle.textColor = UIColor(named: Colors.blackPrimary)
+        newsTitle.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
+        newsTitle.textColor = UIColor(named: Colors.blackPrimary.rawValue)
     }
     
     private func setupNewsCategory(_ text: String) {
         newsCategory.text = text
         newsCategory.numberOfLines = 1
-        newsCategory.font = UIFont(name: Constants.Font.interRegular, size: 14)
-        newsCategory.textColor = UIColor(named: Colors.greyPrimary)
+        newsCategory.font = UIFont(name: Font.interRegular.rawValue, size: 14)
+        newsCategory.textColor = UIColor(named: Colors.greyPrimary.rawValue)
     }
     
     //MARK: - Layout

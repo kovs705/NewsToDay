@@ -7,24 +7,24 @@
 
 import UIKit
 
-enum Colors {
+enum Colors: String {
     // Purple
-    static let purpleDark    = "PurpleDark"
-    static let purpleLight   = "PurpleLight"
-    static let purpleLighter = "PurpleLighter"
-    static let purplePrimary = "PurplePrimary"
+    case purpleDark = "PurpleDark"
+    case purpleLight = "PurpleLight"
+    case purpleLighter = "PurpleLighter"
+    case purplePrimary = "PurplePrimary"
     
     // Black
-    static let blackDark     = "BlackDark"
-    static let blackLight    = "BlackLight"
-    static let blackLighter  = "BlackLighter"
-    static let blackPrimary  = "BlackPrimary"
+    case blackDark = "BlackDark"
+    case blackLight = "BlackLight"
+    case blackLighter = "BlackLighter"
+    case blackPrimary = "BlackPrimary"
     
     // Grey
-    static let greyDark      = "GreyDark"
-    static let greyLight     = "GreyLight"
-    static let greyLighter   = "GreyLighter"
-    static let greyPrimary   = "GreyPrimary"
+    case greyDark = "GreyDark"
+    case greyLight = "GreyLight"
+    case greyLighter = "GreyLighter"
+    case greyPrimary = "GreyPrimary"
 }
 
 enum Categories {
@@ -118,15 +118,14 @@ enum Web {
     // page - from 1
 }
 
+enum Font: String {
+    case interSemiBold = "Inter-SemiBold"
+    case interRegular = "Inter-Regular"
+    case interMedium = "Inter-Medium"
+    case interBold = "Inter-Bold"
+}
+
 enum Constants {
-    enum Font {
-        static let interSemiBold = "Inter-SemiBold"
-        static let interRegular = "Inter-Regular"
-        static let interMedium = "Inter-Medium"
-        static let interBold = "Inter-Bold"
-    }
-    
-    
     enum String {
         static let ok = "Ok"
         static let eight = 8

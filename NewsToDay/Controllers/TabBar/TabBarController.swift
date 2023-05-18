@@ -33,9 +33,6 @@ final class TabBarController: UITabBarController {
         let browse = BrowseViewController()
         let profile = coordinator?.getProfileModule()
         
-        let account = coordinator?.getAccountVCModule()
-        let register = coordinator?.getRegisterVCModule()
-        
         var tabs: [UINavigationController] = []
         
         if let browseNavigationController = setupViewController(browse,
@@ -73,8 +70,8 @@ final class TabBarController: UITabBarController {
         tabBar.layer.masksToBounds = true
 
         
-        tabBar.tintColor = UIColor(named: Colors.purplePrimary)
-        tabBar.unselectedItemTintColor = UIColor(named: Colors.greyLight)
+        tabBar.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
+        tabBar.unselectedItemTintColor = UIColor(named: Colors.greyLight.rawValue)
         removeTabbarItemsText()
     }
     
