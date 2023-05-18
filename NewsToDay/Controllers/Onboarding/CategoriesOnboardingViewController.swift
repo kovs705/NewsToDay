@@ -39,18 +39,18 @@ final class CategoriesOnboardingViewController: UIViewController {
     
     private func setupDiscriptionLabel() {
         descriptionLabel.text = "Select some of your favorite topics to let us suggest better news for you."
-        descriptionLabel.textColor = UIColor(named: Colors.greyPrimary)
-        descriptionLabel.font = UIFont(name: Constants.Font.interRegular, size: 16)
+        descriptionLabel.textColor = UIColor(named: Colors.greyPrimary.rawValue)
+        descriptionLabel.font = UIFont(name: Font.interRegular.rawValue, size: 16)
         descriptionLabel.numberOfLines = 2
     }
     
     private func setupGetStartedButton() {
         getStartedButton = UIButton(type: .system)
-        getStartedButton.backgroundColor = UIColor(named: Colors.purplePrimary)
+        getStartedButton.backgroundColor = UIColor(named: Colors.purplePrimary.rawValue)
         getStartedButton.layer.cornerRadius = 12
         getStartedButton.setTitle("Get Started", for: .normal)
         getStartedButton.tintColor = .white
-        getStartedButton.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
+        getStartedButton.titleLabel?.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
         getStartedButton.isEnabled = false
     }
     

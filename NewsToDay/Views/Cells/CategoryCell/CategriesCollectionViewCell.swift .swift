@@ -34,7 +34,7 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     func setTitle(category: Category, type: CategoriesCellType) {
         titleLabel.text = "\(category.icon)  \(category.name.capitalized)"
-        setupLabel(textColor: UIColor(named: Colors.greyDark))
+        setupLabel(textColor: UIColor(named: Colors.greyDark.rawValue))
         switch type {
         case .onboarding:
             setupCellForOnboarding()
@@ -45,12 +45,12 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     func didSelected() {
         setupLabel(textColor: .white)
-        backgroundColor = UIColor(named: Colors.purplePrimary)
+        backgroundColor = UIColor(named: Colors.purplePrimary.rawValue)
     }
     
     func didDeselected() {
-        setupLabel(textColor: UIColor(named: Colors.greyDark))
-        backgroundColor = UIColor(named: Colors.greyLighter)
+        setupLabel(textColor: UIColor(named: Colors.greyDark.rawValue))
+        backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
     }
     
     //MARK: - SetupUI
@@ -59,17 +59,17 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         backgroundColor = .clear
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12
-        self.layer.borderColor = UIColor(named: Colors.greyLighter)?.cgColor
+        self.layer.borderColor = UIColor(named: Colors.greyLighter.rawValue)?.cgColor
     }
     
     private func setupCellForOnboarding() {
-        backgroundColor = UIColor(named: Colors.greyLighter)
+        backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
         self.layer.cornerRadius = 12
     }
     
     private func setupLabel(textColor: UIColor?) {
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
+        titleLabel.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
         titleLabel.textColor = textColor
     }
     

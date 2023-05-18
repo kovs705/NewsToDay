@@ -42,14 +42,14 @@ class RegisterVC: UIViewController {
     
     lazy var header: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Font.interSemiBold, size: 24)
+        label.font = UIFont(name: Font.interSemiBold.rawValue, size: 24)
         label.text = Constants.String.welcomeToNews
         return label
     }()
     
     lazy var underHeader: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: Constants.Font.interRegular, size: 16)
+        label.font = UIFont(name: Font.interRegular.rawValue, size: 16)
         label.text = Constants.String.hello
         label.numberOfLines = 2
         label.textColor = .systemGray
@@ -59,7 +59,7 @@ class RegisterVC: UIViewController {
     lazy var nameTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.name
-        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
+        text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
         text.delegate = self
         return text
     }()
@@ -67,7 +67,7 @@ class RegisterVC: UIViewController {
     lazy var emailTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.email
-        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
+        text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
         text.delegate = self
         return text
     }()
@@ -75,7 +75,7 @@ class RegisterVC: UIViewController {
     lazy var passwordFirstTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.password
-        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
+        text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -84,7 +84,7 @@ class RegisterVC: UIViewController {
     lazy var passwordSecondTextField: UITextField = {
         let text = UITextField()
         text.placeholder = Constants.String.repeatPas
-        text.font = UIFont(name: Constants.Font.interMedium, size: 16)
+        text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -93,7 +93,7 @@ class RegisterVC: UIViewController {
     lazy var nameView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary.rawValue)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -101,7 +101,7 @@ class RegisterVC: UIViewController {
     lazy var emailView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary.rawValue)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -109,7 +109,7 @@ class RegisterVC: UIViewController {
     lazy var passwordFirstView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary.rawValue)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -117,7 +117,7 @@ class RegisterVC: UIViewController {
     lazy var passwordSecondView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 15
-        view.layer.borderColor = UIColor(named: Colors.purplePrimary)?.cgColor
+        view.layer.borderColor = UIColor(named: Colors.purplePrimary.rawValue)?.cgColor
         view.layer.borderWidth = 1
         return view
     }()
@@ -125,9 +125,9 @@ class RegisterVC: UIViewController {
     lazy var signButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.signUp, for: .normal)
-        button.backgroundColor = UIColor(named: Colors.purplePrimary)
+        button.backgroundColor = UIColor(named: Colors.purplePrimary.rawValue)
         button.layer.cornerRadius = 15
-        button.titleLabel?.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
+        button.titleLabel?.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
         button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         return button
     }()
@@ -135,7 +135,7 @@ class RegisterVC: UIViewController {
     lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.String.haveAnAcc, for: .normal)
-        button.titleLabel?.font = UIFont(name: Constants.Font.interMedium, size: 16)
+        button.titleLabel?.font = UIFont(name: Font.interMedium.rawValue, size: 16)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(backToSign), for: .touchUpInside)
         return button
@@ -144,28 +144,28 @@ class RegisterVC: UIViewController {
     lazy var nameImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.person)
-        image.tintColor = UIColor(named: Colors.purplePrimary)
+        image.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         return image
     }()
     
     lazy var emailImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.envelope)
-        image.tintColor = UIColor(named: Colors.purplePrimary)
+        image.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         return image
     }()
     
     lazy var passwordImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
-        image.tintColor = UIColor(named: Colors.purplePrimary)
+        image.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         return image
     }()
     
     lazy var passwordImageTwo: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: Constants.Images.lock)
-        image.tintColor = UIColor(named: Colors.purplePrimary)
+        image.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         return image
     }()
     
@@ -177,7 +177,7 @@ class RegisterVC: UIViewController {
     lazy var hideButtonOne: UIButton = {
         let button = UIButton(type: .custom)
         button.tag = Constants.String.eight
-        button.tintColor = UIColor(named: Colors.purplePrimary)
+        button.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
         button.addTarget(self, action: #selector(hidePressed(sender:)), for: .touchUpInside)
         return button
@@ -185,7 +185,7 @@ class RegisterVC: UIViewController {
     
     lazy var hideButtonTwo: UIButton = {
         let button = UIButton(type: .custom)
-        button.tintColor = UIColor(named: Colors.purplePrimary)
+        button.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         button.setImage(UIImage(systemName: Constants.Images.eye), for: .normal)
         button.addTarget(self, action: #selector(hidePressed(sender:)), for: .touchUpInside)
         return button
