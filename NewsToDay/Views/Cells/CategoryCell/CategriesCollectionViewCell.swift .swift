@@ -23,7 +23,6 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
         setConstraints()
     }
     
@@ -33,28 +32,50 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Public
     
-    func setTitle(category: Category) {
+    func setTitle(category: Category, type: CategoriesCellType) {
         titleLabel.text = "\(category.icon)  \(category.name.capitalized)"
+        setupLabel(textColor: UIColor(named: Colors.greyDark))
+        switch type {
+        case .onboarding:
+            setupCellForOnboarding()
+        case .standard:
+            setupCellForStandart()
+        }
+    }
+    
+    func didSelected() {
+        setupLabel(textColor: .white)
+        backgroundColor = UIColor(named: Colors.purplePrimary)
+    }
+    
+    func didDeselected() {
+        setupLabel(textColor: UIColor(named: Colors.greyDark))
+        backgroundColor = UIColor(named: Colors.greyLighter)
     }
     
     //MARK: - SetupUI
     
-    private func setupViews() {
-        setupCell()
-        setupLabel()
-    }
-    
-    private func setupCell() {
+    private func setupCellForStandart() {
         backgroundColor = .clear
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12
         self.layer.borderColor = UIColor(named: Colors.greyLighter)?.cgColor
     }
     
-    private func setupLabel() {
+    private func setupCellForOnboarding() {
+        backgroundColor = UIColor(named: Colors.greyLighter)
+        self.layer.cornerRadius = 12
+    }
+    
+    private func setupLabel(textColor: UIColor?) {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Font.interSemiBold, size: 16)
-        titleLabel.textColor = UIColor(named: Colors.greyDark)
+        titleLabel.textColor = textColor
+    }
+    
+    enum CategoriesCellType {
+        case onboarding
+        case standard
     }
     
     //MARK: - Layout
@@ -70,5 +91,4 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(contentView).inset(4)
         }
     }
-    
 }

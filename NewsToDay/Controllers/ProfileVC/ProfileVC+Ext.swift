@@ -44,7 +44,7 @@ class ProfileExt: UIViewController {
     
     
     func addSubviews() {
-        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, rightArrowImageView, termsAndConditionsButton, rightArrowImageView2)
+        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, profileImageView, rightArrowImageView, termsAndConditionsButton, rightArrowImageView2)
     }
     
     // MARK: - Functions
@@ -75,8 +75,8 @@ class ProfileExt: UIViewController {
         
         profileImageView.snp.makeConstraints { make in
             make.width.height.equalTo(82)
-            make.top.equalToSuperview().offset(136)
-            make.left.equalToSuperview().offset(20)
+            make.top.equalTo(view.snp.top).offset(136)
+            make.left.equalTo(view.snp.left).offset(20)
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
