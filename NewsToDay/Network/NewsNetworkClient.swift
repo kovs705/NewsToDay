@@ -38,7 +38,6 @@ final class NewsNetworkClient: NewsNetworkClientProtocol {
             }
             switch response.statusCode {
             case 200...299:
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 guard let decoded = try? decoder.decode(responseModel.self, from: data) else {
                     return .failure(.invalidData)
                 }
