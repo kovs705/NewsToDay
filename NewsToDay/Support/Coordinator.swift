@@ -41,6 +41,10 @@ class Coordinator: CoordinatorProtocol {
         let categories = CategoryManager()
         let presenter = CategoriesOnboardingPresenter(view: view,
                                                       categories: categories)
+        view.presenter = presenter
+        return view
+    }
+    
     func getProfileModule() -> UIViewController {
         let view = ProfileVC()
         let presenter = ProfilePresenter(view: view)
