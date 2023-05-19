@@ -32,7 +32,7 @@ final class ResultPresenter: ResultPresenterProtocol {
     }
     
     func fetchHeadlines() {
-        let request = TopHeadlinesRequest()
+        let request = TopHeadlinesRequest(category: category)
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let news):

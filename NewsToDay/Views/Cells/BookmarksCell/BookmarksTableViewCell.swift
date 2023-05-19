@@ -16,11 +16,11 @@ class BookmarksTableViewCell: UITableViewCell {
     private var newsTitle = UILabel()
     private var newsSourse = UILabel()
     private var newsCellBackgroundView = UIView()
+    private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
     
     //MARK: - Public Setup
     
     func setupCell(news: News) {
-        backgroundColor = .clear
         setupViews()
         setLayout()
         guard let title = news.title, let sourse = news.source.name else { return }
@@ -36,12 +36,15 @@ class BookmarksTableViewCell: UITableViewCell {
         ) { [weak self] image in
             guard let image else { return }
             self?.newsImageView.image = image
+            self?.loadingActivityIndicator.stopAnimating()
         }
     }
     
     //MARK: - Setup UI Elements
     
     private func setupViews() {
+        backgroundColor = .clear
+        loadingActivityIndicator.startAnimating()
         setupNewsImageView()
         setupNewsTitle()
         setupNewsSourse()
@@ -51,6 +54,7 @@ class BookmarksTableViewCell: UITableViewCell {
         newsImageView.clipsToBounds = true
         newsImageView.layer.cornerRadius = 12
         newsImageView.contentMode = .scaleToFill
+        newsImageView.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
     }
     
     private func setupNewsTitle() {
@@ -73,7 +77,7 @@ class BookmarksTableViewCell: UITableViewCell {
     }
     
     private func addSubviews() {
-        let allViews = [newsCellBackgroundView, newsImageView, newsTitle, newsSourse]
+        let allViews = [newsCellBackgroundView, newsImageView, newsTitle, newsSourse, loadingActivityIndicator]
         allViews.forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +103,12 @@ class BookmarksTableViewCell: UITableViewCell {
             newsTitle.trailingAnchor.constraint(equalTo: newsCellBackgroundView.trailingAnchor, constant: -20),
             
             newsSourse.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
-            newsSourse.bottomAnchor.constraint(equalTo: newsTitle.topAnchor, constant: -8)
+            newsSourse.bottomAnchor.constraint(equalTo: newsTitle.topAnchor, constant: -8),
+            
+            loadingActivityIndicator.centerYAnchor.constraint(equalTo: newsImageView.centerYAnchor),
+            loadingActivityIndicator.centerXAnchor.constraint(equalTo: newsImageView.centerXAnchor),
+            loadingActivityIndicator.widthAnchor.constraint(equalToConstant: 32),
+            loadingActivityIndicator.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
     
