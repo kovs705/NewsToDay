@@ -41,23 +41,48 @@ class ResultViewController: UIViewController {
         tableView.register(BookmarksTableViewCell.self, forCellReuseIdentifier: "ResultViewController")
         view.addSubview(tableView)
     }
+    
+    private func loadImage(urlString: String?) -> UIImage? {
+        var image: UIImage?
+        guard let urlString else {return nil}
+        presenter.fetch(imageFor: urlString) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    image = UIImage(data: data)
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+        return image
+    }
 }
 
 extension ResultViewController: ResultViewProtocol {
+    func success() {
+        self.tableView.reloadData()
+    }
     
+    func failure() {
+        
+    }
 }
 
 //MARK: - UITableViewDataSource
 
 extension ResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        presenter.news.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultViewController", for: indexPath) as! BookmarksTableViewCell
-        cell.setupCell(image: UIImage(systemName: "trash.fill")!,
-                       title: "Very very loooong title of this news", category: "Category")
+        let currentArticle = presenter.news[indexPath.row]
+        
+        cell.setupCell(image: loadImage(urlString: currentArticle.urlToImage),
+                       title: currentArticle.title,
+                       category: currentArticle.source.name)
         return cell
     }
 }
