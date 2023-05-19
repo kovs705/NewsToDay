@@ -406,8 +406,7 @@
 		C81C1F352A129C6C00A974B0 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */,
-				C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */,
+				C85075442A1829A9001AF283 /* Categories */,
 			);
 			name = Onboarding;
 			path = NewsToDay/Controllers/Onboarding;
@@ -432,6 +431,15 @@
 				C850753B2A17B6D5001AF283 /* ImageRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		C85075442A1829A9001AF283 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */,
+				C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		C89F271C2A0E4E1C00508FF9 /* Result */ = {
