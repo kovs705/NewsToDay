@@ -44,6 +44,7 @@
 		4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2532A10225800691420 /* AccountPresenter.swift */; };
 		4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2552A10226A00691420 /* RegisterPresenter.swift */; };
 		4EE9C2582A102F8000691420 /* AccountVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */; };
+		4EEEC9C32A173D760082BC2D /* NewsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEC9C22A173D760082BC2D /* NewsImageView.swift */; };
 		8432B2882A1230F100B2FFF0 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2872A1230F100B2FFF0 /* ProfileVC.swift */; };
 		C81C1F2F2A128F6400A974B0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F2E2A128F6400A974B0 /* FirebaseAuth */; };
 		C81C1F312A128F6400A974B0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F302A128F6400A974B0 /* FirebaseFirestore */; };
@@ -131,6 +132,7 @@
 		4EE9C2532A10225800691420 /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
 		4EE9C2552A10226A00691420 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVC+Ext.swift"; sourceTree = "<group>"; };
+		4EEEC9C22A173D760082BC2D /* NewsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageView.swift; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingPresenter.swift; sourceTree = "<group>"; };
 		C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				4E1520942A06C11700E42537 /* LaunchScreen.storyboard */,
 				4EB149D32A123F76002A6362 /* ProfileButton.swift */,
 				4E29BAFD2A14B95400590BF9 /* Extensions.swift */,
+				4EEEC9C22A173D760082BC2D /* NewsImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* CategoriesLayout.swift in Sources */,
+				4EEEC9C32A173D760082BC2D /* NewsImageView.swift in Sources */,
 				C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */,
 				C81C1F392A129C6C00A974B0 /* CategoriesOnboardingViewController.swift in Sources */,
 				4EB149D22A123835002A6362 /* ProfileVC+Ext.swift in Sources */,
