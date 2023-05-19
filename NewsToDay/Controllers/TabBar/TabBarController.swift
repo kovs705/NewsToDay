@@ -32,6 +32,7 @@ final class TabBarController: UITabBarController {
         let categories = coordinator?.getCategoriesModule()
         let browse = BrowseViewController()
         let profile = coordinator?.getProfileModule()
+        let bookmarks = coordinator?.getBookmarksModule()
         
         var tabs: [UINavigationController] = []
         
@@ -46,8 +47,16 @@ final class TabBarController: UITabBarController {
             tabs.append(categoriesNavigationController)
         }
         
-        if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "person") {
-            tabs.append(blabla)
+        if let bookmarksNavigationController = setupViewController(bookmarks,
+                                                                   title: "Bookmarks",
+                                                                   iconSystemName: "bookmark") {
+            tabs.append(bookmarksNavigationController)
+        }
+        
+        if let profileViewController = setupViewController(profile,
+                                            title: "Profile",
+                                            iconSystemName: "person") {
+            tabs.append(profileViewController)
         }
         
         setViewControllers(tabs, animated: true)
