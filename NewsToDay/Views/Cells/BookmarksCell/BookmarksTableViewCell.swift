@@ -19,12 +19,16 @@ class BookmarksTableViewCell: UITableViewCell {
     
     //MARK: - Public Setup
     
-    func setupCell(title: String?, category: String?) {
+    func setupCell(news: News) {
         backgroundColor = .clear
         setLayout()
-        guard let title, let category else { return }
+        guard let title = news.title, let sourse = news.source.name, let urlToImage = news.urlToImage else { return }
         setupNewsTitle(title)
-        setupNewsCategory(category)
+        setupNewsCategory(sourse)
+        ImageClient.shared.setImage(from: urlToImage, placeholderImage: nil) { [weak self] image in
+            guard let image else { return }
+            self?.setupNewsImageView(image)
+        }
     }
     
     func setupImage(urlString: String) {

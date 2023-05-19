@@ -31,12 +31,9 @@ class Coordinator: CoordinatorProtocol {
     
     static func getResultModule(category: Category) -> UIViewController {
         let view = ResultViewController()
-        let networkClient = NewsNetworkClient()
-        let networkService = NewsNetworkService(networkClient: networkClient)
+        let networkService = DefaultNetworkService()
         let presenter = ResultPresenter(view: view, networkService: networkService, category: category)
         view.presenter = presenter
-        view.title = "\(category.icon)  \(category.name.capitalized)"
-        presenter.networkService = networkService
         return view
     }
     

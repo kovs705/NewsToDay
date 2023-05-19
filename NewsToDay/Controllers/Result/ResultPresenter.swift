@@ -9,57 +9,39 @@ import Foundation
 
 protocol ResultViewProtocol: AnyObject {
     func success()
-    func failure()
+    func failure(error: Error)
 }
 
 protocol ResultPresenterProtocol: AnyObject {
-    var news: [News] { get }
-    init(view: ResultViewProtocol, networkService: NewsNetworkServiceProtocol, category: Category)
-    func fetch(forCategory category: Category, complition: @escaping (Result<NewsModel, NewsError>) -> Void)
-    func fetch(imageFor urlString: String, complition: @escaping (Result<Data, NewsError>) -> Void)
+    var news: [News] { get set }
+    init(view: ResultViewProtocol, networkService: NetworkService, category: Category)
+    func fetchHeadlines()
 }
 
 final class ResultPresenter: ResultPresenterProtocol {
     weak var view: ResultViewProtocol?
-    var networkService: NewsNetworkServiceProtocol!
+    var networkService: NetworkService!
     var category: Category!
     var page = 1
     var news = [News]()
     
-    required init(view: ResultViewProtocol, networkService: NewsNetworkServiceProtocol, category: Category) {
+    required init(view: ResultViewProtocol, networkService: NetworkService, category: Category) {
         self.view = view
         self.networkService = networkService
         self.category = category
-        loadNextPage()
     }
     
-    func loadNextPage() {
-        fetch(forCategory: category) { [weak self] result in
-            guard let self else { return }
+    func fetchHeadlines() {
+        let request = TopHeadlinesRequest()
+        networkService.request(request) { [weak self] result in
             switch result {
-            case .success(let success):
-                guard let bindedNews = success.articles else {return}
-                self.news.append(contentsOf: bindedNews)
-                self.view?.success()
-            case .failure(let failure):
-                print(failure.localizedDescription)
-                break
+            case .success(let news):
+                guard let news else { return }
+                self?.news.append(contentsOf: news)
+                self?.view?.success()
+            case .failure(let error):
+                self?.view?.failure(error: error)
             }
-        }
-    }
-    
-    func fetch(forCategory category: Category, complition: @escaping (Result<NewsModel, NewsError>) -> Void) {
-        Task(priority: .background) {
-            let result = await networkService.getResult(byCategory: category, forPage: self.page)
-            self.page += 1
-            complition(result)
-        }
-    }
-    
-    func fetch(imageFor urlString: String, complition: @escaping (Result<Data, NewsError>) -> Void) {
-        Task(priority: .background) {
-            let result = await networkService.loadImage(urlString: urlString)
-            complition(result)
         }
     }
 }
