@@ -43,11 +43,20 @@ class ResultViewController: UIViewController {
         view.addSubview(tableView)
     }
     
+    private func spinnerViewSetup() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
+    }
 }
 
 extension ResultViewController: ResultViewProtocol {
     func failure(error: Error) {
-        print(error.localizedDescription)
+        
     }
     
     func success() {
@@ -76,5 +85,18 @@ extension ResultViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 
 extension ResultViewController: UITableViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        print(position, "we need -", (tableView.contentSize.height - 100 - scrollView.frame.size.height))
+        
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            if !presenter.isFetchig {
+                presenter.isFetchig = true
+                print("fetching")
+                self.tableView.tableFooterView = spinnerViewSetup()
+                print("current page = ")
+                self.presenter.fetchHeadlines()
+            }
+        }
+    }
 }

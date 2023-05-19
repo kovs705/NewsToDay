@@ -34,7 +34,11 @@ class BookmarksTableViewCell: UITableViewCell {
             from: urlToImage,
             placeholderImage: UIImage(named: "placeholderImage")
         ) { [weak self] image in
-            guard let image else { return }
+            guard let image else {
+                self?.newsImageView.image = image
+                self?.loadingActivityIndicator.stopAnimating()
+                return
+            }
             self?.newsImageView.image = image
             self?.loadingActivityIndicator.stopAnimating()
         }
@@ -58,14 +62,14 @@ class BookmarksTableViewCell: UITableViewCell {
     }
     
     private func setupNewsTitle() {
-        newsTitle.numberOfLines = 3
-        newsTitle.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
+        newsTitle.numberOfLines = 4
+        newsTitle.font = UIFont(name: Font.interSemiBold.rawValue, size: 14)
         newsTitle.textColor = UIColor(named: Colors.blackPrimary.rawValue)
     }
     
     private func setupNewsSourse() {
         newsSourse.numberOfLines = 1
-        newsSourse.font = UIFont(name: Font.interRegular.rawValue, size: 14)
+        newsSourse.font = UIFont(name: Font.interRegular.rawValue, size: 11)
         newsSourse.textColor = UIColor(named: Colors.greyPrimary.rawValue)
     }
     
@@ -98,7 +102,7 @@ class BookmarksTableViewCell: UITableViewCell {
             newsImageView.heightAnchor.constraint(equalTo: newsCellBackgroundView.heightAnchor),
             newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor),
             
-            newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor, constant: -16),
+            newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor, constant: -24),
             newsTitle.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
             newsTitle.trailingAnchor.constraint(equalTo: newsCellBackgroundView.trailingAnchor, constant: -20),
             

@@ -20,14 +20,14 @@ final class ImageClient {
     )
     
     private(set) var cachedImageForURL: [String: UIImage]
-    private(set) var cachedTaskForImageView: [UIImageView : NetworkService]
+//    private(set) var cachedTaskForImageView: [UIImageView : NetworkService]
     
     let responseQueue: DispatchQueue?
     let session: URLSession
     
     init(responseQueue: DispatchQueue?, session: URLSession) {
         self.cachedImageForURL = [:]
-        self.cachedTaskForImageView = [:]
+//        self.cachedTaskForImageView = [:]
         
         self.responseQueue = responseQueue
         self.session = session
@@ -51,7 +51,8 @@ final class ImageClient {
 }
 
 extension ImageClient: ImageClientService {
-    func downloadImage<Request: DataRequest>(request: Request, completion: @escaping (UIImage?, Error?) -> Void) {
+    func downloadImage<Request: DataRequest>(request: Request,
+                                             completion: @escaping (UIImage?, Error?) -> Void) {
         
         let service: NetworkService = DefaultNetworkService()
         
@@ -73,15 +74,19 @@ extension ImageClient: ImageClientService {
         }
     }
     
-    
-    
-    func setImage(from url: String, placeholderImage: UIImage?, completion: @escaping (UIImage?) -> Void) {
+    func setImage(from url: String,
+                  placeholderImage: UIImage?,
+                  completion: @escaping (UIImage?) -> Void) {
         let request = ImageRequest(url: url)
         if let cacheImage = cachedImageForURL[url] {
             completion(cacheImage)
         } else {
             downloadImage(request: request) { [weak self] image, error in
                 guard let self = self else { return }
+                if let error {
+                    print(error)
+                    completion(placeholderImage)
+                }
                 guard let image = image else {
                     completion(placeholderImage)
                     return

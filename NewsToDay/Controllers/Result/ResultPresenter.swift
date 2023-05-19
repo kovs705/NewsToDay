@@ -14,6 +14,7 @@ protocol ResultViewProtocol: AnyObject {
 
 protocol ResultPresenterProtocol: AnyObject {
     var news: [News] { get set }
+    var isFetchig: Bool { get set }
     init(view: ResultViewProtocol, networkService: NetworkService, category: Category)
     func fetchHeadlines()
 }
@@ -23,6 +24,7 @@ final class ResultPresenter: ResultPresenterProtocol {
     var networkService: NetworkService!
     var category: Category!
     var page = 1
+    var isFetchig = false
     var news = [News]()
     
     required init(view: ResultViewProtocol, networkService: NetworkService, category: Category) {
@@ -32,15 +34,18 @@ final class ResultPresenter: ResultPresenterProtocol {
     }
     
     func fetchHeadlines() {
-        let request = TopHeadlinesRequest(category: category)
+        let request = TopHeadlinesRequest(category: category, page: page)
+        page += 1
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let news):
                 guard let news else { return }
                 self?.news.append(contentsOf: news)
                 self?.view?.success()
+                self?.isFetchig = false
             case .failure(let error):
                 self?.view?.failure(error: error)
+                self?.isFetchig = false
             }
         }
     }
