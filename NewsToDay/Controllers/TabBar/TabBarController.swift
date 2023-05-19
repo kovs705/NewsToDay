@@ -46,7 +46,7 @@ final class TabBarController: UITabBarController {
             tabs.append(categoriesNavigationController)
         }
         
-        if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "house") {
+        if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "person") {
             tabs.append(blabla)
         }
         
