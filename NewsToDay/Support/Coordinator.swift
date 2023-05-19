@@ -34,6 +34,7 @@ class Coordinator: CoordinatorProtocol {
         let networkService = DefaultNetworkService()
         let presenter = ResultPresenter(view: view, networkService: networkService, category: category)
         view.presenter = presenter
+        view.title = "\(category.icon) \(category.name.capitalized)"
         return view
     }
     

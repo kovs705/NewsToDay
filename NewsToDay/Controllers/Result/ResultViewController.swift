@@ -68,6 +68,7 @@ extension ResultViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultViewController", for: indexPath) as! BookmarksTableViewCell
         let currentArticle = presenter.news[indexPath.row]
         cell.setupCell(news: currentArticle)
+        cell.setupImage(news: currentArticle)
         return cell
     }
 }

@@ -81,15 +81,12 @@ extension ImageClient: ImageClientService {
             completion(cacheImage)
         } else {
             downloadImage(request: request) { [weak self] image, error in
-                guard let self = self else {
-                    return
-                }
-                
+                guard let self = self else { return }
                 guard let image = image else {
                     print(error?.localizedDescription ?? "some error")
+                    completion(placeholderImage)
                     return
                 }
-                
                 self.cachedImageForURL[url] = image
                 completion(self.cachedImageForURL[url])
             }

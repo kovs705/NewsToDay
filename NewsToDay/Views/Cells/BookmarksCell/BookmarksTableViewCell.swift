@@ -14,47 +14,55 @@ class BookmarksTableViewCell: UITableViewCell {
     
     private var newsImageView = UIImageView()
     private var newsTitle = UILabel()
-    private var newsCategory = UILabel()
+    private var newsSourse = UILabel()
     private var newsCellBackgroundView = UIView()
     
     //MARK: - Public Setup
     
     func setupCell(news: News) {
         backgroundColor = .clear
+        setupViews()
         setLayout()
-        guard let title = news.title, let sourse = news.source.name, let urlToImage = news.urlToImage else { return }
-        setupNewsTitle(title)
-        setupNewsCategory(sourse)
-        ImageClient.shared.setImage(from: urlToImage, placeholderImage: nil) { [weak self] image in
-            guard let image else { return }
-            self?.setupNewsImageView(image)
-        }
+        guard let title = news.title, let sourse = news.source.name else { return }
+        newsTitle.text = title
+        newsSourse.text = sourse
     }
     
-    func setupImage(urlString: String) {
-        
+    func setupImage(news: News) {
+        guard let urlToImage = news.urlToImage else { return }
+        ImageClient.shared.setImage(
+            from: urlToImage,
+            placeholderImage: UIImage(named: "placeholderImage")
+        ) { [weak self] image in
+            guard let image else { return }
+            self?.newsImageView.image = image
+        }
     }
     
     //MARK: - Setup UI Elements
     
-    private func setupNewsImageView(_ image: UIImage) {
-        newsImageView.image = image
-        newsImageView.contentMode = .scaleToFill
-        newsImageView.layer.cornerRadius = 12
+    private func setupViews() {
+        setupNewsImageView()
+        setupNewsTitle()
+        setupNewsSourse()
     }
     
-    private func setupNewsTitle(_ text: String) {
-        newsTitle.text = text
-        newsTitle.numberOfLines = 2
+    private func setupNewsImageView() {
+        newsImageView.clipsToBounds = true
+        newsImageView.layer.cornerRadius = 12
+        newsImageView.contentMode = .scaleToFill
+    }
+    
+    private func setupNewsTitle() {
+        newsTitle.numberOfLines = 3
         newsTitle.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
         newsTitle.textColor = UIColor(named: Colors.blackPrimary.rawValue)
     }
     
-    private func setupNewsCategory(_ text: String) {
-        newsCategory.text = text
-        newsCategory.numberOfLines = 1
-        newsCategory.font = UIFont(name: Font.interRegular.rawValue, size: 14)
-        newsCategory.textColor = UIColor(named: Colors.greyPrimary.rawValue)
+    private func setupNewsSourse() {
+        newsSourse.numberOfLines = 1
+        newsSourse.font = UIFont(name: Font.interRegular.rawValue, size: 14)
+        newsSourse.textColor = UIColor(named: Colors.greyPrimary.rawValue)
     }
     
     //MARK: - Layout
@@ -65,7 +73,7 @@ class BookmarksTableViewCell: UITableViewCell {
     }
     
     private func addSubviews() {
-        let allViews = [newsCellBackgroundView, newsImageView, newsTitle, newsCategory]
+        let allViews = [newsCellBackgroundView, newsImageView, newsTitle, newsSourse]
         allViews.forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -86,12 +94,12 @@ class BookmarksTableViewCell: UITableViewCell {
             newsImageView.heightAnchor.constraint(equalTo: newsCellBackgroundView.heightAnchor),
             newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor),
             
-            newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor),
+            newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor, constant: -16),
             newsTitle.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
             newsTitle.trailingAnchor.constraint(equalTo: newsCellBackgroundView.trailingAnchor, constant: -20),
             
-            newsCategory.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
-            newsCategory.bottomAnchor.constraint(equalTo: newsTitle.topAnchor, constant: -8)
+            newsSourse.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsSourse.bottomAnchor.constraint(equalTo: newsTitle.topAnchor, constant: -8)
         ])
     }
     
