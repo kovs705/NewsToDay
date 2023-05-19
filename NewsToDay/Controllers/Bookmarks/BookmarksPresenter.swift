@@ -33,27 +33,14 @@ final class BookmarksPresenter: BookmarksPresenterProtocol {
             switch result {
             case .success(let news):
                 self?.news = news
-                self?.view?.success()
+                if news.isEmpty {
+                    self?.view?.failure()
+                } else {
+                    self?.view?.success()
+                }
             case .failure(_):
                 self?.view?.failure()
             }
         }
     }
-    
-//    func fetchHeadlines() {
-//        let request = TopHeadlinesRequest(category: category, page: page)
-//        page += 1
-//        networkService.request(request) { [weak self] result in
-//            switch result {
-//            case .success(let news):
-//                guard let news else { return }
-//                self?.news.append(contentsOf: news)
-//                self?.view?.success()
-//                self?.isFetchig = false
-//            case .failure(let error):
-//                self?.view?.failure(error: error)
-//                self?.isFetchig = false
-//            }
-//        }
-//    }
 }

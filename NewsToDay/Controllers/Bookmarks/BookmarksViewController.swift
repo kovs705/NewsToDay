@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BookmarksViewController: UIViewController {
-
+final class BookmarksViewController: UIViewController {
+    
     //MARK: - Property
     
     var presenter: BookmarksPresenterProtocol!
@@ -37,6 +37,8 @@ class BookmarksViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = .systemBackground
         setupTableView()
+        setupEmptyView()
+        setupEmptyLabel()
     }
     
     private func setupTableView() {
@@ -50,13 +52,23 @@ class BookmarksViewController: UIViewController {
     }
     
     private func setupEmptyView() {
-        let book = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        book.center = emptyView.center
+        let book = UIImageView()
         book.image = UIImage(systemName: "book.closed.fill")
-        book.image = book.image?.withTintColor(UIColor(named: Colors.purplePrimary.rawValue) ?? .black)
+        book.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         emptyView.addSubview(book)
-        emptyView.layer.cornerRadius = 72 / 2
-        emptyView.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
+        book.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(24)
+        }
+        emptyView.layer.cornerRadius = (72 / 2)
+        emptyView.backgroundColor = UIColor(named: Colors.purpleLighter.rawValue)
+        emptyView.isHidden = true
+    }
+    
+    private func setupEmptyLabel() {
+        emptyLabel = UILabel(textColor: .blackPrimary, textSize: 16, font: .interMedium, numberOfLines: 3)
+        emptyLabel.textAlignment = .center
+        emptyLabel.text = "You haven't saved any articles yet. Start reading and bookmarking them now"
     }
     
     //MARK: - Layout
@@ -86,12 +98,20 @@ class BookmarksViewController: UIViewController {
     }
 }
 
+//MARK: - BookmarksViewProtocol
+
 extension BookmarksViewController: BookmarksViewProtocol {
     func failure() {
-        
+        tableView.isHidden = true
+        emptyView.isHidden = false
+        emptyLabel.isHidden = false
     }
     
     func success() {
+        tableView.isHidden = false
+        emptyView.isHidden = true
+        emptyLabel.isHidden = true
+
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -106,7 +126,7 @@ extension BookmarksViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultViewController", for: indexPath) as! BookmarksTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarksViewController", for: indexPath) as! BookmarksTableViewCell
         guard let currentArticle = presenter.news?[indexPath.row] else { return cell }
         cell.setupCell(news: currentArticle)
         cell.setupImage(news: currentArticle)
