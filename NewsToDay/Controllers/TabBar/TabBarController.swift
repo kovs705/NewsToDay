@@ -62,7 +62,6 @@ final class TabBarController: UITabBarController {
         navigationController.navigationItem.largeTitleDisplayMode = .automatic
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
-        navigationController.navigationBar
         return navigationController
     }
     
