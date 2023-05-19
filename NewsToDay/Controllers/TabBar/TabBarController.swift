@@ -46,7 +46,7 @@ final class TabBarController: UITabBarController {
             tabs.append(categoriesNavigationController)
         }
         
-        if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "house") {
+        if let blabla = setupViewController(profile, title: "Profile", iconSystemName: "person") {
             tabs.append(blabla)
         }
         
@@ -61,6 +61,8 @@ final class TabBarController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationItem.largeTitleDisplayMode = .automatic
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
+        navigationController.navigationBar
         return navigationController
     }
     
