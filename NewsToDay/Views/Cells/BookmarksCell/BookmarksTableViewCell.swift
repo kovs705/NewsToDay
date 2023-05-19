@@ -19,12 +19,16 @@ class BookmarksTableViewCell: UITableViewCell {
     
     //MARK: - Public Setup
     
-    func setupCell(image: UIImage, title: String, category: String) {
-        setupNewsImageView(image)
-        setupNewsTitle(title)
-        setupNewsCategory(category)
+    func setupCell(title: String?, category: String?) {
         backgroundColor = .clear
         setLayout()
+        guard let title, let category else { return }
+        setupNewsTitle(title)
+        setupNewsCategory(category)
+    }
+    
+    func setupImage(urlString: String) {
+        
     }
     
     //MARK: - Setup UI Elements
@@ -58,34 +62,60 @@ class BookmarksTableViewCell: UITableViewCell {
     
     private func addSubviews() {
         let allViews = [newsCellBackgroundView, newsImageView, newsTitle, newsCategory]
-        allViews.forEach { contentView.addSubview($0) }
+        allViews.forEach {
+            contentView.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
     
     private func makeContraints() {
-        newsCellBackgroundView.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
-            make.top.bottom.equalToSuperview().inset(8)
-            make.height.equalTo(96)
-            make.width.equalTo(contentView)
-        }
-        
-        newsImageView.snp.makeConstraints { make in
-            make.leading.equalTo(newsCellBackgroundView).inset(20)
-            make.top.equalTo(newsCellBackgroundView)
-            make.bottom.equalTo(newsCellBackgroundView)
-            make.height.equalTo(newsCellBackgroundView.snp.height)
-            make.width.equalTo(newsCellBackgroundView.snp.height)
-        }
-        
-        newsTitle.snp.makeConstraints { make in
-            make.top.equalTo(newsCellBackgroundView.snp.centerY)
-            make.leading.equalTo(newsImageView.snp.trailing).offset(16)
-            make.trailing.equalTo(newsCellBackgroundView).inset(20)
-        }
-        
-        newsCategory.snp.makeConstraints { make in
-            make.leading.equalTo(newsImageView.snp.trailing).offset(16)
-            make.bottom.equalTo(newsTitle.snp.top).offset(-8)
-        }
+        NSLayoutConstraint.activate([
+            newsCellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            newsCellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            newsCellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            newsCellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            newsCellBackgroundView.heightAnchor.constraint(equalToConstant: 96),
+            
+            newsImageView.leadingAnchor.constraint(equalTo: newsCellBackgroundView.leadingAnchor, constant: 20),
+            newsImageView.topAnchor.constraint(equalTo: newsCellBackgroundView.topAnchor),
+            newsImageView.bottomAnchor.constraint(equalTo: newsCellBackgroundView.bottomAnchor),
+            newsImageView.heightAnchor.constraint(equalTo: newsCellBackgroundView.heightAnchor),
+            newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor),
+            
+            newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor),
+            newsTitle.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsTitle.trailingAnchor.constraint(equalTo: newsCellBackgroundView.trailingAnchor, constant: -20),
+            
+            newsCategory.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsCategory.bottomAnchor.constraint(equalTo: newsTitle.topAnchor, constant: -8)
+        ])
     }
+    
+//    private func makeContraints() {
+//        newsCellBackgroundView.snp.makeConstraints { make in
+//            make.trailing.leading.equalToSuperview()
+//            make.top.bottom.equalToSuperview().inset(8)
+//            make.height.equalTo(96)
+//            make.width.equalTo(contentView)
+//        }
+//
+//        newsImageView.snp.makeConstraints { make in
+//            make.leading.equalTo(newsCellBackgroundView).inset(20)
+//            make.top.equalTo(newsCellBackgroundView)
+//            make.bottom.equalTo(newsCellBackgroundView)
+//            make.height.equalTo(newsCellBackgroundView.snp.height)
+//            make.width.equalTo(newsCellBackgroundView.snp.height)
+//        }
+//
+//        newsTitle.snp.makeConstraints { make in
+//            make.top.equalTo(newsCellBackgroundView.snp.centerY)
+//            make.leading.equalTo(newsImageView.snp.trailing).offset(16)
+//            make.trailing.equalTo(newsCellBackgroundView).inset(20)
+//        }
+//
+//        newsCategory.snp.makeConstraints { make in
+//            make.leading.equalTo(newsImageView.snp.trailing).offset(16)
+//            make.bottom.equalTo(newsTitle.snp.top).offset(-8)
+//        }
+//    }
 }
