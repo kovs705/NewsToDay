@@ -63,8 +63,8 @@ class DetailVC: UIViewController {
         return imageContainer
     }()
     
-    lazy var backImage: UIImageView = {
-        let back = UIImageView()
+    lazy var backImage: NewsImageView = {
+        let back = NewsImageView(frame: .zero)
         back.backgroundColor = .black
         back.contentMode = .scaleAspectFill
         back.clipsToBounds = true
@@ -83,6 +83,15 @@ class DetailVC: UIViewController {
         
         addViews()
         presenter.setNews()
+        
+        backImage.addSubview(justAuthor)
+        justAuthor.text = "Author"
+        justAuthor.translatesAutoresizingMaskIntoConstraints = false
+        justAuthor.textAlignment = .left
+        
+        justAuthor.snp.makeConstraints { make in
+            make.leading.trailing.top.bottom.equalTo(backImage).inset(50)
+        }
         
     }
     
@@ -178,6 +187,8 @@ extension DetailVC: DetailViewProtocol {
         // UI code here
         titleLabel.text = news?.title
         bodyLabel.text = news?.description
+        
+        backImage.downloadImage(fromURL: (news?.urlToImage)!)
         
     }
     

@@ -10,7 +10,7 @@ import UIKit
 class NewsImageView: UIImageView {
     
     let cache               = NewsNetworkClient.shared.cache
-    let placeholderImage    = UIImage(named: "Home")
+    let placeholderImage    = UIImage(named: "Home2")
 
     override init(frame: CGRect) {
         super.init(frame: frame)

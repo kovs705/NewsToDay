@@ -31,7 +31,7 @@ final class TabBarController: UITabBarController {
     private func setupTabs() {
         let categories = coordinator?.getCategoriesModule()
         let browse = BrowseViewController()
-        let news = coordinator?.getDetailVCModule(news: News(source: Source(id: "1", name: "Apple"), author: "Apple", title: "Apple Tree", description: Texts.body, url: "apple.com", urlToImage: "test", publishedAt: "15.05.2023", content: "This is some content of I don't know what to type!"))
+        let news = coordinator?.getDetailVCModule(news: News(source: Source(id: "1", name: "Apple"), author: "Apple", title: "Apple Tree", description: Texts.body, url: "apple.com", urlToImage: nil, publishedAt: "15.05.2023", content: "This is some content of I don't know what to type!"))
         
         var tabs: [UINavigationController] = []
         
