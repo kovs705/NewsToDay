@@ -8,11 +8,16 @@
 import Foundation
 
 protocol NewsNetworkClientProtocol {
-    func sendRequest<T: Decodable>(endpoint: Web.Endpoint, responseModel: T.Type, queryItems: [URLQueryItem]) async -> Result<T, NewsError>
+    func sendRequest<T: Decodable>(endpoint: Web.Endpoint,
+                                   responseModel: T.Type,
+                                   queryItems: [URLQueryItem]) async -> Result<T, NewsError>
+    func loadImageData(urlString: String) async -> Result<Data, NewsError>
 }
 
 final class NewsNetworkClient: NewsNetworkClientProtocol {
     let decoder = JSONDecoder()
+    var cachedData = NSCache<NSString, NSData>()
+    
     private var apiKey: String {
         get {
             guard let filePath = Bundle.main.path(forResource: "APIobj", ofType: "plist") else {
@@ -43,10 +48,36 @@ final class NewsNetworkClient: NewsNetworkClientProtocol {
                 }
                 return .success(decoded)
             case 401: return .failure(.unauthorized)
-            default: return.failure(.unexpectedError)
+            default:
+                print(response)
+                return.failure(.unexpectedError)
             }
         } catch {
             return.failure(.unexpectedError)
+        }
+    }
+    
+    func loadImageData(urlString: String) async -> Result<Data, NewsError> {
+        if let cachedImage = cachedData.object(forKey: urlString as NSString) {
+            return .success(cachedImage as Data)
+        } else {
+            guard let url = URL(string: urlString) else { return .failure(.invalidURL) }
+            let request = URLRequest(url: url)
+            
+            do {
+                let (data, response) = try await URLSession.shared.data(for: request)
+                guard let response = response as? HTTPURLResponse else {
+                    return .failure(.invalidResponse)
+                }
+                switch response.statusCode {
+                case 200...299:
+                    return .success(data)
+                case 401: return .failure(.unauthorized)
+                default: return.failure(.unexpectedError)
+                }
+            } catch {
+                return .failure(.unexpectedError)
+            }
         }
     }
     
