@@ -30,7 +30,6 @@
 		4E4993A12A07AB73001CBF8C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A02A07AB73001CBF8C /* NetworkManager.swift */; };
 		4E4993A32A07AB84001CBF8C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A22A07AB84001CBF8C /* PersistenceManager.swift */; };
 		4E4993A52A07AC1F001CBF8C /* NewsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A42A07AC1F001CBF8C /* NewsError.swift */; };
-		4E4993A92A07AE1B001CBF8C /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A82A07AE1B001CBF8C /* NewsService.swift */; };
 		4E7256A12A139B73000D9DD0 /* MemoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7256A02A139B73000D9DD0 /* MemoryManager.swift */; };
 		4EB149C92A11E853002A6362 /* RegisterVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB149C82A11E853002A6362 /* RegisterVC+Ext.swift */; };
 		4EB149CC2A1214C4002A6362 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB149CB2A1214C4002A6362 /* DetailPresenter.swift */; };
@@ -118,7 +117,6 @@
 		4E4993A02A07AB73001CBF8C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4E4993A22A07AB84001CBF8C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4E4993A42A07AC1F001CBF8C /* NewsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsError.swift; sourceTree = "<group>"; };
-		4E4993A82A07AE1B001CBF8C /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		4E7256A02A139B73000D9DD0 /* MemoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryManager.swift; sourceTree = "<group>"; };
 		4EB149C82A11E853002A6362 /* RegisterVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterVC+Ext.swift"; sourceTree = "<group>"; };
 		4EB149CB2A1214C4002A6362 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 		4E4993A72A07AE0C001CBF8C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4E4993A82A07AE1B001CBF8C /* NewsService.swift */,
 				4E4993A42A07AC1F001CBF8C /* NewsError.swift */,
 			);
 			path = Service;
@@ -358,10 +355,10 @@
 		4E4993AA2A07AF75001CBF8C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C85075312A17AE64001AF283 /* NewNetwork */,
 				4E4993A72A07AE0C001CBF8C /* Service */,
 				4E49939F2A07AB61001CBF8C /* Managers */,
-				C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */,
-				C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */,
+				C85075302A17AE4B001AF283 /* BadNetwork */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -414,6 +411,22 @@
 			name = Onboarding;
 			path = NewsToDay/Controllers/Onboarding;
 			sourceTree = SOURCE_ROOT;
+		};
+		C85075302A17AE4B001AF283 /* BadNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				C81C1F3A2A1394B500A974B0 /* NewsNetworkClient.swift */,
+				C89DE4C62A13C9EF00C500B1 /* NewsNetworkService.swift */,
+			);
+			path = BadNetwork;
+			sourceTree = "<group>";
+		};
+		C85075312A17AE64001AF283 /* NewNetwork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewNetwork;
+			sourceTree = "<group>";
 		};
 		C89F271C2A0E4E1C00508FF9 /* Result */ = {
 			isa = PBXGroup;
@@ -676,7 +689,6 @@
 				4EE9C2582A102F8000691420 /* AccountVC+Ext.swift in Sources */,
 				C8F15FF02A0D255200C63C6C /* BrowseViewModel.swift in Sources */,
 				C8F15FF22A0D255200C63C6C /* CategoriesViewController.swift in Sources */,
-				4E4993A92A07AE1B001CBF8C /* NewsService.swift in Sources */,
 				C8F15FFF2A0D25E900C63C6C /* SectionHeaderView.swift in Sources */,
 				8432B2882A1230F100B2FFF0 /* ProfileVC.swift in Sources */,
 				C8F15FF72A0D259400C63C6C /* CategoryManager.swift in Sources */,
