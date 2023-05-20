@@ -41,6 +41,7 @@
 		4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2532A10225800691420 /* AccountPresenter.swift */; };
 		4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2552A10226A00691420 /* RegisterPresenter.swift */; };
 		4EE9C2582A102F8000691420 /* AccountVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */; };
+		4EEEC9C32A173D760082BC2D /* NewsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEC9C22A173D760082BC2D /* NewsImageView.swift */; };
 		8432B2882A1230F100B2FFF0 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2872A1230F100B2FFF0 /* ProfileVC.swift */; };
 		C81C1F2F2A128F6400A974B0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F2E2A128F6400A974B0 /* FirebaseAuth */; };
 		C81C1F312A128F6400A974B0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F302A128F6400A974B0 /* FirebaseFirestore */; };
@@ -58,6 +59,7 @@
 		C85075422A17F68B001AF283 /* BookmarksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075412A17F68B001AF283 /* BookmarksPresenter.swift */; };
 		C85075472A182AE5001AF283 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075462A182AE5001AF283 /* OnboardingPresenter.swift */; };
 		C85075492A182B06001AF283 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075482A182B06001AF283 /* OnboardingViewController.swift */; };
+		C88ED8132A191EAF00780B0A /* ProfileUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88ED8122A191EAF00780B0A /* ProfileUIButton.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
 		C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */; };
 		C89F27232A0E519A00508FF9 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */; };
@@ -133,6 +135,7 @@
 		4EE9C2532A10225800691420 /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
 		4EE9C2552A10226A00691420 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVC+Ext.swift"; sourceTree = "<group>"; };
+		4EEEC9C22A173D760082BC2D /* NewsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageView.swift; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingPresenter.swift; sourceTree = "<group>"; };
 		C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		C85075412A17F68B001AF283 /* BookmarksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksPresenter.swift; sourceTree = "<group>"; };
 		C85075462A182AE5001AF283 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		C85075482A182B06001AF283 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C88ED8122A191EAF00780B0A /* ProfileUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIButton.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				4E1520942A06C11700E42537 /* LaunchScreen.storyboard */,
 				4EB149D32A123F76002A6362 /* ProfileButton.swift */,
 				4E29BAFD2A14B95400590BF9 /* Extensions.swift */,
+				4EEEC9C22A173D760082BC2D /* NewsImageView.swift */,
+				C88ED8122A191EAF00780B0A /* ProfileUIButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -470,7 +476,6 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-
 		C89F271C2A0E4E1C00508FF9 /* Result */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +740,7 @@
 				C850753E2A17B748001AF283 /* ImageClient.swift in Sources */,
 				4EE9C2582A102F8000691420 /* AccountVC+Ext.swift in Sources */,
 				C8F15FF02A0D255200C63C6C /* BrowseViewModel.swift in Sources */,
+				C88ED8132A191EAF00780B0A /* ProfileUIButton.swift in Sources */,
 				C8F15FF22A0D255200C63C6C /* CategoriesViewController.swift in Sources */,
 				C8F15FFF2A0D25E900C63C6C /* SectionHeaderView.swift in Sources */,
 				C85075422A17F68B001AF283 /* BookmarksPresenter.swift in Sources */,
@@ -755,6 +761,7 @@
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
 				4E1520E72A06D89E00E42537 /* CategoriesLayout.swift in Sources */,
+				4EEEC9C32A173D760082BC2D /* NewsImageView.swift in Sources */,
 				C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */,
 				C81C1F392A129C6C00A974B0 /* CategoriesOnboardingViewController.swift in Sources */,
 				4EB149D22A123835002A6362 /* ProfileVC+Ext.swift in Sources */,

@@ -90,16 +90,16 @@ class BookmarksTableViewCell: UITableViewCell {
     
     private func makeContraints() {
         NSLayoutConstraint.activate([
-            newsCellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            newsCellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
             newsCellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             newsCellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            newsCellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            newsCellBackgroundView.heightAnchor.constraint(equalToConstant: 96),
+            newsCellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            newsCellBackgroundView.heightAnchor.constraint(greaterThanOrEqualToConstant: 112),
             
             newsImageView.leadingAnchor.constraint(equalTo: newsCellBackgroundView.leadingAnchor, constant: 20),
-            newsImageView.topAnchor.constraint(equalTo: newsCellBackgroundView.topAnchor),
-            newsImageView.bottomAnchor.constraint(equalTo: newsCellBackgroundView.bottomAnchor),
-            newsImageView.heightAnchor.constraint(equalTo: newsCellBackgroundView.heightAnchor),
+//            newsImageView.topAnchor.constraint(equalTo: newsCellBackgroundView.topAnchor),
+//            newsImageView.bottomAnchor.constraint(equalTo: newsCellBackgroundView.bottomAnchor),
+            newsImageView.heightAnchor.constraint(equalToConstant: 100),
             newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor),
             
             newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor, constant: -24),
