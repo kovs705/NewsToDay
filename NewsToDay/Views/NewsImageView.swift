@@ -9,7 +9,7 @@ import UIKit
 
 class NewsImageView: UIImageView {
     
-    let cache               = NewsNetworkClient.shared.cache
+    let cache               = ImageClient.shared.cachedImageForURL
     let placeholderImage    = UIImage(named: "Home2")
 
     override init(frame: CGRect) {
@@ -30,10 +30,18 @@ class NewsImageView: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func downloadImage(fromURL url: String) {
-        NewsNetworkClient.shared.downloadImage(from: url) { [weak self] image in
-            guard let self = self else { return }
-            DispatchQueue.main.async { self.image = image }
+    
+    func setupImage(news: News) {
+        guard let urlToImage = news.urlToImage else { return }
+        ImageClient.shared.setImage(
+            from: urlToImage,
+            placeholderImage: UIImage(named: "placeholderImage")
+        ) { [weak self] image in
+            guard let image else {
+                self?.image = image
+                return
+            }
+            self?.image = image
         }
     }
     

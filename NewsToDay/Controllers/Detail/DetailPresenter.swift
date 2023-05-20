@@ -30,7 +30,7 @@ class DetailPresenter: DetailViewPresenterProtocol {
     
     public func setNews() {
         
-        PersistenceManager.retreiveNews { result in
+        PersistenceManager.shared.retreiveNews { result in
             switch result {
             case .success(let news):
                 guard news.contains((self.news)!) else {

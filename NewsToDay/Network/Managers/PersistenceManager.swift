@@ -20,6 +20,8 @@ enum PersistenceActionType { case add, remove }
 class PersistenceManager: PersistenceManagerProtocol {
     private let defaults = UserDefaults.standard
     
+    static let shared = PersistenceManager()
+    
     enum Keys {
         static let bookmarks = "bookmarks"
     }

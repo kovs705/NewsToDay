@@ -90,7 +90,7 @@ class DetailVC: UIViewController {
         justAuthor.textAlignment = .left
         
         justAuthor.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.equalTo(backImage).inset(50)
+            make.leading.bottom.equalTo(backImage).inset(50)
         }
         
     }
@@ -188,7 +188,7 @@ extension DetailVC: DetailViewProtocol {
         titleLabel.text = news?.title
         bodyLabel.text = news?.description
         
-        backImage.downloadImage(fromURL: (news?.urlToImage)!)
+        backImage.setupImage(news: news!)
         
     }
     
