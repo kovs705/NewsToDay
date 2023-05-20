@@ -54,6 +54,8 @@
 		C850753A2A17B234001AF283 /* TopHeadlinesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075392A17B234001AF283 /* TopHeadlinesRequest.swift */; };
 		C850753C2A17B6D5001AF283 /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850753B2A17B6D5001AF283 /* ImageRequest.swift */; };
 		C850753E2A17B748001AF283 /* ImageClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C850753D2A17B748001AF283 /* ImageClient.swift */; };
+		C85075472A182AE5001AF283 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075462A182AE5001AF283 /* OnboardingPresenter.swift */; };
+		C85075492A182B06001AF283 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075482A182B06001AF283 /* OnboardingViewController.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
 		C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */; };
 		C89F27232A0E519A00508FF9 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */; };
@@ -139,6 +141,8 @@
 		C85075392A17B234001AF283 /* TopHeadlinesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesRequest.swift; sourceTree = "<group>"; };
 		C850753B2A17B6D5001AF283 /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
 		C850753D2A17B748001AF283 /* ImageClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClient.swift; sourceTree = "<group>"; };
+		C85075462A182AE5001AF283 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		C85075482A182B06001AF283 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 		C81C1F352A129C6C00A974B0 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C85075452A182ACA001AF283 /* Onboarding */,
 				C85075442A1829A9001AF283 /* Categories */,
 			);
 			name = Onboarding;
@@ -440,6 +445,15 @@
 				C81C1F372A129C6C00A974B0 /* CategoriesOnboardingViewController.swift */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		C85075452A182ACA001AF283 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C85075462A182AE5001AF283 /* OnboardingPresenter.swift */,
+				C85075482A182B06001AF283 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		C89F271C2A0E4E1C00508FF9 /* Result */ = {
@@ -692,6 +706,7 @@
 				4E1520E42A06D50200E42537 /* Constants.swift in Sources */,
 				EB6909F72A094044009E0A1C /* AccountController.swift in Sources */,
 				C8F15FE62A0D250300C63C6C /* Coordinator.swift in Sources */,
+				C85075472A182AE5001AF283 /* OnboardingPresenter.swift in Sources */,
 				C8F160012A0D25E900C63C6C /* NewsCell.swift in Sources */,
 				4EB149CC2A1214C4002A6362 /* DetailPresenter.swift in Sources */,
 				C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */,
@@ -717,6 +732,7 @@
 				4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */,
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
 				EB6909FB2A095261009E0A1C /* RegisterController.swift in Sources */,
+				C85075492A182B06001AF283 /* OnboardingViewController.swift in Sources */,
 				4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */,
 				C8F15FE92A0D253100C63C6C /* TermsConditionsVC.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
