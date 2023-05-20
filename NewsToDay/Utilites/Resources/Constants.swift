@@ -162,7 +162,7 @@ continue where you left off by logging in
 }
 
 enum Onboarding {
-    enum image {
+    enum Image {
         case home
         case categories
         case bookmarks
@@ -211,6 +211,5 @@ enum Onboarding {
                 return "Bookmarks"
             }
         }
-        
     }
 }
