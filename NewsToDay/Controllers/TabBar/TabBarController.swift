@@ -31,7 +31,8 @@ final class TabBarController: UITabBarController {
     private func setupTabs() {
         let categories = coordinator?.getCategoriesModule()
         let browse = BrowseViewController()
-        let news = coordinator?.getDetailVCModule(news: News(source: Source(id: "1", name: "Apple"), author: "Apple", title: "Apple Tree", description: Texts.body, url: "apple.com", urlToImage: nil, publishedAt: "15.05.2023", content: "This is some content of I don't know what to type!"))
+        let profile = coordinator?.getProfileModule()
+        let bookmarks = coordinator?.getBookmarksModule()
         
         var tabs: [UINavigationController] = []
         
@@ -46,8 +47,16 @@ final class TabBarController: UITabBarController {
             tabs.append(categoriesNavigationController)
         }
         
-        if let blabla = setupViewController(news, title: "Profile", iconSystemName: "house") {
-            tabs.append(blabla)
+        if let bookmarksNavigationController = setupViewController(bookmarks,
+                                                                   title: "Bookmarks",
+                                                                   iconSystemName: "bookmark") {
+            tabs.append(bookmarksNavigationController)
+        }
+        
+        if let profileViewController = setupViewController(profile,
+                                            title: "Profile",
+                                            iconSystemName: "person") {
+            tabs.append(profileViewController)
         }
         
         setViewControllers(tabs, animated: true)
@@ -61,6 +70,7 @@ final class TabBarController: UITabBarController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.navigationItem.largeTitleDisplayMode = .automatic
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.tintColor = UIColor(named: Colors.purplePrimary.rawValue)
         return navigationController
     }
     

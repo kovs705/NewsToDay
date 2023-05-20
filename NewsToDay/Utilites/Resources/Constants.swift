@@ -161,6 +161,55 @@ continue where you left off by logging in
     }
 }
 
-enum Texts {
-    static let body = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.\n\nFor more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters.\n\nLeads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.\n\nFor more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters.\n\nLeads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races.\n\nFor more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
+enum Onboarding {
+    enum Image {
+        case home
+        case categories
+        case bookmarks
+        
+        var getImage: UIImage {
+            switch self {
+            case .home:
+                return UIImage(named: "homeOnboarding")!
+            case .categories:
+                return UIImage(named: "categoriesOnboarding")!
+            case .bookmarks:
+                return UIImage(named: "bookmarksOnboarding")!
+            }
+        }
+    }
+    
+    enum Description {
+        case home
+        case categories
+        case bookmarks
+        
+        var getTitle: String {
+            switch self {
+            case .home:
+                return "On the main screen you can see the latest events and recommended news for you."
+            case .categories:
+                return "On the category screen you can see the latest news for the selected category"
+            case .bookmarks:
+                return "You can also save the news you like and it will remain in your bookmarks."
+            }
+        }
+    }
+    
+    enum Title {
+        case home
+        case categories
+        case bookmarks
+        
+        var getTitle: String {
+            switch self {
+            case .home:
+                return "Home screen"
+            case .categories:
+                return "Categories"
+            case .bookmarks:
+                return "Bookmarks"
+            }
+        }
+    }
 }

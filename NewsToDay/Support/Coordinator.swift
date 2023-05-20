@@ -9,16 +9,24 @@ import UIKit
 
 protocol CoordinatorProtocol {
     func getCategoriesModule() -> UIViewController
-    func getResultModule() -> UIViewController
+    static func getResultModule(category: Category) -> UIViewController
     func getCategoriesOnboardingModule() -> UIViewController
     func getProfileModule() -> UIViewController
     func getDetailVCModule(news: News) -> UIViewController
     
     func getAccountVCModule() -> UIViewController
     func getRegisterVCModule() -> UIViewController
+    func getBookmarksModule() -> UIViewController
 }
 
 class Coordinator: CoordinatorProtocol {
+    func getBookmarksModule() -> UIViewController {
+        let view = BookmarksViewController()
+        let persistenceManager = PersistenceManager()
+        let presenter = BookmarksPresenter(view: view, persistenceManager: persistenceManager)
+        view.presenter = presenter
+        return view
+    }
     
     func getCategoriesModule() -> UIViewController {
         let view = CategoriesViewController()
@@ -29,10 +37,12 @@ class Coordinator: CoordinatorProtocol {
         return view
     }
     
-    func getResultModule() -> UIViewController {
+    static func getResultModule(category: Category) -> UIViewController {
         let view = ResultViewController()
-        let presenter = ResultPresenter(view: view)
+        let networkService = DefaultNetworkService()
+        let presenter = ResultPresenter(view: view, networkService: networkService, category: category)
         view.presenter = presenter
+        view.title = "\(category.icon) \(category.name.capitalized)"
         return view
     }
     
