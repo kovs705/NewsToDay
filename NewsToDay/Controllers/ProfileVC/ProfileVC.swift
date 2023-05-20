@@ -33,7 +33,7 @@ extension ProfileVC: ProfileViewProtocol {
         setEmailUser()
         setButtonLanguage()
         setTermsAndConditionsButton()
-        
+        buttonTestInDahaouseeetest()
         print("UI Code completed")
     }
     

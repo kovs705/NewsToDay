@@ -29,6 +29,7 @@ class ProfileExt: UIViewController {
     let rightArrowImageView         = UIImageView()
     let termsAndConditionsButton    = UIButton()
     let rightArrowImageView2        = UIImageView()
+    let testbutton = ProfileUIButton(labelText: "Test", tintColor: .purplePrimary, image: UIImage(systemName: "chevron.right"))
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -42,9 +43,16 @@ class ProfileExt: UIViewController {
         return imageView
     }()
     
+    func buttonTestInDahaouseeetest() {
+        testbutton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-200)
+            make.height.equalTo(56)
+        }
+    }
     
     func addSubviews() {
-        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, profileImageView, rightArrowImageView, termsAndConditionsButton, rightArrowImageView2)
+        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, profileImageView, rightArrowImageView, termsAndConditionsButton, rightArrowImageView2, testbutton)
     }
     
     // MARK: - Functions
