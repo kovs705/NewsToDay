@@ -160,3 +160,57 @@ continue where you left off by logging in
         static let google = "google"
     }
 }
+
+enum Onboarding {
+    enum image {
+        case home
+        case categories
+        case bookmarks
+        
+        var getImage: UIImage {
+            switch self {
+            case .home:
+                return UIImage(named: "homeOnboarding")!
+            case .categories:
+                return UIImage(named: "categoriesOnboarding")!
+            case .bookmarks:
+                return UIImage(named: "bookmarksOnboarding")!
+            }
+        }
+    }
+    
+    enum Description {
+        case home
+        case categories
+        case bookmarks
+        
+        var getTitle: String {
+            switch self {
+            case .home:
+                return "On the main screen you can see the latest events and recommended news for you."
+            case .categories:
+                return "On the category screen you can see the latest news for the selected category"
+            case .bookmarks:
+                return "You can also save the news you like and it will remain in your bookmarks."
+            }
+        }
+    }
+    
+    enum Title {
+        case home
+        case categories
+        case bookmarks
+        
+        var getTitle: String {
+            switch self {
+            case .home:
+                return "Home screen"
+            case .categories:
+                return "Categories"
+            case .bookmarks:
+                return "Bookmarks"
+            }
+        }
+        
+    }
+}
