@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct User {
+struct User: Codable {
     let id: String
+    let password: String
     let categories: [Category]?
     let region: Web.Region?
 }

@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterController: UIViewController {
+    
+    private let db = Firestore.firestore()
     
     //MARK: UI Elements
     
@@ -37,6 +40,8 @@ class RegisterController: UIViewController {
         let text = UITextField()
         text.placeholder = Constants.String.name
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
+        text.autocapitalizationType = .none
+        text.autocorrectionType = .no
         text.delegate = self
         return text
     }()
@@ -45,6 +50,8 @@ class RegisterController: UIViewController {
         let text = UITextField()
         text.placeholder = Constants.String.email
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
+        text.autocapitalizationType = .none
+        text.autocorrectionType = .no
         text.delegate = self
         return text
     }()
@@ -53,6 +60,9 @@ class RegisterController: UIViewController {
         let text = UITextField()
         text.placeholder = Constants.String.password
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
+        text.autocapitalizationType = .none
+        text.autocorrectionType = .no
+        text.textContentType = .oneTimeCode
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -62,6 +72,9 @@ class RegisterController: UIViewController {
         let text = UITextField()
         text.placeholder = Constants.String.repeatPas
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
+        text.autocapitalizationType = .none
+        text.autocorrectionType = .no
+        text.textContentType = .oneTimeCode
         text.isSecureTextEntry = true
         text.delegate = self
         return text
@@ -353,10 +366,19 @@ class RegisterController: UIViewController {
                 alertController.addAction(action)
                 self.present(alertController, animated: true, completion: nil)
             } else {
-                self.accountController.currentData()
-                // navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+                self.currentData()
+                let coordinator = Coordinator()
+                let tabbar = TabBarController(coordinator: coordinator)
+                self.navigationController?.pushViewController(tabbar, animated: true)
             }
         }
+    }
+    
+    func currentData() {
+        guard let email = Auth.auth().currentUser?.email else { return }
+        let location = Web.Region.unitedStates
+        let categoies = [String]()
+        db.collection(email).addDocument(data: ["location" : location, "categories" : categoies])
     }
 }
 

@@ -38,6 +38,8 @@ class AccountController: UIViewController {
         let text = UITextField()
         text.placeholder = Constants.String.email
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
+        text.autocapitalizationType = .none
+        text.autocorrectionType = .no
         text.delegate = self
         return text
     }()
@@ -46,7 +48,10 @@ class AccountController: UIViewController {
         let text = UITextField()
         text.placeholder = Constants.String.password
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
-        text.isSecureTextEntry = true
+        text.autocapitalizationType = .none
+        text.autocorrectionType = .no
+        text.isSecureTextEntry = true 
+        text.textContentType = .oneTimeCode
         text.delegate = self
         return text
     }()
@@ -265,7 +270,9 @@ class AccountController: UIViewController {
                     alertController.addAction(action)
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    //navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+                    let coordinator = Coordinator()
+                    let tabbar = TabBarController(coordinator: coordinator)
+                    self.navigationController?.pushViewController(tabbar, animated: true)
                 }
             }
         } else {
@@ -275,7 +282,7 @@ class AccountController: UIViewController {
     
     func currentData() {
         guard let email = Auth.auth().currentUser?.email else { return }
-        let location = Web.Region.russia
+        let location = Web.Region.unitedStates
         let categoies = [String]()
         db.collection(email).addDocument(data: ["location" : location, "categories" : categoies])
     }

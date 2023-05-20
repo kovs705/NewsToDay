@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 import SnapKit
 
 class TermsConditionsVC: UIViewController{
@@ -17,16 +16,17 @@ class TermsConditionsVC: UIViewController{
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
         setBackground()
         setTitle()
         setTextView()
-        setBackButton()
     }
     
     func setTitle(){
         view.addSubview(label)
         label.text="Terms & Conditions"
-        if let customFont = UIFont(name: "Inter-SemiBold", size: 24) {
+        if let customFont = UIFont(name: "Inter-SemiBold", size: 23) {
             label.font = customFont
         }
 //        else{
@@ -36,7 +36,7 @@ class TermsConditionsVC: UIViewController{
         label.textColor = UIColor(named: "BlackPrimary")
         label.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(68)
+            make.top.equalToSuperview().inset(60)
             
         }
     }
@@ -67,22 +67,7 @@ Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, ad
         
         textView.snp.makeConstraints { (make) in
             make.edges.equalTo(view.safeAreaLayoutGuide).inset(8)
-            make.top.equalToSuperview().inset(120)
-        }
-    }
-    
-    func setBackButton(){
-        view.addSubview(backButton)
-        backButton.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        backButton.tintColor = UIColor(named: "GreyPrimary")
-        
-        backButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(68)
-            make.left.equalToSuperview().inset(20)
-            make.width.equalTo(30)
-            make.height.equalTo(30)
-            
-            backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+            make.top.equalToSuperview().inset(100)
         }
     }
     
@@ -90,26 +75,4 @@ Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, ad
         self.view.backgroundColor = .white
     }
     
-    @objc func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-}
-
-struct ContentTermsConditionsVC: UIViewControllerRepresentable {
-    
-    typealias UIViewControllerType = TermsConditionsVC
-    
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        return TermsConditionsVC()
-    }
-    
-    func updateUIViewController(_ uiViewController: TermsConditionsVC, context: Context) {}
-}
-struct ContentMainViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentTermsConditionsVC()
-            .previewInterfaceOrientation(.portrait)
-            .edgesIgnoringSafeArea(.all)
-    }
 }

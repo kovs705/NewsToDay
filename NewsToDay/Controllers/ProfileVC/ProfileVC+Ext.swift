@@ -25,11 +25,9 @@ class ProfileExt: UIViewController {
     let profileLabel                = UILabel()
     var nameUserLabel               = UILabel()
     var emailUserLabel              = UILabel()
-    let languageButton              = UIButton()
-    let rightArrowImageView         = UIImageView()
-    let termsAndConditionsButton    = UIButton()
-    let rightArrowImageView2        = UIImageView()
-    let testbutton = ProfileUIButton(labelText: "Test", tintColor: .purplePrimary, image: UIImage(systemName: "chevron.right"))
+    let signOutButton               = ProfileUIButton(labelText: "Sign Out", tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
+    let termsAndConditionsButton    = ProfileUIButton(labelText: "Terms & Conditions", tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
+    let languageButton              = ProfileUIButton(labelText: "Language", tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -43,16 +41,10 @@ class ProfileExt: UIViewController {
         return imageView
     }()
     
-    func buttonTestInDahaouseeetest() {
-        testbutton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-200)
-            make.height.equalTo(56)
-        }
-    }
+
     
     func addSubviews() {
-        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, profileImageView, rightArrowImageView, termsAndConditionsButton, rightArrowImageView2, testbutton)
+        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, profileImageView, termsAndConditionsButton, signOutButton)
     }
     
     // MARK: - Functions
@@ -60,33 +52,8 @@ class ProfileExt: UIViewController {
         self.view.backgroundColor = .white
     }
     
-    func setTitle() {
-        
-        profileLabel.text = "Profile"
-        if let customFont = UIFont(name: "Inter-SemiBold", size: 30) {
-            profileLabel.font = customFont
-        }
-        //        else{
-        //            label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        //        }
-        
-        profileLabel.textColor = UIColor(named: "BlackPrimary")
-        profileLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(20)
-            make.top.equalToSuperview().inset(72)
-            
-        }
-        
-    }
     
     func setupProfileImageView() {
-        
-        profileImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(82)
-            make.top.equalTo(view.snp.top).offset(136)
-            make.left.equalTo(view.snp.left).offset(20)
-        }
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
         profileImageView.addGestureRecognizer(tapGesture)
     }
@@ -103,10 +70,6 @@ class ProfileExt: UIViewController {
         //        }
         nameUserLabel.textColor = UIColor(named: "BlackPrimary")
         
-        nameUserLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(148)
-            make.left.equalToSuperview().inset(120)
-        }
     }
     func setEmailUser(){
         
@@ -120,112 +83,54 @@ class ProfileExt: UIViewController {
         //        }
         emailUserLabel.textColor = UIColor(named: "GreyPrimary")
         
-        emailUserLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(172)
-            make.left.equalToSuperview().inset(120)
-        }
     }
     
-    func setButtonLanguage(){
+    func addTargetForButtons(){
+        termsAndConditionsButton.addTarget(self, action: #selector(termsAndConditionsButtonTapped), for: .touchUpInside)
+    }
+    
+    func makeConstrains(){
         
-        let customFont = UIFont(name: "Inter-Medium", size: 24)
-        
-        let label1 = UILabel()
-        label1.text = "Language"
-        label1.textAlignment = .left
-        label1.font = customFont
-        
-        let stackView = UIStackView()
-        stackView.alignment = .fill
-        stackView.spacing = 35
-        
-        
-        languageButton.setTitle("Language", for: .normal)
-        languageButton.layer.cornerRadius  = 15
-        languageButton.layer.masksToBounds = true
-        
-        languageButton.setTitleColor(UIColor(named: "GreyDark"), for: .normal)
-        languageButton.backgroundColor = UIColor(named: "greyLighter")
-        
-        languageButton.titleLabel?.snp.makeConstraints({ make in
-            make.left.equalTo(languageButton).inset(24)
-        })
+        profileImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(72)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(32)
+            make.left.equalToSuperview().inset(20)
+        }
         
         languageButton.snp.makeConstraints { make in
-            make.width.equalTo(336)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(148)
             make.height.equalTo(56)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().inset(252)
         }
-        
-        // создать лэйбл для текста слева
-        // создать лэйбл для иконки справа
-        // создать stackView с alignment fill (?)
-        // дать правому лэйблу с иконкой фиксированную ширину, не трогая левый лэйбл
-        // проверить, будет ли занимать левый лэйбл всё пространство
-        
-        // stackView top - 0, bottom - 0, leading - 20, trailing - 20
-        
-        
-        
-        // setImageViewForButton()
-    }
-    
-    func setImageViewForButton(){
-        
-        rightArrowImageView.image=UIImage(systemName: "chevron.right")
-        rightArrowImageView.tintColor=UIColor(named: "GreyDark")
-        
-        rightArrowImageView.snp.makeConstraints { make in
-            make.width.equalTo(16)
-            make.height.equalTo(20)
-            make.top.equalToSuperview().inset(271)
-            make.left.equalToSuperview().inset(320)
-        }
-    }
-    
-    func setTermsAndConditionsButton(){
-        
-        termsAndConditionsButton.setTitle("Terms & Conditions", for: .normal)
-        termsAndConditionsButton.layer.cornerRadius  = 15
-        termsAndConditionsButton.layer.masksToBounds = true
-        
-        if let customFont = UIFont(name: "Inter-Medium", size: 24) {
-            termsAndConditionsButton.titleLabel?.font = customFont
-        }
-        //        else{
-        //            termsAndConditionsButton.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-        //        }
-        
-        termsAndConditionsButton.setTitleColor(UIColor(named: "GreyDark"), for: .normal)
-        termsAndConditionsButton.backgroundColor = UIColor(named: "greyLighter")
-        
-        termsAndConditionsButton.titleLabel?.snp.makeConstraints({ make in
-            make.left.equalTo(termsAndConditionsButton).inset(24)
-        })
         
         termsAndConditionsButton.snp.makeConstraints { make in
-            make.width.equalTo(336)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-112)
             make.height.equalTo(56)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(208)
         }
         
-        setImageViewForButton2()
+        signOutButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-28)
+            make.height.equalTo(56)
+
+        }
+        
+        nameUserLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(44)
+            make.left.equalToSuperview().inset(116)
+        }
+        
+        emailUserLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(68)
+            make.left.equalToSuperview().inset(116)
+        }
+        
     }
     
-    func setImageViewForButton2(){
-        
-        rightArrowImageView2.image=UIImage(systemName: "chevron.right")
-        rightArrowImageView2.tintColor=UIColor(named: "GreyDark")
-        
-        rightArrowImageView2.snp.makeConstraints { make in
-            make.width.equalTo(16)
-            make.height.equalTo(20)
-            make.bottom.equalToSuperview().inset(225)
-            make.left.equalToSuperview().inset(320)
-        }
-    }
+    
+
+    
     
     // MARK: - ObjC functions
     @objc func changeProfileImage() {
@@ -234,4 +139,9 @@ class ProfileExt: UIViewController {
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    @objc func termsAndConditionsButtonTapped() {
+            let termsAndConditionsViewController = TermsConditionsVC()
+            navigationController?.pushViewController(termsAndConditionsViewController, animated: true)
+        }
 }

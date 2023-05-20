@@ -38,7 +38,7 @@ enum Categories {
 }
 
 enum Web {
-    enum Region: String {
+    enum Region: String, Codable {
         case uae = "ae"
         case argentina = "ar"
         case austria = "at"

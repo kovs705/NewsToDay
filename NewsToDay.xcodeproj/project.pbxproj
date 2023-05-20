@@ -56,6 +56,7 @@
 		C85075472A182AE5001AF283 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075462A182AE5001AF283 /* OnboardingPresenter.swift */; };
 		C85075492A182B06001AF283 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85075482A182B06001AF283 /* OnboardingViewController.swift */; };
 		C88ED8132A191EAF00780B0A /* ProfileUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88ED8122A191EAF00780B0A /* ProfileUIButton.swift */; };
+		C88ED8152A196C1800780B0A /* NewBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88ED8142A196C1800780B0A /* NewBrowseViewController.swift */; };
 		C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */; };
 		C89F27202A0E4EA200508FF9 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */; };
 		C89F27232A0E519A00508FF9 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */; };
@@ -143,6 +144,7 @@
 		C85075462A182AE5001AF283 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		C85075482A182B06001AF283 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C88ED8122A191EAF00780B0A /* ProfileUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIButton.swift; sourceTree = "<group>"; };
+		C88ED8142A196C1800780B0A /* NewBrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBrowseViewController.swift; sourceTree = "<group>"; };
 		C89F271D2A0E4E9100508FF9 /* ResultPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultPresenter.swift; sourceTree = "<group>"; };
 		C89F271F2A0E4EA200508FF9 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C89F27222A0E519A00508FF9 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 			children = (
 				C8F15FEB2A0D255200C63C6C /* BrowseViewModel.swift */,
 				C8F15FEC2A0D255200C63C6C /* BrowseViewController.swift */,
+				C88ED8142A196C1800780B0A /* NewBrowseViewController.swift */,
 			);
 			path = Browse;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				C85075402A17F676001AF283 /* BookmarksViewController.swift in Sources */,
 				4E7256A12A139B73000D9DD0 /* MemoryManager.swift in Sources */,
 				4ECDAAA72A082F4A00E8485C /* User.swift in Sources */,
+				C88ED8152A196C1800780B0A /* NewBrowseViewController.swift in Sources */,
 				C8F15FF32A0D255200C63C6C /* CategoriesPresenter.swift in Sources */,
 				4EB149D42A123F76002A6362 /* ProfileButton.swift in Sources */,
 				4EB149CE2A1214CC002A6362 /* DetailVC.swift in Sources */,
