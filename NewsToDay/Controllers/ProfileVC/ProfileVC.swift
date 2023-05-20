@@ -29,6 +29,7 @@ extension ProfileVC: ProfileViewProtocol {
         setNameUser()
         setEmailUser()
         makeConstrains()
+        addTargetForButtons()
         print("UI Code completed")
     }
     
