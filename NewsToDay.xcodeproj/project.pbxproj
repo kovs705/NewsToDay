@@ -29,7 +29,6 @@
 		4E4993A32A07AB84001CBF8C /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A22A07AB84001CBF8C /* PersistenceManager.swift */; };
 		4E4993A52A07AC1F001CBF8C /* NewsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4993A42A07AC1F001CBF8C /* NewsError.swift */; };
 		4E7256A12A139B73000D9DD0 /* MemoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7256A02A139B73000D9DD0 /* MemoryManager.swift */; };
-		4EB149C92A11E853002A6362 /* RegisterVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB149C82A11E853002A6362 /* RegisterVC+Ext.swift */; };
 		4EB149CC2A1214C4002A6362 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB149CB2A1214C4002A6362 /* DetailPresenter.swift */; };
 		4EB149CE2A1214CC002A6362 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB149CD2A1214CC002A6362 /* DetailVC.swift */; };
 		4EB149D02A123508002A6362 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB149CF2A123508002A6362 /* ProfilePresenter.swift */; };
@@ -38,9 +37,6 @@
 		4ECDAAA22A082CEB00E8485C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDAAA12A082CEB00E8485C /* MainVC.swift */; };
 		4ECDAAA52A082EBD00E8485C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4ECDAAA42A082EBD00E8485C /* SnapKit */; };
 		4ECDAAA72A082F4A00E8485C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECDAAA62A082F4A00E8485C /* User.swift */; };
-		4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2532A10225800691420 /* AccountPresenter.swift */; };
-		4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2552A10226A00691420 /* RegisterPresenter.swift */; };
-		4EE9C2582A102F8000691420 /* AccountVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */; };
 		4EEEC9C32A173D760082BC2D /* NewsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEEC9C22A173D760082BC2D /* NewsImageView.swift */; };
 		8432B2882A1230F100B2FFF0 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432B2872A1230F100B2FFF0 /* ProfileVC.swift */; };
 		C81C1F2F2A128F6400A974B0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C81C1F2E2A128F6400A974B0 /* FirebaseAuth */; };
@@ -124,7 +120,6 @@
 		4E4993A22A07AB84001CBF8C /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		4E4993A42A07AC1F001CBF8C /* NewsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsError.swift; sourceTree = "<group>"; };
 		4E7256A02A139B73000D9DD0 /* MemoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryManager.swift; sourceTree = "<group>"; };
-		4EB149C82A11E853002A6362 /* RegisterVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterVC+Ext.swift"; sourceTree = "<group>"; };
 		4EB149CB2A1214C4002A6362 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		4EB149CD2A1214CC002A6362 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		4EB149CF2A123508002A6362 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
@@ -132,9 +127,6 @@
 		4EB149D32A123F76002A6362 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		4ECDAAA12A082CEB00E8485C /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4ECDAAA62A082F4A00E8485C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		4EE9C2532A10225800691420 /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
-		4EE9C2552A10226A00691420 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
-		4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountVC+Ext.swift"; sourceTree = "<group>"; };
 		4EEEC9C22A173D760082BC2D /* NewsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageView.swift; sourceTree = "<group>"; };
 		8432B2872A1230F100B2FFF0 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C81C1F362A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesOnboardingPresenter.swift; sourceTree = "<group>"; };
@@ -392,8 +384,6 @@
 			isa = PBXGroup;
 			children = (
 				EB6909FA2A095261009E0A1C /* RegisterController.swift */,
-				4EB149C82A11E853002A6362 /* RegisterVC+Ext.swift */,
-				4EE9C2552A10226A00691420 /* RegisterPresenter.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -402,8 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				EB6909F62A094044009E0A1C /* AccountController.swift */,
-				4EE9C2572A102F8000691420 /* AccountVC+Ext.swift */,
-				4EE9C2532A10225800691420 /* AccountPresenter.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -731,14 +719,12 @@
 				4EB149CC2A1214C4002A6362 /* DetailPresenter.swift in Sources */,
 				C89F271E2A0E4E9100508FF9 /* ResultPresenter.swift in Sources */,
 				C85075402A17F676001AF283 /* BookmarksViewController.swift in Sources */,
-				4EB149C92A11E853002A6362 /* RegisterVC+Ext.swift in Sources */,
 				4E7256A12A139B73000D9DD0 /* MemoryManager.swift in Sources */,
 				4ECDAAA72A082F4A00E8485C /* User.swift in Sources */,
 				C8F15FF32A0D255200C63C6C /* CategoriesPresenter.swift in Sources */,
 				4EB149D42A123F76002A6362 /* ProfileButton.swift in Sources */,
 				4EB149CE2A1214CC002A6362 /* DetailVC.swift in Sources */,
 				C850753E2A17B748001AF283 /* ImageClient.swift in Sources */,
-				4EE9C2582A102F8000691420 /* AccountVC+Ext.swift in Sources */,
 				C8F15FF02A0D255200C63C6C /* BrowseViewModel.swift in Sources */,
 				C88ED8132A191EAF00780B0A /* ProfileUIButton.swift in Sources */,
 				C8F15FF22A0D255200C63C6C /* CategoriesViewController.swift in Sources */,
@@ -752,11 +738,9 @@
 				C850753C2A17B6D5001AF283 /* ImageRequest.swift in Sources */,
 				C81C1F382A129C6C00A974B0 /* CategoriesOnboardingPresenter.swift in Sources */,
 				4E15208A2A06C11400E42537 /* AppDelegate.swift in Sources */,
-				4EE9C2542A10225800691420 /* AccountPresenter.swift in Sources */,
 				4E1520D62A06CEE900E42537 /* TabBarController.swift in Sources */,
 				EB6909FB2A095261009E0A1C /* RegisterController.swift in Sources */,
 				C85075492A182B06001AF283 /* OnboardingViewController.swift in Sources */,
-				4EE9C2562A10226A00691420 /* RegisterPresenter.swift in Sources */,
 				C8F15FE92A0D253100C63C6C /* TermsConditionsVC.swift in Sources */,
 				4E15208C2A06C11400E42537 /* SceneDelegate.swift in Sources */,
 				C8F160002A0D25E900C63C6C /* CategoryCell.swift in Sources */,
