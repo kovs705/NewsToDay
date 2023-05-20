@@ -13,6 +13,7 @@ final class ResultViewController: UIViewController {
     //MARK: - Property
     
     var presenter: ResultPresenterProtocol!
+    var coordinator: CoordinatorProtocol?
     
     //MARK: - UI Elements
     
@@ -79,6 +80,13 @@ extension ResultViewController: UITableViewDataSource {
         cell.setupCell(news: currentArticle)
         cell.setupImage(news: currentArticle)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentArticle = presenter.news[indexPath.row]
+        let destVC = coordinator?.getDetailVCModule(news: currentArticle)
+        
+        navigationController?.pushViewController(destVC!, animated: true)
     }
 }
 

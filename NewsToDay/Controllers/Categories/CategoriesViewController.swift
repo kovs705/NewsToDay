@@ -106,8 +106,9 @@ extension CategoriesViewController: UICollectionViewDataSource {
 extension CategoriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedCategory = presenter.categories?.all[indexPath.row] else { return }
+        let coordinator = Coordinator()
         
-        let resultViewController = Coordinator.getResultModule(category: selectedCategory)
+        let resultViewController = Coordinator.getResultModule(category: selectedCategory, coordinator: coordinator)
         navigationController?.pushViewController(resultViewController, animated: true)
     }
 }
