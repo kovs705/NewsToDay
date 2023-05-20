@@ -16,9 +16,17 @@ protocol CoordinatorProtocol {
     
     func getAccountVCModule() -> UIViewController
     func getRegisterVCModule() -> UIViewController
+    func getBookmarksModule() -> UIViewController
 }
 
 class Coordinator: CoordinatorProtocol {
+    func getBookmarksModule() -> UIViewController {
+        let view = BookmarksViewController()
+        let persistenceManager = PersistenceManager()
+        let presenter = BookmarksPresenter(view: view, persistenceManager: persistenceManager)
+        view.presenter = presenter
+        return view
+    }
     
     func getCategoriesModule() -> UIViewController {
         let view = CategoriesViewController()

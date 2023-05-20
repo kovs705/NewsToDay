@@ -8,9 +8,9 @@
 import Foundation
 
 protocol PersistenceManagerProtocol {
-    static func updateWith(bookmark: News, actionType: PersistenceActionType, completed: @escaping (NewsError?) -> Void)
-    static func retreiveNews(completed: @escaping (Result<[News], NewsError>) -> Void)
-    static func save(bookmarks: [News]) -> NewsError?
+    func updateWith(bookmark: News, actionType: PersistenceActionType, completed: @escaping (NewsError?) -> Void)
+    func retreiveNews(completed: @escaping (Result<[News], NewsError>) -> Void)
+    func save(bookmarks: [News]) -> NewsError?
 }
 
 
@@ -18,16 +18,14 @@ enum PersistenceActionType { case add, remove }
 
 
 class PersistenceManager: PersistenceManagerProtocol {
-    static private let defaults = UserDefaults.standard
+    private let defaults = UserDefaults.standard
     
     enum Keys {
         static let bookmarks = "bookmarks"
     }
     
-    private init() {}
-    
     // MARK: - Добавление или удаление избранного, принимает в функцию новость, выбирается случай, либо add либо remove
-    static func updateWith(bookmark: News, actionType: PersistenceActionType, completed: @escaping (NewsError?) -> Void) {
+    func updateWith(bookmark: News, actionType: PersistenceActionType, completed: @escaping (NewsError?) -> Void) {
         retreiveNews { result in
             switch result {
             case .success(var bookmarks):
@@ -48,7 +46,7 @@ class PersistenceManager: PersistenceManagerProtocol {
                     bookmarks.removeAll { $0.url == bookmark.url}
                 }
                 
-                completed(save(bookmarks: bookmarks))
+                completed(self.save(bookmarks: bookmarks))
                 
                 
             case .failure(let error):
@@ -58,7 +56,7 @@ class PersistenceManager: PersistenceManagerProtocol {
     }
     
  // MARK: - Получение избранных новостей в виде [News], либо ошибка
-    static func retreiveNews(completed: @escaping (Result<[News], NewsError>) -> Void) {
+    func retreiveNews(completed: @escaping (Result<[News], NewsError>) -> Void) {
         guard let bookmarksData = defaults.object(forKey: Keys.bookmarks) as? Data else {
             // if nil = no favorites
             completed(.success([]))
@@ -77,7 +75,7 @@ class PersistenceManager: PersistenceManagerProtocol {
         
     }
     
-    static func save(bookmarks: [News]) -> NewsError? {
+    func save(bookmarks: [News]) -> NewsError? {
         // encode:
         do {
             let encoder = JSONEncoder()
@@ -90,8 +88,6 @@ class PersistenceManager: PersistenceManagerProtocol {
             return .unableToBookmark
         }
     }
-    
-    
 }
 
 

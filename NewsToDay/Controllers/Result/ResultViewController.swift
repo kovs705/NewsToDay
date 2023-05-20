@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ResultViewController: UIViewController {
+final class ResultViewController: UIViewController {
 
     //MARK: - Property
     
