@@ -114,7 +114,7 @@ enum Web {
     }
 
     enum APIKey: String {
-        case get = "8e4cb38d557a45798ecdfa5b7c61f16e"
+        case get = "error"
     }
     
 //    ## 8e4cb38d557a45798ecdfa5b7c61f16e

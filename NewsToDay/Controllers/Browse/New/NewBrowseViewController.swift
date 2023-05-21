@@ -10,7 +10,8 @@ import SnapKit
 
 class NewBrowseViewController: UIViewController {
 
-    private var categoriesCollectionView = UICollectionView()
+    private var categoriesCollectionView: UICollectionView!
+    private var dataSourse: UICollectionViewDiffableDataSource<BrowseRow, BrowseItem>?
     private var recomendationsTableView = UITableView()
     private var searchController = UISearchController()
     
@@ -20,14 +21,56 @@ class NewBrowseViewController: UIViewController {
         setLayouts()
     }
     
+    var browseRow = [
+        BrowseRow(index: 0, items: BrowseItem.category([Category(name: "Test", icon: "")])),
+        BrowseRow(index: 0, items: BrowseItem.news([News(source: Source(id: "Test", name: "Test"), author: "Test", title: "Test", description: "Test", url: "Test", urlToImage: "Test", publishedAt: "Test", content: "Test")])),
+        
+]
     //MARK: - Setup UI Elements
     
     private func setupViews() {
         setupCollectionView()
+        configureSearchController()
     }
     
     private func setupCollectionView() {
-        
+        categoriesCollectionView = UICollectionView(frame: .zero,
+                                                    collectionViewLayout: createCompositionalLayout())
+        categoriesCollectionView.showsVerticalScrollIndicator = false
+        categoriesCollectionView.register(CategoryCell.self,
+                                          forCellWithReuseIdentifier: CategoryCell.id)
+        categoriesCollectionView.register(NewsCell.self,
+                                          forCellWithReuseIdentifier: NewsCell.id)
+        categoriesCollectionView.register(SectionHeaderView.self,
+                                          forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                          withReuseIdentifier: SectionHeaderView.id)
+    }
+    
+    private func setupDataSourse() {
+        dataSourse = UICollectionViewDiffableDataSource<BrowseRow, BrowseItem>(collectionView: categoriesCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            switch itemIdentifier {
+            case let .category(category):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.id, for: indexPath) as? CategoryCell else { fatalError("Unable to dequeue CategoryCell")}
+                let currentCategory = category[indexPath.row]
+                cell.configure(with: currentCategory)
+                
+                return cell
+            case let .news(news):
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.id, for: indexPath) as? NewsCell else { fatalError("Unable to dequeue NewsCell")}
+//                cell.configure(with: news)
+                cell.backgroundColor = .red
+                return cell
+            }
+            
+        })
+    }
+    
+    func configureSearchController() {
+//        searchController.searchBar.delegate = self
+//        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     //MARK: - Layout
@@ -43,7 +86,9 @@ class NewBrowseViewController: UIViewController {
     }
     
     private func setConstraints() {
-        
+        categoriesCollectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
@@ -53,7 +98,7 @@ extension NewBrowseViewController {
             switch sectionIndex {
             case 0: return self.createCategorySection()
             case 1: return self.createNewsSection()
-            default: return self.createArticleSection()
+            default: return self.createNewsSection()
             }
         }
         let config = UICollectionViewCompositionalLayoutConfiguration()
@@ -82,18 +127,6 @@ extension NewBrowseViewController {
         let section = NSCollectionLayoutSection(group: layoutGroup)
         section.interGroupSpacing = 10
         section.orthogonalScrollingBehavior = .groupPaging
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
-        return section
-    }
-    
-    func createArticleSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
-        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
-        let section = NSCollectionLayoutSection(group: layoutGroup)
-        section.boundarySupplementaryItems = [createSectionHeader()]
-        section.interGroupSpacing = 10
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         return section
     }

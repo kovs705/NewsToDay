@@ -3,7 +3,7 @@ import SnapKit
 
 class CategoryCell: UICollectionViewCell {
     
-    static let identifier = "CategoryCell"
+    static let id = "CategoryCell"
     
     let categoryLabel: UILabel = {
         let label = UILabel()
@@ -46,8 +46,8 @@ class CategoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(with title: String) {
-        categoryLabel.text = title
+    public func configure(with category: Category) {
+        categoryLabel.text = category.name.capitalized
     }
     
     private func setupViews() {

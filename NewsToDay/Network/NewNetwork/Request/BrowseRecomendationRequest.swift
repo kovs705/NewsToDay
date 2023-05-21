@@ -27,7 +27,7 @@ struct BrowseRecomendationRequest: DataRequest {
             "apiKey": apiKey,
             "country": "us",
             "category": category,
-            "pageSize": "5"
+            "pageSize": "1"
         ]
     }
     

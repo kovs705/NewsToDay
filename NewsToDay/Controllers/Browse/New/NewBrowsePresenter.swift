@@ -7,33 +7,59 @@
 
 import Foundation
 
-protocol NewBrowseViewProtocol {
-    
+enum BrowseItem: Hashable {
+    case category([Category])
+    case news([News])
 }
 
-protocol NewBrowsePresenterProtocol {
-    
+struct BrowseRow: Hashable {
+    var index: Int
+    var title: String?
+    var items: BrowseItem
 }
 
-class NewBrowsePresenter: NewBrowsePresenterProtocol {weak var view: ResultViewProtocol?
+struct BrowseContent {
+    let category: [String]
+    let news: [String]
+    let article: [String]
+}
+
+protocol NewBrowseViewProtocol: AnyObject {
+    func success()
+    func failure(error: Error)
+}
+
+protocol NewBrowsePresenterProtocol: AnyObject {
+    init(view: NewBrowseViewProtocol, networkService: NetworkService)
+    var categories: [Category] { get }
+//    var browseRow: [BrowseRow] { get }
+}
+
+class NewBrowsePresenter: NewBrowsePresenterProtocol {
+    weak var view: NewBrowseViewProtocol?
     var networkService: NetworkService!
-    var category = CategoryManager().all[0]
-    var headNews = [News]()
+    var categories = CategoryManager().all
+    var recNews = [News]()
     
-    required init(view: ResultViewProtocol, networkService: NetworkService, category: Category) {
+//    var browseRow = [
+//        BrowseRow(index: 0, title: nil, items: [BrowseItem.category(CategoryManager().all)]),
+//        BrowseRow(index: 1, title: nil, items: [BrowseItem.news([News]())]),
+//    ]
+    
+    required init(view: NewBrowseViewProtocol, networkService: NetworkService) {
         self.view = view
         self.networkService = networkService
-        self.category = category
         fetchHead()
+        fetchRec()
     }
     
     func fetchHead() {
-        let request = BrowseHeadlinesRequest(category: category)
+        let request = BrowseHeadlinesRequest(category: categories[0])
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let news):
                 guard let news else { return }
-                self?.headNews = news
+//                self?.browseRow[1] = BrowseRow(index: 1, title: nil, items: [BrowseItem.news(news)])
                 self?.view?.success()
             case .failure(let error):
                 self?.view?.failure(error: error)
@@ -42,6 +68,16 @@ class NewBrowsePresenter: NewBrowsePresenterProtocol {weak var view: ResultViewP
     }
     
     func fetchRec() {
-        
+        let request = BrowseRecomendationRequest(category: categories[6])
+        networkService.request(request) { [weak self] result in
+            switch result {
+            case .success(let news):
+                guard let news else { return }
+                self?.recNews = news
+                self?.view?.success()
+            case .failure(let error):
+                self?.view?.failure(error: error)
+            }
+        }
     }
 }
