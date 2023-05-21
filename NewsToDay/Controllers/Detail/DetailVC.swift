@@ -119,7 +119,7 @@ class DetailVC: UIViewController {
     
     func configureJustAuthor() {
         backImage.addSubview(justAuthor)
-        justAuthor.text = "Author"
+        justAuthor.text = NSLocalizedString("DETAIL_AUTHOR", comment: "Author")
         justAuthor.translatesAutoresizingMaskIntoConstraints = false
         justAuthor.textAlignment = .left
         
@@ -351,7 +351,7 @@ extension DetailVC: DetailViewProtocol {
         titleLabel.text = news?.title
         authorLabel.text = news?.author
         if news?.description == nil {
-            bodyLabel.text = "Article's content is empty, click on the link below to read more.."
+            bodyLabel.text = NSLocalizedString("DETAIL_NO_CONTENT", comment: "Article's content is empty, but you can click the arrow above to open web-site..")
         } else {
             bodyLabel.text = news?.description
         }
