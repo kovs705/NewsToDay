@@ -33,6 +33,7 @@ class BookmarksTableViewCell: UITableViewCell {
     func setupImage(news: News) {
         guard let urlToImage = news.urlToImage else {
             newsImageView.image = placeholderImg
+            newsImageView.contentMode = .scaleToFill
             loadingActivityIndicator.stopAnimating()
             return
         }
@@ -42,10 +43,12 @@ class BookmarksTableViewCell: UITableViewCell {
         ) { [weak self] image in
             guard let image else {
                 self?.newsImageView.image = image
+                self?.newsImageView.contentMode = .scaleToFill
                 self?.loadingActivityIndicator.stopAnimating()
                 return
             }
             self?.newsImageView.image = image
+            self?.newsImageView.contentMode = .scaleToFill
             self?.loadingActivityIndicator.stopAnimating()
         }
     }
@@ -96,16 +99,16 @@ class BookmarksTableViewCell: UITableViewCell {
     
     private func makeContraints() {
         NSLayoutConstraint.activate([
-            newsCellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            newsCellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             newsCellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             newsCellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            newsCellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            newsCellBackgroundView.heightAnchor.constraint(greaterThanOrEqualToConstant: 112),
+            newsCellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            newsCellBackgroundView.heightAnchor.constraint(equalToConstant: 96),
             
             newsImageView.leadingAnchor.constraint(equalTo: newsCellBackgroundView.leadingAnchor, constant: 20),
-//            newsImageView.topAnchor.constraint(equalTo: newsCellBackgroundView.topAnchor),
-//            newsImageView.bottomAnchor.constraint(equalTo: newsCellBackgroundView.bottomAnchor),
-            newsImageView.heightAnchor.constraint(equalToConstant: 100),
+            newsImageView.topAnchor.constraint(equalTo: newsCellBackgroundView.topAnchor),
+            newsImageView.bottomAnchor.constraint(equalTo: newsCellBackgroundView.bottomAnchor),
+            newsImageView.heightAnchor.constraint(equalTo: newsCellBackgroundView.heightAnchor),
             newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor),
             
             newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor, constant: -24),

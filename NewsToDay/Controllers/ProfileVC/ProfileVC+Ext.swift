@@ -29,8 +29,8 @@ class ProfileExt: UIViewController {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor=UIColor(named: "greyLighter")
-        imageView.image = UIImage(systemName: "person.fill")
+        imageView.backgroundColor = UIColor(named: "greyLighter")
+        imageView.image = UIImage(named: "bigDick")
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 36
@@ -135,10 +135,6 @@ class ProfileExt: UIViewController {
         }
         
     }
-    
-    
-
-    
     
     // MARK: - ObjC functions
     @objc func changeProfileImage() {

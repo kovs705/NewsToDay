@@ -48,9 +48,6 @@ class TermsConditionsVC: UIViewController{
         if let customFont = UIFont(name: "Inter-Regular", size: 19) {
             textView.font = customFont
         }
-//        else{
-//            textView.font = UIFont.systemFont(ofSize: 21, weight: .regular)
-//        }
         textView.textColor = UIColor(named: "GreyLight")
         textView.isEditable = false
         textView.isScrollEnabled = true

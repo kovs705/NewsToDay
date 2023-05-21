@@ -29,6 +29,7 @@ https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_
 
 # API Key
 ## 8e4cb38d557a45798ecdfa5b7c61f16e
+## 698b732aca97446d853e299ac52ffed1
 
 ## Get Started
 https://newsapi.org/docs/get-started

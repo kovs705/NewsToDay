@@ -74,15 +74,11 @@ class Coordinator: CoordinatorProtocol {
     
     func getAccountVCModule() -> UIViewController {
         let view = AccountController()
-        let presenter = AccountPresenter(view: view)
-        view.presenter = presenter
         return view
     }
     
     func getRegisterVCModule() -> UIViewController {
         let view = RegisterController()
-        let presenter = RegisterPresenter(view: view)
-        view.presenter = presenter
         return view
     }
 }

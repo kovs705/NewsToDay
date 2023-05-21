@@ -1,17 +1,16 @@
 //
-//  TopHeadlinesRequest.swift
+//  BrowseRecomendationRequest.swift
 //  NewsToDay
 //
-//  Created by Mikhail Tedeev on 19.05.2023.
+//  Created by Mikhail Tedeev on 21.05.2023.
 //
 
 import Foundation
 
-struct TopHeadlinesRequest: DataRequest {
+struct BrowseRecomendationRequest: DataRequest {
     private let apiKey: String = Web.APIKey.get.rawValue
         
     var category: String!
-    var page = 1
     
     var url: String {
         let baseUrl = "https://newsapi.org/v2"
@@ -26,10 +25,9 @@ struct TopHeadlinesRequest: DataRequest {
     var queryItems: [String : String] {
         [
             "apiKey": apiKey,
-            "country": "ru",
+            "country": "us",
             "category": category,
-            "pageSize": "10",
-            "page": "\(page)"
+            "pageSize": "1"
         ]
     }
     
@@ -37,9 +35,8 @@ struct TopHeadlinesRequest: DataRequest {
         .get
     }
     
-    init(category: Category, page: Int) {
+    init(category: Category) {
         self.category = category.name
-        self.page = page
     }
     
     func decode(_ data: Data) throws -> [News]? {

@@ -39,7 +39,7 @@ enum Categories {
 }
 
 enum Web {
-    enum Region: String {
+    enum Region: String, Codable {
         case uae = "ae"
         case argentina = "ar"
         case austria = "at"
@@ -114,7 +114,12 @@ enum Web {
         case everything
     }
 
+    enum APIKey: String {
+        case get = "error"
+    }
     
+//    ## 8e4cb38d557a45798ecdfa5b7c61f16e
+//    ## 698b732aca97446d853e299ac52ffed1
     // pageSize - maximum 100
     // page - from 1
 }
