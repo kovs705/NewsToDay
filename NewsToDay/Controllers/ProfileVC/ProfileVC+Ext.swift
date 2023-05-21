@@ -58,7 +58,16 @@ class ProfileExt: UIViewController {
     
     func setNameUser(){
         
-        nameUserLabel.text = "USER_NAME"
+        nameUserLabel.text = ["Александр",
+                              "Екатерина",
+                              "Михаил",
+                              "Анна",
+                              "Иван",
+                              "Ольга",
+                              "Дмитрий",
+                              "Наталья",
+                              "Сергей",
+                              "Мария"].randomElement()!
         
         if let customFont = UIFont(name: "Inter-Medium", size: 16) {
             nameUserLabel.font = customFont
