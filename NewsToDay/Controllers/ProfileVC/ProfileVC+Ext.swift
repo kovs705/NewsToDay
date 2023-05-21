@@ -7,17 +7,6 @@
 
 import UIKit
 import SnapKit
-import SwiftUI
-
-// MARK: - imagePickerController
-extension ProfileExt: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[.originalImage] as? UIImage {
-            profileImageView.image = selectedImage
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-}
 
 class ProfileExt: UIViewController {
     
@@ -31,8 +20,8 @@ class ProfileExt: UIViewController {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor=UIColor(named: "greyLighter")
-        imageView.image = UIImage(systemName: "person.fill")
+        imageView.backgroundColor = UIColor(named: "greyLighter")
+        imageView.image = UIImage(named: "bigDick")
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 36
@@ -52,15 +41,9 @@ class ProfileExt: UIViewController {
         self.view.backgroundColor = .white
     }
     
-    
-    func setupProfileImageView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
-        profileImageView.addGestureRecognizer(tapGesture)
-    }
-    
     func setNameUser(){
         
-        nameUserLabel.text = "USER_NAME"
+        nameUserLabel.text = "Cosmo Pinguin"
         
         if let customFont = UIFont(name: "Inter-Medium", size: 16) {
             nameUserLabel.font = customFont
@@ -73,7 +56,7 @@ class ProfileExt: UIViewController {
     }
     func setEmailUser(){
         
-        emailUserLabel.text = "email@icloud.com"
+        emailUserLabel.text = "cosmoPinguinAtGayParty@icloud.com"
         
         if let customFont = UIFont(name: "Inter-Medium", size: 14) {
             emailUserLabel.font = customFont
@@ -128,20 +111,10 @@ class ProfileExt: UIViewController {
         
     }
     
-    
-
-    
-    
     // MARK: - ObjC functions
-    @objc func changeProfileImage() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true, completion: nil)
-    }
     
     @objc func termsAndConditionsButtonTapped() {
-            let termsAndConditionsViewController = TermsConditionsVC()
-            navigationController?.pushViewController(termsAndConditionsViewController, animated: true)
-        }
+        let termsAndConditionsViewController = TermsConditionsVC()
+        navigationController?.pushViewController(termsAndConditionsViewController, animated: true)
+    }
 }

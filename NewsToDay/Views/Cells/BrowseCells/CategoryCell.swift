@@ -1,56 +1,62 @@
 import UIKit
+import SnapKit
 
-final class CategoryCell: UICollectionViewCell {
-    static let id = "CategoryCell"
+class CategoryCell: UICollectionViewCell {
     
-    private let titleLabel = UILabel()
+    static let identifier = "CategoryCell"
+    
+    let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        label.textColor = UIColor(named: Colors.greyDark.rawValue)
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
     
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                contentView.backgroundColor = .systemPurple
-                titleLabel.textColor = .white
+                backgroundColor = UIColor(named: Colors.purplePrimary.rawValue)
+                categoryLabel.textColor = .white
+                
             } else {
-                contentView.backgroundColor = .clear
-                contentView.layer.borderColor = UIColor.systemPurple.cgColor
-                titleLabel.textColor = .systemPurple
+                backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
+                categoryLabel.textColor = UIColor(named: Colors.greyDark.rawValue)
             }
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        setupViews()
+        setupConstraints()
+        setupUICell()
+    }
+    
+    func setupUICell() {
+        backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
+        layer.masksToBounds = false
+        layer.cornerRadius = 15
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with category: String) {
-        titleLabel.text = category
+    public func configure(with title: String) {
+        categoryLabel.text = title
     }
     
-    private func setupView() {
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.systemPurple.cgColor
-        setupTitleLabel()
+    private func setupViews() {
+        contentView.addSubview(categoryLabel)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        contentView.layer.cornerRadius = frame.height / 2
-    }
-}
-
-extension CategoryCell {
-    private func setupTitleLabel() {
-        contentView.addSubview(titleLabel)
-        titleLabel.text = "Yes"
-        titleLabel.textColor = .systemPurple
-        titleLabel.snp.makeConstraints {
-            $0.left.right.equalToSuperview().inset(24)
-            $0.top.bottom.equalToSuperview().inset(8)
+    private func setupConstraints() {
+        categoryLabel.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalToSuperview()
         }
     }
 }

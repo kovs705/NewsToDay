@@ -16,12 +16,12 @@ protocol CategoryManagerProtocol {
 class CategoryManager: CategoryManagerProtocol {
     
     var all: [Category] = [
+        Category(name: Categories.general,
+                 icon: "⚖️"),
         Category(name: Categories.business,
                  icon: "📈"),
         Category(name: Categories.entertainment,
                  icon: "🎥"),
-        Category(name: Categories.general,
-                 icon: "⚖️"),
         Category(name: Categories.health,
                  icon: "🏃🏼‍♀️"),
         Category(name: Categories.science,
