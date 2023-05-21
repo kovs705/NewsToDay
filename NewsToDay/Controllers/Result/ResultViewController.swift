@@ -95,14 +95,14 @@ extension ResultViewController: UITableViewDataSource {
 extension ResultViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        print(position, "we need -", (tableView.contentSize.height - 100 - scrollView.frame.size.height))
+        // print(position, "we need -", (tableView.contentSize.height - 100 - scrollView.frame.size.height))
         
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
             if !presenter.isFetchig {
                 presenter.isFetchig = true
-                print("fetching")
+                // print("fetching")
                 self.tableView.tableFooterView = spinnerViewSetup()
-                print("current page = ")
+                // print("current page = ")
                 self.presenter.fetchHeadlines()
             }
         }

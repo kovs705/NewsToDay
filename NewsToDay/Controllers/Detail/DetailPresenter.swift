@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol DetailViewProtocol: AnyObject {
     func setNews(news: News?)
@@ -16,6 +17,7 @@ protocol DetailViewPresenterProtocol: AnyObject {
     init(view: DetailViewProtocol, news: News?)
     func setNews()
     func bookmarkIt()
+    func openLink(vc: UIViewController)
 }
 
 
@@ -46,6 +48,8 @@ class DetailPresenter: DetailViewPresenterProtocol {
         }
         
         self.view?.setNews(news: self.news ?? News(source: Source(id: "1", name: "Apple"), author: "Apple", title: "Apple Tree", description: "This is an Apple tree with apples", url: "apple.com", urlToImage: "test", publishedAt: "15.05.2023", content: "This is some content of I don't know what to type!"))
+        
+        print(news)
     }
     
     func bookmarkIt() {
@@ -80,8 +84,12 @@ class DetailPresenter: DetailViewPresenterProtocol {
                 print(error)
             }
         }
-        
-        
+    }
+    
+    func openLink(vc: UIViewController) {
+        let safariVC = SFSafariViewController(url: (URL(string: self.news!.url))!)
+        safariVC.preferredControlTintColor = UIColor(named: Colors.purplePrimary.rawValue)
+        vc.present(safariVC, animated: true)
     }
     
     

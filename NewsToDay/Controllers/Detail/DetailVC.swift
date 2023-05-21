@@ -26,8 +26,8 @@ class DetailVC: UIViewController {
     // MARK: - Static UI Properties
     let backB = UIButton()
     let shareB = UIButton()
-    
     let linkB = UIButton()
+    let webB = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
     
     let justAuthor = UILabel(textColor: .greyLight, textSize: 13, font: .interMedium, numberOfLines: 0)
     
@@ -68,6 +68,7 @@ class DetailVC: UIViewController {
         back.backgroundColor = .black
         back.contentMode = .scaleAspectFill
         back.clipsToBounds = true
+        back.isUserInteractionEnabled = true
         
         back.translatesAutoresizingMaskIntoConstraints = false
         
@@ -87,8 +88,6 @@ class DetailVC: UIViewController {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
         swipeGesture.direction = .right
         view.addGestureRecognizer(swipeGesture)
-        
-        
         
     }
     
@@ -138,7 +137,7 @@ class DetailVC: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.bottom.equalTo(authorLabel.snp.top).offset(-25)
             make.leading.equalTo(backImage.snp.leading).inset(25)
-            make.trailing.equalTo(backImage.snp.trailing).offset(25)
+            make.trailing.equalTo(backImage.snp.trailing).offset(-25)
         }
     }
     
@@ -194,7 +193,7 @@ class DetailVC: UIViewController {
         shareB.setImage(UIImage(systemName: "arrowshape.turn.up.forward", withConfiguration: symbolConfig), for: .normal)
         shareB.tintColor = .white
         
-        shareB.addTarget(self, action: #selector(gav), for: .touchUpInside)
+        shareB.addTarget(self, action: #selector(openSafari), for: .touchUpInside)
         shareB.isUserInteractionEnabled = true
         
         shareB.snp.makeConstraints { make in
@@ -294,7 +293,7 @@ class DetailVC: UIViewController {
     
     // MARK: - Other functions
     @objc func closeVC() {
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func gav() {
@@ -305,9 +304,14 @@ class DetailVC: UIViewController {
         presenter?.bookmarkIt()
     }
     
+    @objc func openSafari() {
+        presenter?.openLink(vc: self)
+        print("open safari")
+    }
+    
     @objc func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer) {
         if gestureRecognizer.direction == .right {
-            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
     }
     
@@ -332,6 +336,7 @@ class DetailVC: UIViewController {
         configureBackButton()
         configureBookmarkButton()
         configureShareButton()
+        
     }
     
     
@@ -345,7 +350,11 @@ extension DetailVC: DetailViewProtocol {
         // UI code here
         titleLabel.text = news?.title
         authorLabel.text = news?.author
-        bodyLabel.text = news?.description
+        if news?.description == nil {
+            bodyLabel.text = "Article's content is empty, click on the link below to read more.."
+        } else {
+            bodyLabel.text = news?.description
+        }
         categoryLabel.text = news?.source.name
         
         backImage.setupImage(news: news!)

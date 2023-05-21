@@ -29,7 +29,7 @@ final class TabBarController: UITabBarController {
     //MARK: - Private Methods
     
     private func setupTabs() {
-        let categories = coordinator?.getDetailVCModule(news: News(source: Source(id: "1", name: "Apple"), author: "Gav", title: "The latest situation in the presidential election", description: "Description", url: "url", urlToImage: nil, publishedAt: "22", content: "Content"))
+        let categories = coordinator?.getCategoriesModule()
         let browse = BrowseViewController()
         let profile = coordinator?.getProfileModule()
         let bookmarks = coordinator?.getBookmarksModule()
