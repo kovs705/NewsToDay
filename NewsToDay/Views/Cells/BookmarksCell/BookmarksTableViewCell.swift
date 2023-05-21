@@ -18,6 +18,8 @@ class BookmarksTableViewCell: UITableViewCell {
     private var newsCellBackgroundView = UIView()
     private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
     
+    let placeholderImg = UIImage(named: "placeholderImage")
+    
     //MARK: - Public Setup
     
     func setupCell(news: News) {
@@ -30,16 +32,14 @@ class BookmarksTableViewCell: UITableViewCell {
     
     func setupImage(news: News) {
         guard let urlToImage = news.urlToImage else {
-            DispatchQueue.main.async {
-                self.newsImageView.image = UIImage(named: "placeholderImage")
-                self.newsImageView.contentMode = .scaleToFill
-                self.loadingActivityIndicator.stopAnimating()
-            }
+            newsImageView.image = placeholderImg
+            newsImageView.contentMode = .scaleToFill
+            loadingActivityIndicator.stopAnimating()
             return
         }
         ImageClient.shared.setImage(
             from: urlToImage,
-            placeholderImage: UIImage(named: "placeholderImage")
+            placeholderImage: placeholderImg
         ) { [weak self] image in
             guard let image else {
                 self?.newsImageView.image = image

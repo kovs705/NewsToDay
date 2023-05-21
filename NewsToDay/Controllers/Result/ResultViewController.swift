@@ -13,6 +13,7 @@ final class ResultViewController: UIViewController {
     //MARK: - Property
     
     var presenter: ResultPresenterProtocol!
+    var coordinator: CoordinatorProtocol?
     
     //MARK: - UI Elements
     
@@ -80,6 +81,13 @@ extension ResultViewController: UITableViewDataSource {
         cell.setupImage(news: currentArticle)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentArticle = presenter.news[indexPath.row]
+        let destVC = coordinator?.getDetailVCModule(news: currentArticle)
+        
+        navigationController?.pushViewController(destVC!, animated: true)
+    }
 }
 
 //MARK: - UITableViewDelegate
@@ -87,14 +95,14 @@ extension ResultViewController: UITableViewDataSource {
 extension ResultViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        print(position, "we need -", (tableView.contentSize.height - 100 - scrollView.frame.size.height))
+        // print(position, "we need -", (tableView.contentSize.height - 100 - scrollView.frame.size.height))
         
         if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
             if !presenter.isFetchig {
                 presenter.isFetchig = true
-                print("fetching")
+                // print("fetching")
                 self.tableView.tableFooterView = spinnerViewSetup()
-                print("current page = ")
+                // print("current page = ")
                 self.presenter.fetchHeadlines()
             }
         }

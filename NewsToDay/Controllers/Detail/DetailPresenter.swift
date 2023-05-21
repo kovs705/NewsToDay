@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol DetailViewProtocol: AnyObject {
     func setNews(news: News?)
@@ -15,6 +16,8 @@ protocol DetailViewProtocol: AnyObject {
 protocol DetailViewPresenterProtocol: AnyObject {
     init(view: DetailViewProtocol, news: News?)
     func setNews()
+    func bookmarkIt()
+    func openLink(vc: UIViewController)
 }
 
 
@@ -44,8 +47,52 @@ class DetailPresenter: DetailViewPresenterProtocol {
             }
         }
         
-        self.view?.setNews(news: news ?? News(source: Source(id: "1", name: "Apple"), author: "Apple", title: "Apple Tree", description: "This is an Apple tree with apples", url: "apple.com", urlToImage: "test", publishedAt: "15.05.2023", content: "This is some content of I don't know what to type!"))
+        self.view?.setNews(news: self.news ?? News(source: Source(id: "1", name: "Apple"), author: "Apple", title: "Apple Tree", description: "This is an Apple tree with apples", url: "apple.com", urlToImage: "test", publishedAt: "15.05.2023", content: "This is some content of I don't know what to type!"))
+        
+        print(news)
     }
+    
+    func bookmarkIt() {
+        PersistenceManager.shared.retreiveNews { result in
+            switch result {
+            case .success(let news):
+                guard news.contains((self.news)!) else {
+                    // add
+                    PersistenceManager.shared.updateWith(bookmark: self.news!, actionType: .add) { error in
+                        guard let error = error else {
+                            print("No errors on adding")
+                            return
+                        }
+                        print(error)
+                        return
+                    }
+                    self.view?.isBookmarked(isB: true)
+                    return
+                }
+                
+                // delete from bookmarks
+                PersistenceManager.shared.updateWith(bookmark: self.news!, actionType: .remove) { error in
+                    guard let error = error else {
+                        print("No errors on deleting")
+                        return
+                    }
+                    print(error)
+                    return
+                }
+                self.view?.isBookmarked(isB: false)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func openLink(vc: UIViewController) {
+        let safariVC = SFSafariViewController(url: (URL(string: self.news!.url))!)
+        safariVC.preferredControlTintColor = UIColor(named: Colors.purplePrimary.rawValue)
+        vc.present(safariVC, animated: true)
+    }
+    
+    
     
     
 }

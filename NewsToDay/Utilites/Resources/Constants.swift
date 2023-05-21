@@ -25,6 +25,7 @@ enum Colors: String {
     case greyLight = "GreyLight"
     case greyLighter = "GreyLighter"
     case greyPrimary = "GreyPrimary"
+    case white = "White"
 }
 
 enum Categories {

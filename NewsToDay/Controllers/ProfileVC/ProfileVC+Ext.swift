@@ -39,6 +39,13 @@ class ProfileExt: UIViewController {
     // MARK: - Functions
     public func setBackground() {
         self.view.backgroundColor = .white
+        testbutton.backgroundColor = UIColor(named: "greyLighter")
+    }
+    
+    
+    func setupProfileImageView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
+        profileImageView.addGestureRecognizer(tapGesture)
     }
     
     func setNameUser(){
@@ -110,6 +117,10 @@ class ProfileExt: UIViewController {
         }
         
     }
+    
+    
+
+    
     
     // MARK: - ObjC functions
     

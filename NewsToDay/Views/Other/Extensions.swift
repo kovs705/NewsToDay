@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 //MARK: - UILabel
 
@@ -49,5 +50,15 @@ extension UILabel {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedString.length))
         
         self.attributedText = attributedString
+    }
+}
+
+// MARK: - UIViewController and Safari
+
+extension UIViewController {
+    func presentSafariVC(with url: URL, for vc: UIViewController) {
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.preferredControlTintColor = UIColor(named: Colors.purplePrimary.rawValue)
+        vc.present(safariVC, animated: true)
     }
 }
