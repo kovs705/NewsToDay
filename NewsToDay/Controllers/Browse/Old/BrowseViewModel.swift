@@ -27,10 +27,10 @@ final class BrowseViewModel {
         BrowseRow(
             index: 1,
             title: "",
-            items: [News(source: Source(id: "Apple", name: "Apple company"), author: "Apple", title: "Apple", description: "This is an apple tree", url: "https://google.com", urlToImage: nil, publishedAt: "2023", content: "Zero one to")].map { .news($0)}),
+            items: [News(source: Source(id: "Apple", name: "Apple company"), author: "Apple", title: "Apple", description: "This is an apple tree", url: "https://google.com", urlToImage: nil, publishedAt: "2023", content: "Zero one to"), News(source: Source(id: "sdfsf", name: "Apple company"), author: "Apple", title: "Apple", description: "This is an apple tree", url: "https://google.com", urlToImage: nil, publishedAt: "2023", content: "Zero one to")].map { .news($0)}),
         BrowseRow(
             index: 2,
             title: "",
-            items: [News(source: Source(id: "Apple", name: "Apple company"), author: "Apple", title: "Apple", description: "This is an apple tree", url: "https://google.com", urlToImage: nil, publishedAt: "2023", content: "Zero one to")].map { .news($0)})
+            items: [News(source: Source(id: "Gav", name: "Apple company"), author: "Apple", title: "Apple", description: "This is an apple tree", url: "https://google.com", urlToImage: nil, publishedAt: "2023", content: "Zero one to"), News(source: Source(id: "mewow", name: "Apple company"), author: "Apple", title: "Apple", description: "This is an apple tree", url: "https://google.com", urlToImage: nil, publishedAt: "2023", content: "Zero one to")].map { .news($0)})
     ]
 }
