@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SwiftUI
 
 // MARK: - imagePickerController
 extension ProfileExt: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -22,12 +21,11 @@ extension ProfileExt: UIImagePickerControllerDelegate & UINavigationControllerDe
 class ProfileExt: UIViewController {
     
     // MARK: - Properties
-    let profileLabel                = UILabel()
     var nameUserLabel               = UILabel()
     var emailUserLabel              = UILabel()
-    let signOutButton               = ProfileUIButton(labelText: "Sign Out", tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
-    let termsAndConditionsButton    = ProfileUIButton(labelText: "Terms & Conditions", tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
-    let languageButton              = ProfileUIButton(labelText: "Language", tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
+    let signOutButton               = ProfileUIButton(labelText: NSLocalizedString("PROFILE_SIGN_OUT_BUTTON", comment: ""), tintColor: .greyDark, image: UIImage(systemName: "rectangle.portrait.and.arrow.right"))
+    let termsAndConditionsButton    = ProfileUIButton(labelText: NSLocalizedString("PROFILE_TERMS_AND_CONDITIONS_BUTTON", comment: ""), tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
+    let languageButton              = ProfileUIButton(labelText: NSLocalizedString("PROFILE_LANGUAGE_BUTTON", comment: ""), tintColor: .greyDark, image: UIImage(systemName: "chevron.right"))
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -44,7 +42,7 @@ class ProfileExt: UIViewController {
 
     
     func addSubviews() {
-        view.addSubviews(profileLabel, nameUserLabel, emailUserLabel, languageButton, profileImageView, termsAndConditionsButton, signOutButton)
+        view.addSubviews(nameUserLabel, emailUserLabel, languageButton, profileImageView, termsAndConditionsButton, signOutButton)
     }
     
     // MARK: - Functions
@@ -87,6 +85,7 @@ class ProfileExt: UIViewController {
     
     func addTargetForButtons(){
         termsAndConditionsButton.addTarget(self, action: #selector(termsAndConditionsButtonTapped), for: .touchUpInside)
+        languageButton.addTarget(self, action: #selector(languageButtonTapped), for: .touchUpInside)
     }
     
     func makeConstrains(){
@@ -144,4 +143,8 @@ class ProfileExt: UIViewController {
             let termsAndConditionsViewController = TermsConditionsVC()
             navigationController?.pushViewController(termsAndConditionsViewController, animated: true)
         }
+    @objc func languageButtonTapped(){
+        let languageViewController = Language()
+        navigationController?.pushViewController(languageViewController, animated: true)
+    }
 }
