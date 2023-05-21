@@ -25,10 +25,10 @@ extension ProfileVC: ProfileViewProtocol {
         // UI code here
         addSubviews()
         setBackground()
-        setupProfileImageView()
         setNameUser()
         setEmailUser()
         makeConstrains()
+        addTargetForButtons()
         print("UI Code completed")
     }
     
