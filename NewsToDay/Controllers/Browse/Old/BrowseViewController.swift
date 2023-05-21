@@ -1,9 +1,9 @@
 import UIKit
 
 enum BrowseItem: Hashable {
-    case category(String)
-    case news(String)
-    case article(String)
+    case category(Category)
+    case news(News)
+    case article(News)
 }
 
 struct BrowseRow: Hashable {
@@ -13,9 +13,9 @@ struct BrowseRow: Hashable {
 }
 
 struct BrowseContent {
-    let category: [String]
-    let news: [String]
-    let article: [String]
+    let category: [Category]
+    let news: [News]
+    let article: [News]
 }
 
 private typealias DataSource = UICollectionViewDiffableDataSource<BrowseRow, BrowseItem>

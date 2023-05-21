@@ -30,7 +30,7 @@ final class TabBarController: UITabBarController {
     
     private func setupTabs() {
         let categories = coordinator?.getCategoriesModule()
-        let browse = NewBrowseViewController()
+        let browse = BrowseViewController()
         let profile = coordinator?.getProfileModule()
         let bookmarks = coordinator?.getBookmarksModule()
         
