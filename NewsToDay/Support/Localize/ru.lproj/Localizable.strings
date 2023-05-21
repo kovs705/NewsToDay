@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   NewsToDay
 
@@ -21,16 +21,16 @@ ALERT_OK = "Ок";
 ALERT_ERROR = "Упс!";
 ALERT_FILL = "Пожалуйста, заполните все поля";
 ALERT_DONT_MATCH = "Пароли не совпадают, пожалуйста, повторите попытку";
-ALERT_ERROR_PASSWORD = "Неверный пароль"
+ALERT_ERROR_PASSWORD = "Неверный пароль";
 
 AUTHORIZATION_VIEW_USERNAME_TEXTFIELD = "Имя пользователя";
 AUTHORIZATION_VIEW_EMAIL_TEXTFIELD = "Адрес электронной почты";
 AUTHORIZATION_VIEW_PASSWORD_TEXTFIELD = "Пароль";
 AUTHORIZATION_VIEW_CONFIRM_PASSWORD_TEXTFIELD = "Повторите пароль";
 AUTHORIZATION_VIEW_FORGOT_PASSWORD_BUTTON = "Забыли пароль?";
-AUTHORIZATION_VIEW_THROUGH_GOOGLE = "Войти в систему с помощью Google"
-AUTHORIZATION_VIEW_NAME = "Имя"
-AUTHORIZATION_VIEW_INFORMATION = "Информация"
+AUTHORIZATION_VIEW_THROUGH_GOOGLE = "Войти в систему с помощью Google";
+AUTHORIZATION_VIEW_NAME = "Имя";
+AUTHORIZATION_VIEW_INFORMATION = "Информация";
 
 AUTHORIZATION_VIEW_SIGNIN_BUTTON = "Зарегистрироваться";
 AUTHORIZATION_VIEW_CREATE_ACCOUNT_LABEL = "У Вас уже есть учетная запись?";

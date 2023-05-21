@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   NewsToDay
 
@@ -21,16 +21,16 @@ ALERT_OK = "OK";
 ALERT_ERROR = "Ooops!";
 ALERT_FILL = "Please fill out all fields";
 ALERT_DONT_MATCH = "Passwords don't match, please try again";
-ALERT_ERROR_PASSWORD = "Incorrect password"
+ALERT_ERROR_PASSWORD = "Incorrect password";
 
 AUTHORIZATION_VIEW_USERNAME_TEXTFIELD = "Username";
 AUTHORIZATION_VIEW_EMAIL_TEXTFIELD = "Email Address";
 AUTHORIZATION_VIEW_PASSWORD_TEXTFIELD = "Password";
 AUTHORIZATION_VIEW_CONFIRM_PASSWORD_TEXTFIELD = "Repeat Password";
 AUTHORIZATION_VIEW_FORGOT_PASSWORD_BUTTON = "Forgot your password?";
-AUTHORIZATION_VIEW_THROUGH_GOOGLE = "Sign in with Google"
-AUTHORIZATION_VIEW_NAME = "Name"
-AUTHORIZATION_VIEW_INFORMATION = "Information"
+AUTHORIZATION_VIEW_THROUGH_GOOGLE = "Sign in with Google";
+AUTHORIZATION_VIEW_NAME = "Name";
+AUTHORIZATION_VIEW_INFORMATION = "Information";
 
 
 AUTHORIZATION_VIEW_SIGNIN_BUTTON = "Sign Up";
