@@ -9,7 +9,7 @@ import UIKit
 
 protocol CoordinatorProtocol {
     func getCategoriesModule() -> UIViewController
-    static func getResultModule(category: Category) -> UIViewController
+    static func getResultModule(category: Category, coordinator: CoordinatorProtocol) -> UIViewController
     func getCategoriesOnboardingModule() -> UIViewController
     func getProfileModule() -> UIViewController
     func getDetailVCModule(news: News) -> UIViewController
@@ -37,11 +37,13 @@ class Coordinator: CoordinatorProtocol {
         return view
     }
     
-    static func getResultModule(category: Category) -> UIViewController {
+    static func getResultModule(category: Category, coordinator: CoordinatorProtocol) -> UIViewController {
+        let coordinator = Coordinator()
         let view = ResultViewController()
         let networkService = DefaultNetworkService()
         let presenter = ResultPresenter(view: view, networkService: networkService, category: category)
         view.presenter = presenter
+        view.coordinator = coordinator
         view.title = "\(category.icon) \(category.name.capitalized)"
         return view
     }
