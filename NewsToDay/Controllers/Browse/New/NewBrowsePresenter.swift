@@ -40,19 +40,19 @@
 //    var networkService: NetworkService!
 //    var categories = CategoryManager().all
 //    var recNews = [News]()
-//    
+//
 ////    var browseRow = [
 ////        BrowseRow(index: 0, title: nil, items: [BrowseItem.category(CategoryManager().all)]),
 ////        BrowseRow(index: 1, title: nil, items: [BrowseItem.news([News]())]),
 ////    ]
-//    
+//
 //    required init(view: NewBrowseViewProtocol, networkService: NetworkService) {
 //        self.view = view
 //        self.networkService = networkService
 //        fetchHead()
 //        fetchRec()
 //    }
-//    
+//
 //    func fetchHead() {
 //        let request = BrowseHeadlinesRequest(category: categories[0])
 //        networkService.request(request) { [weak self] result in
@@ -66,7 +66,7 @@
 //            }
 //        }
 //    }
-//    
+//
 //    func fetchRec() {
 //        let request = BrowseRecomendationRequest(category: categories[6])
 //        networkService.request(request) { [weak self] result in
