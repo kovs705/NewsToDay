@@ -26,6 +26,9 @@ final class BrowseViewController: UIViewController {
     private var dataSource: DataSource!
     private var viewModel = BrowseViewModel()
     
+    let standard = UserDefaults.standard
+    let coordinator = Coordinator()
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: createCompositionalLayout())
@@ -77,11 +80,31 @@ final class BrowseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
+        print("Checking")
+        checkOnboarding()
+        
         configureNavigation()
         configureSearchController()
         setupCollectionView()
         configureDataSouce()
         reloadData()
+    }
+    
+    
+    private func pushToOnboarding() {
+        navigationController?.pushViewController((coordinator.getOnboardingModule()), animated: true)
+    }
+    
+    private func checkOnboarding() {
+        guard let isOnboarded = standard.object(forKey: Keys.onboarding) as? Bool else {
+            pushToOnboarding()
+            return
+        }
+        
+        if isOnboarded == false {
+            pushToOnboarding()
+        }
     }
 }
 
