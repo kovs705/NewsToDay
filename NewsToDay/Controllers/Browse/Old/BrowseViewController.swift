@@ -1,9 +1,9 @@
 import UIKit
 
 enum BrowseItem: Hashable {
-    case category(String)
-    case news(String)
-    case article(String)
+    case category(Category)
+    case news(News)
+    case article(News)
 }
 
 struct BrowseRow: Hashable {
@@ -13,9 +13,9 @@ struct BrowseRow: Hashable {
 }
 
 struct BrowseContent {
-    let category: [String]
-    let news: [String]
-    let article: [String]
+    let category: [Category]
+    let news: [News]
+    let article: [News]
 }
 
 private typealias DataSource = UICollectionViewDiffableDataSource<BrowseRow, BrowseItem>
@@ -25,6 +25,9 @@ final class BrowseViewController: UIViewController {
     private let searchController = UISearchController()
     private var dataSource: DataSource!
     private var viewModel = BrowseViewModel()
+    
+    let standard = UserDefaults.standard
+    let coordinator = Coordinator()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
@@ -77,11 +80,31 @@ final class BrowseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
+        print("Checking")
+        checkOnboarding()
+        
         configureNavigation()
         configureSearchController()
         setupCollectionView()
         configureDataSouce()
         reloadData()
+    }
+    
+    
+    private func pushToOnboarding() {
+        navigationController?.pushViewController((coordinator.getOnboardingModule()), animated: true)
+    }
+    
+    private func checkOnboarding() {
+        guard let isOnboarded = standard.object(forKey: Keys.onboarding) as? Bool else {
+            pushToOnboarding()
+            return
+        }
+        
+        if isOnboarded == false {
+            pushToOnboarding()
+        }
     }
 }
 

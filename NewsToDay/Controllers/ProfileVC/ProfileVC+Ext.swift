@@ -51,10 +51,10 @@ class ProfileExt: UIViewController {
     }
     
     
-    func setupProfileImageView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
-        profileImageView.addGestureRecognizer(tapGesture)
-    }
+//    func setupProfileImageView() {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeProfileImage))
+//        profileImageView.addGestureRecognizer(tapGesture)
+//    }
     
     func setNameUser(){
         

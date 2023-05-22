@@ -22,10 +22,6 @@ class PersistenceManager: PersistenceManagerProtocol {
     
     static let shared = PersistenceManager()
     
-    enum Keys {
-        static let bookmarks = "bookmarks"
-    }
-    
     // MARK: - Добавление или удаление избранного, принимает в функцию новость, выбирается случай, либо add либо remove
     func updateWith(bookmark: News, actionType: PersistenceActionType, completed: @escaping (NewsError?) -> Void) {
         retreiveNews { result in
