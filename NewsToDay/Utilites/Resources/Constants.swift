@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum Keys {
+    static let bookmarks = "bookmarks"
+    static let onboarding = "onboarding"
+    static let categories = "categories"
+}
+
 enum Colors: String {
     // Purple
     case purpleDark = "PurpleDark"

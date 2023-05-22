@@ -16,8 +16,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let coordinator = Coordinator()
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = TabBarController(coordinator: coordinator)
-        //UINavigationController(rootViewController: AccountController())
-        //
+        
         window?.makeKeyAndVisible()
     }
 }

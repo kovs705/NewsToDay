@@ -16,12 +16,16 @@ protocol CategoriesOnboardingPresenterProtocol: AnyObject {
     var categories: CategoryManagerProtocol? { get }
     func select(_ category: Category)
     func deselect(_ category: Category)
+    
+    func getStarted()
 }
 
 class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol {
     weak var view: CategoriesOnboardingViewProtocol?
     var categories: CategoryManagerProtocol?
     var selectedCategories: [Category] = []
+    
+    let standard = UserDefaults.standard
     
     required init(view: CategoriesOnboardingViewProtocol, categories: CategoryManagerProtocol?) {
         self.view = view
@@ -38,6 +42,11 @@ class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol {
             selectedCategories.remove(at: index)
         }
         updateButton()
+    }
+    
+    func getStarted() {
+        // standard.set(categories, forKey: Keys.categories)
+        print("You chose \(selectedCategories)")
     }
     
     //MARK: - Private Methods
