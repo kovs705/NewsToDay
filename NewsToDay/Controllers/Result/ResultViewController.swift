@@ -13,6 +13,7 @@ final class ResultViewController: UIViewController {
     //MARK: - Property
     
     var presenter: ResultPresenterProtocol!
+    var coordinator: Coordinator!
     
     //MARK: - UI Elements
     

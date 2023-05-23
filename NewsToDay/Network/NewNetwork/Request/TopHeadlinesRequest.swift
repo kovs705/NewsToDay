@@ -26,7 +26,7 @@ struct TopHeadlinesRequest: DataRequest {
     var queryItems: [String : String] {
         [
             "apiKey": apiKey,
-            "country": "ua",
+            "country": "us",
             "category": category,
             "pageSize": "10",
             "page": "\(page)"

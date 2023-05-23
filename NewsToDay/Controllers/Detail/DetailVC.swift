@@ -11,27 +11,27 @@ import SnapKit
 class DetailVC: UIViewController {
     
     var presenter: DetailViewPresenterProtocol!
+    let symbolConfig = UIImage.SymbolConfiguration(pointSize: 22)
     
     // MARK: - Dynamic UI Properties
     let bookmarkB = UIButton()
     
-    let categoryLabel = UILabel(textColor: .greyLighter, textSize: 15, font: .interRegular, numberOfLines: 1)
-    let titleLabel = UILabel(textColor: .greyLighter, textSize: 20, font: .interBold, numberOfLines: 0)
-    let authorLabel = UILabel(textColor: .greyLighter, textSize: 18, font: .interBold, numberOfLines: 0)
-    let bodyLabel = UILabel(textColor: .greyDark, textSize: 17, font: .interRegular, numberOfLines: 0)
+    let categoryLabel = UILabel(textColor: .white, textSize: 18, font: .interRegular, numberOfLines: 1)
+    let titleLabel = UILabel(textColor: .white, textSize: 22, font: .interBold, numberOfLines: 0)
+    let authorLabel = UILabel(textColor: .white, textSize: 18, font: .interBold, numberOfLines: 0)
+    let bodyLabel = UILabel(textColor: .greyDark, textSize: 18, font: .interRegular, numberOfLines: 0)
     
     let newsImage = NewsImageView(frame: .zero)
     
     // MARK: - Static UI Properties
     let backB = UIButton()
     let shareB = UIButton()
-    
     let linkB = UIButton()
+    let webB = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
     
     let justAuthor = UILabel(textColor: .greyLight, textSize: 13, font: .interMedium, numberOfLines: 0)
     
     
-    // MARK: - Main UI Elements
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
@@ -68,6 +68,7 @@ class DetailVC: UIViewController {
         back.backgroundColor = .black
         back.contentMode = .scaleAspectFill
         back.clipsToBounds = true
+        back.isUserInteractionEnabled = true
         
         back.translatesAutoresizingMaskIntoConstraints = false
         
@@ -84,19 +85,158 @@ class DetailVC: UIViewController {
         addViews()
         presenter.setNews()
         
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+        swipeGesture.direction = .right
+        view.addGestureRecognizer(swipeGesture)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
+    // MARK: - UI Elements functions
+    func configureBodyLabel() {
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        formView.addSubview(bodyLabel)
+        bodyLabel.textAlignment = .justified
+        
+        bodyLabel.snp.makeConstraints { make in
+            make.leading.equalTo(formView).offset(20)
+            make.trailing.equalTo(formView).offset(-20)
+            make.top.equalTo(formView).inset(25)
+        }
+    }
+    
+    func configureJustAuthor() {
         backImage.addSubview(justAuthor)
-        justAuthor.text = "Author"
+        justAuthor.text = NSLocalizedString("DETAIL_AUTHOR", comment: "Author")
         justAuthor.translatesAutoresizingMaskIntoConstraints = false
         justAuthor.textAlignment = .left
         
         justAuthor.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(backImage).inset(50)
+            make.bottom.equalTo(backImage).inset(60)
+            make.leading.equalTo(backImage).inset(25)
+        }
+    }
+    
+    func configureTitleLabel() {
+        backImage.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textAlignment = .natural
+        
+        titleLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(authorLabel.snp.top).offset(-25)
+            make.leading.equalTo(backImage.snp.leading).inset(25)
+            make.trailing.equalTo(backImage.snp.trailing).offset(-25)
+        }
+    }
+    
+    func configureAuthorNameLabel() {
+        backImage.addSubview(authorLabel)
+        authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        authorLabel.textAlignment = .natural
+        
+        authorLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(justAuthor.snp.top).offset(-5)
+            make.leading.equalTo(backImage.snp.leading).inset(25)
+            make.trailing.equalTo(backImage.snp.trailing).offset(25)
+        }
+    }
+    
+    func configureCategoryLabel() {
+        
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 25))
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.backgroundColor = UIColor(named: Colors.purplePrimary.rawValue)
+        container.layer.cornerRadius = 15
+        
+        backImage.addSubview(container)
+        container.addSubview(categoryLabel)
+        
+        // backImage.addSubview(categoryLabel)
+//        categoryLabel.backgroundColor = UIColor(named: Colors.purplePrimary.rawValue)
+//        categoryLabel.layer.cornerRadius = 10
+//
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        categoryLabel.textAlignment = .center
+        
+        
+        container.snp.makeConstraints { make in
+            make.bottom.equalTo(titleLabel.snp.top).offset(-22)
+            make.leading.equalTo(backImage.snp.leading).inset(25)
+            
+        }
+        
+        categoryLabel.snp.makeConstraints { make in
+            make.top.bottom.equalTo(container).inset(5)
+            make.leading.trailing.equalTo(container).inset(15)
         }
         
     }
     
+    func configureShareButton() {
+        backImage.addSubview(shareB)
+        backImage.bringSubviewToFront(shareB)
+        shareB.translatesAutoresizingMaskIntoConstraints = false
+        
+        shareB.setImage(UIImage(systemName: "arrowshape.turn.up.forward", withConfiguration: symbolConfig), for: .normal)
+        shareB.tintColor = .white
+        
+        shareB.addTarget(self, action: #selector(openSafari), for: .touchUpInside)
+        shareB.isUserInteractionEnabled = true
+        
+        shareB.snp.makeConstraints { make in
+            make.top.equalTo(bookmarkB.snp.bottom).offset(25)
+            make.trailing.equalTo(backImage.snp.trailing).inset(25)
+        }
+    }
     
-    // MARK: - Layout functions
+    func configureBookmarkButton() {
+        backImage.addSubview(bookmarkB)
+        backImage.bringSubviewToFront(bookmarkB)
+        
+        bookmarkB.translatesAutoresizingMaskIntoConstraints = false
+        bookmarkB.tintColor = .white
+        
+        bookmarkB.addTarget(self, action: #selector(bookmarkIt), for: .touchUpInside)
+        bookmarkB.isUserInteractionEnabled = true
+        
+        bookmarkB.snp.makeConstraints { make in
+            make.top.equalTo(backImage.snp.top).offset(120)
+            make.trailing.equalTo(backImage.snp.trailing).inset(25)
+        }
+    }
+    
+    func configureBackButton() {
+        backImage.addSubview(backB)
+        backImage.bringSubviewToFront(backB)
+        backB.translatesAutoresizingMaskIntoConstraints = false
+        
+        backB.setImage(UIImage(systemName: "arrow.backward", withConfiguration: symbolConfig), for: .normal)
+        backB.tintColor = .white
+        
+        backB.addTarget(self, action: #selector(closeVC), for: .touchUpInside)
+        backB.isUserInteractionEnabled = true
+        
+        backB.snp.makeConstraints { make in
+            make.top.equalTo(backImage.snp.top).offset(120)
+            make.leading.equalTo(backImage.snp.leading).inset(25)
+        }
+    }
+    
+    
+    // MARK: - Main Layout functions
     func configureSV() {
         scrollView.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview()
@@ -153,27 +293,50 @@ class DetailVC: UIViewController {
     
     // MARK: - Other functions
     @objc func closeVC() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func gav() {
+        print("gav")
+    }
+    
+    @objc func bookmarkIt() {
+        presenter?.bookmarkIt()
+    }
+    
+    @objc func openSafari() {
+        presenter?.openLink(vc: self)
+        print("open safari")
+    }
+    
+    @objc func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        if gestureRecognizer.direction == .right {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     func addViews() {
         view.addSubviews(scrollView)
         scrollView.addSubviews(imageContainer, backImage, formView)
         
+        // base
         configureSV()
         configureContainer()
         configureImage()
         configureFormView()
+       
+        // labels
+        configureBodyLabel()
+        configureJustAuthor()
+        configureAuthorNameLabel()
+        configureTitleLabel()
+        configureCategoryLabel()
         
-        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
-        formView.addSubview(bodyLabel)
-        bodyLabel.textAlignment = .justified
+        // buttons
+        configureBackButton()
+        configureBookmarkButton()
+        configureShareButton()
         
-        bodyLabel.snp.makeConstraints { make in
-            make.leading.equalTo(formView).offset(20)
-            make.trailing.equalTo(formView).offset(-20)
-            make.top.equalTo(formView).inset(25)
-        }
     }
     
     
@@ -186,14 +349,22 @@ extension DetailVC: DetailViewProtocol {
     func setNews(news: News?) {
         // UI code here
         titleLabel.text = news?.title
-        bodyLabel.text = news?.description
+        authorLabel.text = news?.author
+        if news?.description == nil {
+            bodyLabel.text = NSLocalizedString("DETAIL_NO_CONTENT", comment: "Article's content is empty, but you can click the arrow above to open web-site..")
+        } else {
+            bodyLabel.text = news?.description
+        }
+        categoryLabel.text = news?.source.name
         
         backImage.setupImage(news: news!)
         
     }
     
     func isBookmarked(isB: Bool) {
-        bookmarkB.setTitle(isB ? "􀉟" : "􀉞", for: .normal)
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 22)
+        bookmarkB.setImage(UIImage(systemName: isB ? "bookmark.fill" : "bookmark", withConfiguration: symbolConfig), for: .normal)
+        print(isB ? "Bookmarked" : "Not")
     }
     
     

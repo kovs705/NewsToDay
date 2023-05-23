@@ -31,10 +31,12 @@ final class CategoriesOnboardingViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        self.title = "Select your favorite topics"
+        self.title = "Recommendations"
         setupDiscriptionLabel()
         setupCollectionView()
         setupGetStartedButton()
+        
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func setupDiscriptionLabel() {
@@ -52,6 +54,12 @@ final class CategoriesOnboardingViewController: UIViewController {
         getStartedButton.tintColor = .white
         getStartedButton.titleLabel?.font = UIFont(name: Font.interSemiBold.rawValue, size: 16)
         getStartedButton.isEnabled = false
+        
+        getStartedButton.addTarget(self, action: #selector(getStarted), for: .touchUpInside)
+    }
+    
+    @objc func getStarted() {
+        presenter?.getStarted()
     }
     
     private func setupCollectionView() {

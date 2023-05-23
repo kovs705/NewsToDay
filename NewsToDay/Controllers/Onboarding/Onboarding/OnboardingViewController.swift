@@ -30,6 +30,10 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setConstraints()
+        
+        let tabBarC = self.tabBarController?.tabBar
+        tabBarC?.isHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
     
     //MARK: - Setup UI Elements
@@ -56,7 +60,7 @@ class OnboardingViewController: UIViewController {
     private func setupEggPageControl() {
         onboardingPageControl.numberOfPages = keka.count
         onboardingPageControl.currentPageIndicatorTintColor = UIColor(named: Colors.purplePrimary.rawValue)
-        onboardingPageControl.pageIndicatorTintColor = UIColor(named: Colors.greyLighter.rawValue)
+        onboardingPageControl.pageIndicatorTintColor = UIColor(named: Colors.greyLight.rawValue)
         onboardingPageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
     }
     
