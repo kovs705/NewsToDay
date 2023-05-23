@@ -50,7 +50,7 @@ class AccountController: UIViewController {
         text.font = UIFont(name: Font.interMedium.rawValue, size: 16)
         text.autocapitalizationType = .none
         text.autocorrectionType = .no
-        text.isSecureTextEntry = true 
+        text.isSecureTextEntry = true
         text.textContentType = .oneTimeCode
         text.delegate = self
         return text
