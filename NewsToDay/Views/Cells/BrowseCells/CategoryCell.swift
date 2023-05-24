@@ -56,7 +56,7 @@ class CategoryCell: UICollectionViewCell {
     
     private func setupConstraints() {
         categoryLabel.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalToSuperview()
+            make.top.bottom.left.right.equalToSuperview().inset(25)
         }
     }
 }

@@ -1,7 +1,12 @@
 import Foundation
 
-final class BrowseViewModel {
+class BrowseViewModel {
+    
+    let standard = UserDefaults.standard
+    var headlines = [News]()
+
     var content: BrowseContent? {
+        
         didSet {
             rows = [
                 BrowseRow(
@@ -19,9 +24,52 @@ final class BrowseViewModel {
             ]
         }
     }
+    
+    
+    //TODO: SF Symbols Icons instead mock-names
     var rows: [BrowseRow] = [
-        BrowseRow(index: 0, title: <#T##String?#>, items: <#T##[BrowseItem]#>)
+        BrowseRow(index: 0, title: "Categories", items: [
+            Category(name: Categories.business, icon: "business-icon"),
+            Category(name: Categories.entertainment, icon: "entertainment-icon"),
+            Category(name: Categories.general, icon: "general-icon"),
+            Category(name: Categories.health, icon: "health-icon"),
+            Category(name: Categories.science, icon: "science-icon"),
+            Category(name: Categories.sports, icon: "sports-icon"),
+            Category(name: Categories.technology, icon: "technology-icon")
+        ].map { .category($0)}),
+        
+        BrowseRow(index: 1, title: "News", items: [].map { .news($0)}),
+        
+        BrowseRow(index: 2, title: "Articles", items: [].map { .article($0)})
     ]
+    
+    func appendNews() {
+        rows.append(BrowseRow(index: 1, title: "News", items: <#T##[BrowseItem]#>))
+    }
+    
+    func getHeadlines() {
+        guard let categories = standard.object(forKey: Keys.categories) as? [Category] else {
+            return
+        }
+        
+        for category in categories {
+            let request = TopHeadlinesRequest(category: category, page: 1)
+            DefaultNetworkService().request(request) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let news):
+                    guard let news else { return }
+                    self.headlines.append(contentsOf: news.prefix(2))
+                    print("Appended \(news) from \(category) category!\\n")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+//    var rows: [BrowseRow] = [
+//        BrowseRow(index: 0, title: "Test", items: )
 //        BrowseRow(
 //            index: 0,
 //            title: "",

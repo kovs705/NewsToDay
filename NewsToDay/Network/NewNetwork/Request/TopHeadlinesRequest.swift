@@ -8,7 +8,8 @@
 import Foundation
 
 struct TopHeadlinesRequest: DataRequest {
-    private let apiKey: String = Web.APIKey.get.rawValue
+//    private let apiKey: String = Web.APIKey.get.rawValue
+    private let apiKey = "7acd60c01e994588bd9ddf3602785ba3"
         
     var category: String!
     var page = 1

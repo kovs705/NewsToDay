@@ -37,15 +37,16 @@ final class ResultPresenter: ResultPresenterProtocol {
         let request = TopHeadlinesRequest(category: category, page: page)
         page += 1
         networkService.request(request) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let news):
                 guard let news else { return }
-                self?.news.append(contentsOf: news)
-                self?.view?.success()
-                self?.isFetchig = false
+                self.news.append(contentsOf: news)
+                self.view?.success()
+                self.isFetchig = false
             case .failure(let error):
-                self?.view?.failure(error: error)
-                self?.isFetchig = false
+                self.view?.failure(error: error)
+                self.isFetchig = false
             }
         }
     }

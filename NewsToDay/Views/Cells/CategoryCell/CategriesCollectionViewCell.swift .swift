@@ -10,6 +10,8 @@ import SnapKit
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
     
+    static let id = "CategoryCell"
+    
     //MARK: - UI Elements
     
     var isChecked: Bool = false {
