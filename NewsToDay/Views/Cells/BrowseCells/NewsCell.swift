@@ -1,6 +1,6 @@
 import UIKit
 
-class NewsCell: UICollectionViewCell {
+final class NewsCell: UICollectionViewCell {
     
     static let id = "NewsCell"
     

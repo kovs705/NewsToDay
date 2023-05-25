@@ -12,7 +12,7 @@ import FirebaseAuth
 import GoogleSignIn
 import FirebaseFirestore
 
-class AccountController: UIViewController {
+final class AccountController: UIViewController {
     
     //MARK: UI Elements
     

@@ -10,7 +10,7 @@ import SnapKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class RegisterController: UIViewController {
+final class RegisterController: UIViewController {
     
     private let db = Firestore.firestore()
     
