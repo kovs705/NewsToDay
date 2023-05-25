@@ -34,7 +34,7 @@ class ArticlesCell: UICollectionViewCell {
     func setupImage(news: News) {
         guard let urlToImage = news.urlToImage else {
             newsImageView.image = placeholderImg
-            newsImageView.contentMode = .scaleToFill
+            newsImageView.contentMode = .scaleAspectFill
             loadingActivityIndicator.stopAnimating()
             return
         }
@@ -44,12 +44,12 @@ class ArticlesCell: UICollectionViewCell {
         ) { [weak self] image in
             guard let image else {
                 self?.newsImageView.image = image
-                self?.newsImageView.contentMode = .scaleToFill
+                self?.newsImageView.contentMode = .scaleAspectFill
                 self?.loadingActivityIndicator.stopAnimating()
                 return
             }
             self?.newsImageView.image = image
-            self?.newsImageView.contentMode = .scaleToFill
+            self?.newsImageView.contentMode = .scaleAspectFill
             self?.loadingActivityIndicator.stopAnimating()
         }
     }
@@ -67,7 +67,7 @@ class ArticlesCell: UICollectionViewCell {
     private func setupNewsImageView() {
         newsImageView.clipsToBounds = true
         newsImageView.layer.cornerRadius = 12
-        newsImageView.contentMode = .scaleToFill
+        newsImageView.contentMode = .scaleAspectFill
         newsImageView.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
     }
     

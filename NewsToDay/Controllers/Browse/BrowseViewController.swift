@@ -25,8 +25,6 @@ final class BrowseViewController: UIViewController {
     private let searchController = UISearchController()
     private var dataSource: DataSource!
     var presenter: BrowsePresenterProtocol!
-    private var viewModel = BrowseViewModel()
-    
     let standard = UserDefaults.standard
     let coordinator = Builder()
     
