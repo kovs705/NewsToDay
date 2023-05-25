@@ -38,13 +38,13 @@ class BrowseViewModel {
             Category(name: Categories.technology, icon: "technology-icon")
         ].map { .category($0)}),
         
-        BrowseRow(index: 1, title: "News", items: [].map { .news($0)}),
-        
         BrowseRow(index: 2, title: "Articles", items: [].map { .article($0)})
     ]
     
     func appendNews() {
-        rows.append(BrowseRow(index: 1, title: "News", items: <#T##[BrowseItem]#>))
+        rows.append(BrowseRow(index: 1, title: "News", items: headlines.map { .news($0)}))
+        
+        // get just new articles
     }
     
     func getHeadlines() {
