@@ -367,7 +367,7 @@ class RegisterController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 self.currentData()
-                let coordinator = Coordinator()
+                let coordinator = Builder()
                 let tabbar = TabBarController(coordinator: coordinator)
                 self.navigationController?.pushViewController(tabbar, animated: true)
             }

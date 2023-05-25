@@ -11,11 +11,11 @@ final class TabBarController: UITabBarController {
     
     //MARK: - Property
     
-    var coordinator: CoordinatorProtocol?
+    var coordinator: BuilderProtocol?
     
     //MARK: - Init
     
-    init(coordinator: CoordinatorProtocol) {
+    init(coordinator: BuilderProtocol) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         setupTabs()
@@ -30,7 +30,7 @@ final class TabBarController: UITabBarController {
     
     private func setupTabs() {
         let categories = coordinator?.getCategoriesModule()
-        let browse = BrowseViewController()
+        let browse = coordinator?.getBrowseModule()
         let profile = coordinator?.getProfileModule()
         let bookmarks = coordinator?.getBookmarksModule()
         

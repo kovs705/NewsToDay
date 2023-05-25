@@ -100,7 +100,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc private func pushViewController() {
-        let categoriesOnboarding = Coordinator().getCategoriesOnboardingModule()
+        let categoriesOnboarding = Builder().getCategoriesOnboardingModule()
         navigationController?.pushViewController(categoriesOnboarding, animated: true)
     }
     
