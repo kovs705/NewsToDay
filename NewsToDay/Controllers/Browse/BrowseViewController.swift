@@ -24,10 +24,8 @@ private typealias Snapshot = NSDiffableDataSourceSnapshot<BrowseRow, BrowseItem>
 final class BrowseViewController: UIViewController {
     private let searchController = UISearchController()
     private var dataSource: DataSource!
-    private var viewModel = BrowseViewModel()
-    
-    let standard = UserDefaults.standard
-    let coordinator = Coordinator()
+    var presenter: BrowsePresenterProtocol!
+    let coordinator = Builder()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero,
@@ -37,6 +35,8 @@ final class BrowseViewController: UIViewController {
                                 forCellWithReuseIdentifier: CategoryCell.id)
         collectionView.register(NewsCell.self,
                                 forCellWithReuseIdentifier: NewsCell.id)
+        collectionView.register(ArticlesCell.self,
+                                forCellWithReuseIdentifier: ArticlesCell.id)
         collectionView.register(SectionHeaderView.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: SectionHeaderView.id)
@@ -52,11 +52,13 @@ final class BrowseViewController: UIViewController {
                 return cell
             case let .news(news):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.id, for: indexPath) as? NewsCell else { fatalError("Unable to dequeue NewsCell")}
-                cell.configure(with: news)
+                cell.setupCell(news: news)
+                cell.setupImage(news: news)
                 return cell
             case let .article(article):
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.id, for: indexPath) as? NewsCell else { fatalError("Unable to dequeue NewsCell")}
-                cell.configure(with: article)
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArticlesCell.id, for: indexPath) as? ArticlesCell else { fatalError("Unable to dequeue NewsCell")}
+                cell.setupCell(news: article)
+                cell.setupImage(news: article)
                 return cell
             }
         }
@@ -69,7 +71,7 @@ final class BrowseViewController: UIViewController {
     
     private func reloadData() {
         var snapshot = Snapshot()
-        let rows = viewModel.rows
+        let rows = presenter.browseRows
         snapshot.appendSections(rows)
         rows.forEach {
             snapshot.appendItems($0.items, toSection: $0)
@@ -77,50 +79,33 @@ final class BrowseViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
+    //MARK: - UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
         print("Checking")
-        checkOnboarding()
+//        checkOnboarding()
         
-        configureNavigation()
         configureSearchController()
+        configureNavigation()
         setupCollectionView()
         configureDataSouce()
         reloadData()
     }
-    
-    
-    private func pushToOnboarding() {
-        navigationController?.pushViewController((coordinator.getOnboardingModule()), animated: true)
-    }
-    
-    private func checkOnboarding() {
-        guard let isOnboarded = standard.object(forKey: Keys.onboarding) as? Bool else {
-            pushToOnboarding()
-            return
-        }
-        
-        if isOnboarded == false {
-            pushToOnboarding()
-        }
-    }
 }
+
+//MARK: - configureSearchController
 
 extension BrowseViewController {
     func configureSearchController() {
-        let image = UIImage(systemName: "slider.horizontal.3")
-        searchController.searchBar.setImage(image, for: .bookmark, state: .normal)
-        searchController.searchBar.showsBookmarkButton = true
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search"
     }
 
     func configureNavigation() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Browse"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -130,6 +115,8 @@ extension BrowseViewController {
         collectionView.snp.makeConstraints {$0.edges.equalTo(view.safeAreaLayoutGuide)}
     }
 }
+
+//MARK: - UISearchResultsUpdating
 
 extension BrowseViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -141,11 +128,27 @@ extension BrowseViewController: UISearchResultsUpdating {
     }
 }
 
+//MARK: - UISearchBarDelegate
+
 extension BrowseViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
     }
 }
+
+//MARK: - BrowseViewProtocol
+
+extension BrowseViewController: BrowseViewProtocol {
+    func success() {
+        reloadData()
+    }
+    
+    func failure(error: Error) {
+        reloadData()
+    }
+}
+
+//MARK: - UICollectionViewLayout
 
 extension BrowseViewController {
     func createCompositionalLayout() -> UICollectionViewLayout {
@@ -177,7 +180,7 @@ extension BrowseViewController {
     func createNewsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .estimated(254))
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.67), heightDimension: .estimated(256))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
         let section = NSCollectionLayoutSection(group: layoutGroup)
         section.interGroupSpacing = 10
@@ -189,10 +192,11 @@ extension BrowseViewController {
     func createArticleSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(100))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
         let section = NSCollectionLayoutSection(group: layoutGroup)
         section.boundarySupplementaryItems = [createSectionHeader()]
+        section.orthogonalScrollingBehavior = .groupPaging
         section.interGroupSpacing = 10
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         return section

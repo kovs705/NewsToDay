@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
 
     private var nextButton = UIButton(type: .system)
     private var onboardingScrollView = UIScrollView()
@@ -100,7 +100,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @objc private func pushViewController() {
-        let categoriesOnboarding = Coordinator().getCategoriesOnboardingModule()
+        let categoriesOnboarding = Builder().getCategoriesOnboardingModule()
         navigationController?.pushViewController(categoriesOnboarding, animated: true)
     }
     

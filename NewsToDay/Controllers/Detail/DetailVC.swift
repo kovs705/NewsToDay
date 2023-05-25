@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailVC: UIViewController {
+final class DetailVC: UIViewController {
     
     var presenter: DetailViewPresenterProtocol!
     let symbolConfig = UIImage.SymbolConfiguration(pointSize: 22)

@@ -138,7 +138,7 @@ extension BookmarksViewController: UITableViewDataSource {
 
 extension BookmarksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let coordinator = Coordinator()
+        let coordinator = Builder()
         guard let currentArticle = presenter.news?[indexPath.row] else { return }
         
         navigationController?.pushViewController(coordinator.getDetailVCModule(news: currentArticle), animated: true)

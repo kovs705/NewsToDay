@@ -1,35 +1,34 @@
+//
+//  ArticlesCollectionViewCell.swift
+//  NewsToDay
+//
+//  Created by Mikhail Tedeev on 25.05.2023.
+//
+
 import UIKit
 
-final class NewsCell: UICollectionViewCell {
+final class ArticlesCell: UICollectionViewCell {
     
-    static let id = "NewsCell"
+    static let id = "ArticlesCell"
     
     //MARK: - UI Elements
     
     private var newsImageView = UIImageView()
     private var newsTitle = UILabel()
     private var newsSourse = UILabel()
+    private var newsCellBackgroundView = UIView()
     private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
     
     let placeholderImg = UIImage(named: "placeholderImage")
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setLayout()
-        setupViews()
-        setupGradient()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     //MARK: - Public Setup
     
     func setupCell(news: News) {
+        setupViews()
+        setLayout()
         guard let title = news.title, let sourse = news.source.name else { return }
         newsTitle.text = title
-        newsSourse.text = sourse.uppercased()
+        newsSourse.text = sourse
     }
     
     func setupImage(news: News) {
@@ -58,9 +57,9 @@ final class NewsCell: UICollectionViewCell {
     //MARK: - Setup UI Elements
     
     private func setupViews() {
-        setupNewsImageView()
         backgroundColor = .clear
         loadingActivityIndicator.startAnimating()
+        setupNewsImageView()
         setupNewsTitle()
         setupNewsSourse()
     }
@@ -72,26 +71,16 @@ final class NewsCell: UICollectionViewCell {
         newsImageView.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
     }
     
-    private func setupGradient() {
-        newsImageView.layoutIfNeeded()
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.7).cgColor]
-        gradient.locations = [0.0, 1.0]
-        newsImageView.layer.insertSublayer(gradient, at: 0)
-        gradient.frame = newsImageView.bounds
-        newsImageView.layoutIfNeeded()
-    }
-    
     private func setupNewsTitle() {
-        newsTitle.numberOfLines = 3
+        newsTitle.numberOfLines = 4
         newsTitle.font = UIFont(name: Font.interSemiBold.rawValue, size: 14)
-        newsTitle.textColor = .white
+        newsTitle.textColor = UIColor(named: Colors.blackPrimary.rawValue)
     }
     
     private func setupNewsSourse() {
         newsSourse.numberOfLines = 1
         newsSourse.font = UIFont(name: Font.interRegular.rawValue, size: 11)
-        newsSourse.textColor = .white
+        newsSourse.textColor = UIColor(named: Colors.greyPrimary.rawValue)
     }
     
     //MARK: - Layout
@@ -102,8 +91,8 @@ final class NewsCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
-        [newsImageView, newsTitle,
-         newsSourse, loadingActivityIndicator].forEach {
+        let allViews = [newsCellBackgroundView, newsImageView, newsTitle, newsSourse, loadingActivityIndicator]
+        allViews.forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -111,25 +100,29 @@ final class NewsCell: UICollectionViewCell {
     
     private func makeContraints() {
         NSLayoutConstraint.activate([
-            newsImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            newsImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            newsImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            newsImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            newsCellBackgroundView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            newsCellBackgroundView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            newsCellBackgroundView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            newsCellBackgroundView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            newsCellBackgroundView.heightAnchor.constraint(equalToConstant: 96),
             
-            newsTitle.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor,
-                                              constant: -24),
-            newsTitle.leadingAnchor.constraint(equalTo: newsImageView.leadingAnchor,
-                                               constant: 24),
-            newsTitle.trailingAnchor.constraint(equalTo: newsImageView.trailingAnchor,
-                                                constant: -24),
+            newsImageView.leadingAnchor.constraint(equalTo: newsCellBackgroundView.leadingAnchor),
+            newsImageView.topAnchor.constraint(equalTo: newsCellBackgroundView.topAnchor),
+            newsImageView.bottomAnchor.constraint(equalTo: newsCellBackgroundView.bottomAnchor),
+            newsImageView.heightAnchor.constraint(equalTo: newsCellBackgroundView.heightAnchor),
+            newsImageView.widthAnchor.constraint(equalTo: newsImageView.heightAnchor),
             
-            newsSourse.leadingAnchor.constraint(equalTo: newsTitle.leadingAnchor),
+            newsTitle.topAnchor.constraint(equalTo: newsCellBackgroundView.centerYAnchor, constant: -24),
+            newsTitle.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
+            newsTitle.trailingAnchor.constraint(equalTo: newsCellBackgroundView.trailingAnchor, constant: -20),
+            
+            newsSourse.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 16),
             newsSourse.bottomAnchor.constraint(equalTo: newsTitle.topAnchor, constant: -8),
             
             loadingActivityIndicator.centerYAnchor.constraint(equalTo: newsImageView.centerYAnchor),
             loadingActivityIndicator.centerXAnchor.constraint(equalTo: newsImageView.centerXAnchor),
             loadingActivityIndicator.widthAnchor.constraint(equalToConstant: 32),
-            loadingActivityIndicator.heightAnchor.constraint(equalToConstant: 32),
+            loadingActivityIndicator.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
 }
