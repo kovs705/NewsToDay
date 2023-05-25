@@ -73,13 +73,13 @@ final class NewsCell: UICollectionViewCell {
     }
     
     private func setupGradient() {
-        layoutIfNeeded()
+        newsImageView.layoutIfNeeded()
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.7).cgColor]
         gradient.locations = [0.0, 1.0]
         newsImageView.layer.insertSublayer(gradient, at: 0)
         gradient.frame = newsImageView.bounds
-        layoutIfNeeded()
+        newsImageView.layoutIfNeeded()
     }
     
     private func setupNewsTitle() {

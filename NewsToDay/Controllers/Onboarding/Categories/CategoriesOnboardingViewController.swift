@@ -35,7 +35,7 @@ final class CategoriesOnboardingViewController: UIViewController {
         setupDiscriptionLabel()
         setupCollectionView()
         setupGetStartedButton()
-        
+        navigationItem.setHidesBackButton(true, animated: true)
         navigationController?.navigationBar.isHidden = false
     }
     
@@ -58,10 +58,6 @@ final class CategoriesOnboardingViewController: UIViewController {
         getStartedButton.addTarget(self, action: #selector(getStarted), for: .touchUpInside)
     }
     
-    @objc func getStarted() {
-        presenter?.getStarted()
-    }
-    
     private func setupCollectionView() {
         let layout = CategoriesLayout.createTwoColumnLayout(in: view)
         
@@ -71,6 +67,13 @@ final class CategoriesOnboardingViewController: UIViewController {
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
         collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "CategoriesOnboardingViewController")
+    }
+    
+    @objc func getStarted() {
+        presenter?.getStarted()
+        let builder = Builder()
+        let tabbar = TabBarController(builder: builder)
+        navigationController?.pushViewController(tabbar, animated: true)
     }
     
     //MARK: - Layout

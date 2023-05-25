@@ -25,7 +25,6 @@ final class BrowseViewController: UIViewController {
     private let searchController = UISearchController()
     private var dataSource: DataSource!
     var presenter: BrowsePresenterProtocol!
-    let standard = UserDefaults.standard
     let coordinator = Builder()
     
     private lazy var collectionView: UICollectionView = {
@@ -94,22 +93,6 @@ final class BrowseViewController: UIViewController {
         setupCollectionView()
         configureDataSouce()
         reloadData()
-    }
-    
-    
-    private func pushToOnboarding() {
-        navigationController?.pushViewController((coordinator.getOnboardingModule()), animated: true)
-    }
-    
-    private func checkOnboarding() {
-        guard let isOnboarded = standard.object(forKey: Keys.onboarding) as? Bool else {
-            pushToOnboarding()
-            return
-        }
-        
-        if isOnboarded == false {
-            pushToOnboarding()
-        }
     }
 }
 

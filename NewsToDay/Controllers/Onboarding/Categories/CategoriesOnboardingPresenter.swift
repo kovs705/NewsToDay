@@ -45,8 +45,7 @@ final class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol
     }
     
     func getStarted() {
-        // standard.set(categories, forKey: Keys.categories)
-        print("You chose \(selectedCategories)")
+        UserDefaults.standard.set(true, forKey: Keys.onboarding)
     }
     
     //MARK: - Private Methods

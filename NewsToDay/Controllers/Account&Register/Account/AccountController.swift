@@ -270,8 +270,8 @@ final class AccountController: UIViewController {
                     alertController.addAction(action)
                     self.present(alertController, animated: true, completion: nil)
                 } else {
-                    let coordinator = Builder()
-                    let tabbar = TabBarController(coordinator: coordinator)
+                    let builder = Builder()
+                    let tabbar = TabBarController(builder: builder)
                     self.navigationController?.pushViewController(tabbar, animated: true)
                 }
             }
