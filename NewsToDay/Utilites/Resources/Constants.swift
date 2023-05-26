@@ -35,13 +35,13 @@ enum Colors: String {
 }
 
 enum Categories {
-    static let business = "business"
-    static let entertainment = "entertainment"
-    static let general = "general"
-    static let health = "health"
-    static let science = "science"
-    static let sports = "sports"
-    static let technology = "technology"
+    static let business = NSLocalizedString("CONSTANS_CATEGORIES_BISNESS", comment: "business")
+    static let entertainment = NSLocalizedString("CONSTANS_CATEGORIES_ENTERTAINMENT", comment: "entertainment")
+    static let general = NSLocalizedString("CONSTANS_CATEGORIES_GENERAL", comment: "general")
+    static let health = NSLocalizedString("CONSTANS_CATEGORIES_HEALTH", comment: "health")
+    static let science = NSLocalizedString("CONSTANS_CATEGORIES_SCIENCE", comment: "science")
+    static let sports = NSLocalizedString("CONSTANS_CATEGORIES_SPORT", comment: "sport")
+    static let technology = NSLocalizedString("CONSTANS_CATEGORIES_TECHNOLOGY", comment: "techlogy")
 }
 
 enum Web {
@@ -193,11 +193,11 @@ enum Onboarding {
         var getTitle: String {
             switch self {
             case .home:
-                return "On the main screen you can see the latest events and recommended news for you."
+                return NSLocalizedString("CONSTANS_DESCRIPRION_HOME", comment: "On the main screen you can see the latest events and recommended news for you.")
             case .categories:
-                return "On the category screen you can see the latest news for the selected category"
+                return NSLocalizedString("CONSTANS_DESCRIPRION_CATEGORIES", comment: "On the category screen you can see the latest news for the selected category")
             case .bookmarks:
-                return "You can also save the news you like and it will remain in your bookmarks."
+                return NSLocalizedString("CONSTANS_DESCRIPRION_BOOKMARKS", comment: "You can also save the news you like and it will remain in your bookmarks.")
             }
         }
     }

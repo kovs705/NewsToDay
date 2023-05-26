@@ -31,7 +31,7 @@ final class CategoriesOnboardingViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        self.title = "Recommendations"
+        self.title = NSLocalizedString("CATEGORIES_ONBORDIN_TITLTE", comment: "Recommendations")
         setupDiscriptionLabel()
         setupCollectionView()
         setupGetStartedButton()
@@ -40,7 +40,7 @@ final class CategoriesOnboardingViewController: UIViewController {
     }
     
     private func setupDiscriptionLabel() {
-        descriptionLabel.text = "Select some of your favorite topics to let us suggest better news for you."
+        descriptionLabel.text = NSLocalizedString("CATEGORIES_ONBOARDING_SUBTITLE", comment: "Select some of your favourite topics to let us suggest better news for you")
         descriptionLabel.textColor = UIColor(named: Colors.greyPrimary.rawValue)
         descriptionLabel.font = UIFont(name: Font.interRegular.rawValue, size: 16)
         descriptionLabel.numberOfLines = 2

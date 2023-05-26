@@ -49,10 +49,11 @@ ONBOARDING_ALL_NEWS_LABEL_TWO = "Лучшее приложение для пор
 ONBOARDING_NEXT_BUTTON = "Дальше";
 ONBOARDING_GET_STARTED_BUTTON = "Начать";
 
-HOME_TITLE_LABEL = "Найти";
+HOME_TITLE_LABEL = "Просмотреть";
 HOME_SUBTITLE_LABEL = "Открывайте для себя вещи этого мира";
 HOME_SEARCH_BAR = "Поиск";
 HOME_HEADER_TITLE = "Рекомендованное для Вас";
+HOME_BUTTON_TITLE = "См. все";
 
 
 CATEGORIES_ONBOARDING_HEADER_TITLE = "Выберите Ваши любимые темы";
@@ -60,6 +61,7 @@ CATEGORIES_HEADER_TITLE = "Категории";
 CATEGORIES_ONBOARDING_SUBTITLE = "Выберите несколько Ваших любимых тем, чтобы мы могли предложить Вам лучшие новости.";
 CATEGORIES_SUBTITLE = "Тысячи статей в каждой категории";
 CATEGORIES_NEXT_BUTTON_TITLE = "Дальше";
+CATEGORIES_ONBORDIN_TITLTE = "Рекомендации";
 
 BOOKMARKS_TITLE_LABEL = "Закладки";
 BOOKMARKS_SUBTITLE_LABEL = "Сохраненные статьи в библиотеке";
@@ -86,6 +88,17 @@ LANGUAGE_ALERT_TITLE = "Перезапустите приложение";
 LANGUAGE_ALERT_MESSAGE = "Перезапустить приложение для изменения языка?";
 LANGUAGE_ALERT_CANCEL_ACTION = "Отмена";
 LANGUAGE_ALERT_OK_ACTION = "Да";
+
+CONSTANS_DESCRIPRION_HOME = "На главном экране вы можете увидеть последние события и рекомендуемые для вас новости.";
+CONSTANS_DESCRIPRION_CATEGORIES = "На экране категории вы можете увидеть последние новости для выбранной категории.";
+CONSTANS_DESCRIPRION_BOOKMARKS = "Вы также можете сохранить понравившиеся новости, и они останутся в ваших закладках.";
+CONSTANS_CATEGORIES_BISNESS = "биззнесс";
+CONSTANS_CATEGORIES_ENTERTAINMENT = "развлечения";
+CONSTANS_CATEGORIES_GENERAL = "общий";
+CONSTANS_CATEGORIES_HEALTH = "здоровье";
+CONSTANS_CATEGORIES_SCIENCE = "наука";
+CONSTANS_CATEGORIES_SPORT = "спорт";
+CONSTANS_CATEGORIES_TECHNOLOGY = "технологии";
 
 DETAIL_AUTHOR = "Автор";
 DETAIL_NO_CONTENT = "Контент новости пустой, но вы можете нажать на стрелку сверху чтобы открыть веб-страницу";

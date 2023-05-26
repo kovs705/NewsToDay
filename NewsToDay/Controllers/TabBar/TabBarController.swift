@@ -37,24 +37,24 @@ final class TabBarController: UITabBarController {
         var tabs: [UINavigationController] = []
         
         if let browseNavigationController = setupViewController(browse,
-                                                                title: "Browse",
+                                                                title: NSLocalizedString("HOME_TITLE_LABEL", comment: "Browse"),
                                                                 iconSystemName: "house") {
             tabs.append(browseNavigationController)
         }
         if let categoriesNavigationController = setupViewController(categories,
-                                                                    title: "Categories",
+                                                                    title: NSLocalizedString("CATEGORIES_HEADER_TITLE", comment: "Categories"),
                                                                     iconSystemName: "square.grid.2x2") {
             tabs.append(categoriesNavigationController)
         }
         
         if let bookmarksNavigationController = setupViewController(bookmarks,
-                                                                   title: "Bookmarks",
+                                                                   title: NSLocalizedString("BOOKMARKS_TITLE_LABEL", comment: "Bookmarks"),
                                                                    iconSystemName: "bookmark") {
             tabs.append(bookmarksNavigationController)
         }
         
         if let profileViewController = setupViewController(profile,
-                                            title: "Profile",
+                                            title: NSLocalizedString("PROFILE_PROFILE_LABEL", comment: "Profile"),
                                             iconSystemName: "person") {
             tabs.append(profileViewController)
         }

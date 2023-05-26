@@ -121,7 +121,7 @@ extension BrowseViewController {
     func configureSearchController() {
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = NSLocalizedString("HOME_SEARCH_BAR", comment: "Search")
     }
 
     func configureNavigation() {

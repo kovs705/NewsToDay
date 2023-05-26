@@ -53,12 +53,14 @@ HOME_TITLE_LABEL = "Browse";
 HOME_SUBTITLE_LABEL = "Discover things of this world";
 HOME_SEARCH_BAR = "Search";
 HOME_HEADER_TITLE = "Recommended For You";
+HOME_BUTTON_TITLE = "See all";
 
 CATEGORIES_ONBOARDING_HEADER_TITLE = "Select your favourite topics";
 CATEGORIES_HEADER_TITLE = "Categories";
 CATEGORIES_ONBOARDING_SUBTITLE = "Select some of your favourite topics to let us suggest better news for you";
 CATEGORIES_SUBTITLE = "Thousands of articles in each category";
 CATEGORIES_NEXT_BUTTON_TITLE = "Next";
+CATEGORIES_ONBORDIN_TITLTE = "Recommendations";
 
 BOOKMARKS_TITLE_LABEL = "Bookmarks";
 BOOKMARKS_SUBTITLE_LABEL = "Saved articles to the library";
@@ -85,6 +87,17 @@ LANGUAGE_ALERT_TITLE = "Restart the application";
 LANGUAGE_ALERT_MESSAGE = "Restart the app to change the language?";
 LANGUAGE_ALERT_CANCEL_ACTION = "Cancel";
 LANGUAGE_ALERT_OK_ACTION = "Yes";
+
+CONSTANS_DESCRIPRION_HOME = "On the main screen you can see the latest events and recommended news for you.";
+CONSTANS_DESCRIPRION_CATEGORIES = "On the category screen you can see the latest news for the selected category.";
+CONSTANS_DESCRIPRION_BOOKMARKS = "You can also save the news you like and it will remain in your bookmarks.";
+CONSTANS_CATEGORIES_BISNESS = "business";
+CONSTANS_CATEGORIES_ENTERTAINMENT = "entertainment";
+CONSTANS_CATEGORIES_GENERAL = "general";
+CONSTANS_CATEGORIES_HEALTH = "health";
+CONSTANS_CATEGORIES_SCIENCE = "science";
+CONSTANS_CATEGORIES_SPORT = "sport";
+CONSTANS_CATEGORIES_TECHNOLOGY = "techlogy";
 
 DETAIL_AUTHOR = "Author";
 DETAIL_NO_CONTENT = "Article's content is empty, but you can click the arrow above to open web-site..";

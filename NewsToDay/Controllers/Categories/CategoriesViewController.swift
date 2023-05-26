@@ -36,7 +36,7 @@ final class CategoriesViewController: UIViewController {
     }
     
     private func setupDiscriptionLabel() {
-        descriptionLabel.text = "Thousands of articles in each category"
+        descriptionLabel.text = NSLocalizedString("CATEGORIES_SUBTITLE", comment: "Thousands of articles in each category")
         descriptionLabel.textColor = UIColor(named: Colors.greyPrimary.rawValue)
         descriptionLabel.font = UIFont(name: Font.interRegular.rawValue, size: 16)
     }

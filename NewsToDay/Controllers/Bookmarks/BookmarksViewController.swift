@@ -68,7 +68,7 @@ final class BookmarksViewController: UIViewController {
     private func setupEmptyLabel() {
         emptyLabel = UILabel(textColor: .blackPrimary, textSize: 16, font: .interMedium, numberOfLines: 3)
         emptyLabel.textAlignment = .center
-        emptyLabel.text = "You haven't saved any articles yet. Start reading and bookmarking them now"
+        emptyLabel.text = NSLocalizedString("BOOKMARKS_MESSAGE_VIEW", comment: "You haven't saved any articles yet. Start reading and bookmarking them now")
     }
     
     //MARK: - Layout

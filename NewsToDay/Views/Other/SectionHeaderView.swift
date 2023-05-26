@@ -19,7 +19,7 @@ final class SectionHeaderView: UICollectionReusableView {
 extension SectionHeaderView {
     private func setupTitle() {
         addSubview(title)
-        title.text = "Recommended for you"
+        title.text = NSLocalizedString("HOME_HEADER_TITLE", comment: "Recommended For You")
         title.snp.makeConstraints {
             $0.top.left.bottom.equalToSuperview()
         }
@@ -27,7 +27,7 @@ extension SectionHeaderView {
     
     private func setupButton() {
         addSubview(button)
-        button.setTitle("See all", for: .normal)
+        button.setTitle(NSLocalizedString("HOME_BUTTON_TITLE", comment: "See all"), for: .normal)
         button.snp.makeConstraints {
             $0.centerY.equalTo(title)
             $0.right.equalToSuperview()
