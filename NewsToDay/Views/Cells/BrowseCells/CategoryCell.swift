@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class CategoryCell: UICollectionViewCell {
+final class CategoryCell: UICollectionViewCell {
     
     static let id = "CategoryCell"
     
@@ -12,7 +12,7 @@ class CategoryCell: UICollectionViewCell {
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         label.textColor = UIColor(named: Colors.greyDark.rawValue)
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont(name: Font.interSemiBold.rawValue, size: 12)
         return label
     }()
     
@@ -56,7 +56,8 @@ class CategoryCell: UICollectionViewCell {
     
     private func setupConstraints() {
         categoryLabel.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalToSuperview().inset(25)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.top.bottom.equalToSuperview().inset(8)
         }
     }
 }

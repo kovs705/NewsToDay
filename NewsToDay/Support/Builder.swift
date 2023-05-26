@@ -7,9 +7,9 @@
 
 import UIKit
 
-protocol CoordinatorProtocol {
+protocol BuilderProtocol {
     func getCategoriesModule() -> UIViewController
-    static func getResultModule(category: Category, coordinator: CoordinatorProtocol) -> UIViewController
+    static func getResultModule(category: Category, coordinator: BuilderProtocol) -> UIViewController
     
     func getCategoriesOnboardingModule() -> UIViewController
     func getOnboardingModule() -> UIViewController
@@ -22,9 +22,10 @@ protocol CoordinatorProtocol {
     func getAccountVCModule() -> UIViewController
     func getRegisterVCModule() -> UIViewController
     func getBookmarksModule() -> UIViewController
+    func getBrowseModule() -> UIViewController
 }
 
-class Coordinator: CoordinatorProtocol {
+final class Builder: BuilderProtocol {
     func getBookmarksModule() -> UIViewController {
         let view = BookmarksViewController()
         let persistenceManager = PersistenceManager()
@@ -42,8 +43,8 @@ class Coordinator: CoordinatorProtocol {
         return view
     }
     
-    static func getResultModule(category: Category, coordinator: CoordinatorProtocol) -> UIViewController {
-        let coordinator = Coordinator()
+    static func getResultModule(category: Category, coordinator: BuilderProtocol) -> UIViewController {
+        let coordinator = Builder()
         let view = ResultViewController()
         let networkService = DefaultNetworkService()
         let presenter = ResultPresenter(view: view, networkService: networkService, category: category)
@@ -89,6 +90,15 @@ class Coordinator: CoordinatorProtocol {
     
     func getRegisterVCModule() -> UIViewController {
         let view = RegisterController()
+        return view
+    }
+    
+    
+    func getBrowseModule() -> UIViewController {
+        let view = BrowseViewController()
+        let networkService = DefaultNetworkService()
+        let presenter = BrowsePresenter(view: view, networkService: networkService)
+        view.presenter = presenter
         return view
     }
 }

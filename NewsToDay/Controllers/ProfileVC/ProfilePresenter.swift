@@ -18,7 +18,7 @@ protocol ProfilePresenterProtocol: AnyObject {
     func calculate()
 }
 
-class ProfilePresenter: ProfilePresenterProtocol {
+final class ProfilePresenter: ProfilePresenterProtocol {
     
     weak var view: ProfileViewProtocol?
     
