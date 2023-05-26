@@ -1,36 +1,30 @@
 //
-//  TopHeadlinesRequest.swift
+//  SearchRequest.swift
 //  NewsToDay
 //
-//  Created by Mikhail Tedeev on 19.05.2023.
+//  Created by Kovs on 26.05.2023.
 //
 
 import Foundation
 
-struct TopHeadlinesRequest: DataRequest {
+struct SearchResultRequest: DataRequest {
 //    private let apiKey: String = Web.APIKey.get.rawValue
     private let apiKey = "7acd60c01e994588bd9ddf3602785ba3"
         
-    var category: String!
+    var searchRequest: String!
     var page = 1
     
     var url: String {
         let baseUrl = "https://newsapi.org/v2"
-        let path = "/top-headlines"
+        let path = "/everything?"
         return baseUrl + path
-    }
-    
-    var headers: [String : String] {
-        [:]
     }
     
     var queryItems: [String : String] {
         [
             "apiKey": apiKey,
-            "country": "us",
-            "category": category,
-            "pageSize": "10",
-            "page": "\(page)"
+            "page": "\(page)",
+            "q": searchRequest
         ]
     }
     
@@ -38,8 +32,8 @@ struct TopHeadlinesRequest: DataRequest {
         .get
     }
     
-    init(category: Category, page: Int) {
-        self.category = category.name
+    init(searchRequest: String, page: Int) {
+        self.searchRequest = searchRequest
         self.page = page
     }
     
@@ -54,3 +48,4 @@ struct TopHeadlinesRequest: DataRequest {
         return response.articles
     }
 }
+

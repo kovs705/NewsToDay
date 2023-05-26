@@ -10,14 +10,9 @@ import SnapKit
 
 final class CategoriesCollectionViewCell: UICollectionViewCell {
     
-    //MARK: - UI Elements
+    static let id = "CategoryCell"
     
-    var isChecked: Bool = false {
-          didSet {
-              // ui to show for the user
-              // checkmarkImageView.isHidden = !isChecked
-          }
-      }
+    //MARK: - UI Elements
     
     var titleLabel = UILabel()
     

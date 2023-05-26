@@ -9,7 +9,7 @@ import UIKit
 
 protocol BuilderProtocol {
     func getCategoriesModule() -> UIViewController
-    static func getResultModule(category: Category, coordinator: BuilderProtocol) -> UIViewController
+    static func getResultModule(category: Category?, coordinator: BuilderProtocol, headOrSearch: Bool, searchString: String?) -> UIViewController
     
     func getCategoriesOnboardingModule() -> UIViewController
     func getOnboardingModule() -> UIViewController
@@ -43,14 +43,18 @@ final class Builder: BuilderProtocol {
         return view
     }
     
-    static func getResultModule(category: Category, coordinator: BuilderProtocol) -> UIViewController {
+    static func getResultModule(category: Category?, coordinator: BuilderProtocol, headOrSearch: Bool, searchString: String?) -> UIViewController {
         let coordinator = Builder()
         let view = ResultViewController()
         let networkService = DefaultNetworkService()
-        let presenter = ResultPresenter(view: view, networkService: networkService, category: category)
+        let presenter = ResultPresenter(view: view, networkService: networkService, category: category, headlinesOrSearch: headOrSearch, searchRequest: searchString)
         view.presenter = presenter
         view.coordinator = coordinator
-        view.title = "\(category.icon) \(category.name.capitalized)"
+        if headOrSearch {
+            view.title = "\(category!.icon) \(category!.name.capitalized)"
+        } else {
+            view.title = searchString!
+        }
         return view
     }
     

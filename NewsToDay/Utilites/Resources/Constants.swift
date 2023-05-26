@@ -139,29 +139,23 @@ enum Font: String {
 
 enum Constants {
     enum String {
-        static let ok = "Ok"
+        static let ok = NSLocalizedString("ALERT_OK", comment: "")
         static let eight = 8
-        static let name = "Name"
-        static let signIn = "Sign In"
-        static let signUp = "Sign Up"
-        static let info = "Information"
-        static let password = "Password"
-        static let email = "Email Adress"
-        static let repeatPas = "Repeat password"
-        static let welcome = "Welcome Back 👋"
-        static let google = "Sign in with Google"
-        static let errorPassword = "Incorrect password"
-        static let welcomeToNews = "Welcome to NewsToDay"
-        static let dontAc = "Don't have an account? Sign Up"
-        static let haveAnAcc = "Already have an account? Sign In"
-        static let hello = """
-Hello, I guess you are new around here. You
-can start using the application after sign up.
-"""
-        static let iAm = """
-I am happy to see you again. You can
-continue where you left off by logging in
-"""
+        static let name = NSLocalizedString("AUTHORIZATION_VIEW_NAME", comment: "")
+        static let signIn = NSLocalizedString("AUTHORIZATION_VC_FALSE_SIGNIN_BUTTON", comment: "")
+        static let signUp = NSLocalizedString("AUTHORIZATION_VC_TRUE_SIGNIN_BUTTON", comment: "")
+        static let info = NSLocalizedString("AUTHORIZATION_VIEW_INFORMATION", comment: "")
+        static let password = NSLocalizedString("AUTHORIZATION_VIEW_PASSWORD_TEXTFIELD", comment: "")
+        static let email = NSLocalizedString("AUTHORIZATION_VIEW_EMAIL_TEXTFIELD", comment: "")
+        static let repeatPas = NSLocalizedString("AUTHORIZATION_VIEW_CONFIRM_PASSWORD_TEXTFIELD", comment: "")
+        static let welcome = NSLocalizedString("AUTHORIZATION_VC_FALSE_TOP_LABEL", comment: "")
+        static let google = NSLocalizedString("AUTHORIZATION_VIEW_THROUGH_GOOGLE", comment: "")
+        static let errorPassword = NSLocalizedString("ALERT_ERROR_PASSWORD", comment: "")
+        static let welcomeToNews = NSLocalizedString("AUTHORIZATION_VC_TRUE_TOP_LABEL", comment: "")
+        static let dontAc = NSLocalizedString("AUTHORIZATION_VC_FALSE_CREATE_ACCOUNT_LABEL", comment: "")
+        static let haveAnAcc = NSLocalizedString("AUTHORIZATION_VC_TRUE_CREATE_ACCOUNT_LABEL", comment: "")
+        static let hello = NSLocalizedString("AUTHORIZATION_VC_TRUE_GREETING_LABEL", comment: "")
+        static let iAm = NSLocalizedString("AUTHORIZATION_VC_FALSE_GREETING_LABEL", comment: "")
     }
     
     enum Images {

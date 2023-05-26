@@ -1,0 +1,139 @@
+/*
+  Localizable.strings
+  NewsToDay
+
+  Created by Admin on 21.05.2023.
+  
+*/
+
+AUTHORIZATION_VC_TRUE_TOP_LABEL = "Welcome to NewsToDay";
+AUTHORIZATION_VC_TRUE_GREETING_LABEL = "Hello, I guess you are new around here. You can start using the application after sign up.";
+AUTHORIZATION_VC_TRUE_SIGNIN_BUTTON = "Sign Up";
+AUTHORIZATION_VC_TRUE_CREATE_ACCOUNT_LABEL = "Already have an account?";
+AUTHORIZATION_VC_TRUE_CREATE_ACCOUNT_BUTTON = "Sign In";
+AUTHORIZATION_VC_FALSE_TOP_LABEL = "Welcome Back 👋";
+AUTHORIZATION_VC_FALSE_GREETING_LABEL = "I am happy to see you again. You can continue where you left off by logging in.";
+AUTHORIZATION_VC_FALSE_SIGNIN_BUTTON = "Sign In";
+AUTHORIZATION_VC_FALSE_CREATE_ACCOUNT_LABEL = "Don't have an account?";
+AUTHORIZATION_VC_FALSE_CREATE_ACCOUNT_BUTTON = "Sign Up";
+
+ALERT_OK = "OK";
+ALERT_ERROR = "Ooops!";
+ALERT_FILL = "Please fill out all fields";
+ALERT_DONT_MATCH = "Passwords don't match, please try again";
+ALERT_ERROR_PASSWORD = "Incorrect password";
+
+AUTHORIZATION_VIEW_USERNAME_TEXTFIELD = "Username";
+AUTHORIZATION_VIEW_EMAIL_TEXTFIELD = "Email Address";
+AUTHORIZATION_VIEW_PASSWORD_TEXTFIELD = "Password";
+AUTHORIZATION_VIEW_CONFIRM_PASSWORD_TEXTFIELD = "Repeat Password";
+AUTHORIZATION_VIEW_FORGOT_PASSWORD_BUTTON = "Forgot your password?";
+AUTHORIZATION_VIEW_THROUGH_GOOGLE = "Sign in with Google";
+AUTHORIZATION_VIEW_NAME = "Name";
+AUTHORIZATION_VIEW_INFORMATION = "Information";
+
+
+AUTHORIZATION_VIEW_SIGNIN_BUTTON = "Sign Up";
+AUTHORIZATION_VIEW_CREATE_ACCOUNT_LABEL = "Already have an account?";
+AUTHORIZATION_VIEW_CREATE_ACCOUNT_BUTTON = "Sign In";
+
+FORGET_GO_BACK_BUTTON = "x";
+FORGET_TOP_LABEL = "Reset your password";
+FORGET_GREETING_LABEL = "Don't worry. Please enter your email and we will send you a password reset email.";
+FORGET_EMAIL_TEXTFIELD = "Email Address";
+FORGET_RESET_PASSWORD_BUTTON = "Reset";
+FORGET_RESET_PASSWORD_ALERT = "Please fill in the email address";
+
+ONBOARDING_FIRST_TO_KNOW_LABEL = "First to know";
+ONBOARDING_ALL_NEWS_LABEL = "All news in one place, be \nthe first to know last news";
+ONBOARDING_NEXT_BUTTON = "Next";
+ONBOARDING_GET_STARTED_BUTTON = "Get Started";
+
+HOME_TITLE_LABEL = "Browse";
+HOME_SUBTITLE_LABEL = "Discover things of this world";
+HOME_SEARCH_BAR = "Search";
+HOME_HEADER_TITLE = "Recommended For You";
+
+CATEGORIES_ONBOARDING_HEADER_TITLE = "Select your favourite topics";
+CATEGORIES_HEADER_TITLE = "Categories";
+CATEGORIES_ONBOARDING_SUBTITLE = "Select some of your favourite topics to let us suggest better news for you";
+CATEGORIES_SUBTITLE = "Thousands of articles in each category";
+CATEGORIES_NEXT_BUTTON_TITLE = "Next";
+
+BOOKMARKS_TITLE_LABEL = "Bookmarks";
+BOOKMARKS_SUBTITLE_LABEL = "Saved articles to the library";
+BOOKMARKS_MESSAGE_VIEW = "You haven't saved any articles yet. Start reading and bookmarking them now";
+BOOKMARKS_CELL_CATEGORY_LABEL = "Something went wrong";
+BOOKMARKS_CELL_NEWS_LABEL = "We cant find your saved articles right now";
+BOOKMARKS_ALERT_TITLE = "Do You want to delete this bookmark?";
+BOOKMARKS_CANCEL_ALERT_TITLE = "Cancel";
+BOOKMARKS_DELETE_ALERT_TITLE = "Delete";
+
+PROFILE_PROFILE_LABEL = "Profile";
+PROFILE_LANGUAGE_BUTTON = "Language";
+PROFILE_TERMS_AND_CONDITIONS_BUTTON = "Terms & Conditions";
+PROFILE_SIGN_OUT_BUTTON = "Sign Out";
+PROFILE_ALERT_TITLE = "Sign out";
+PROFILE_ALERT_MESSAGE = "Are you sure you want to sign out of your profile?";
+PROFILE_ALERT_CANCEL_ACTION = "Cancel";
+PROFILE_ALERT_OK_ACTION = "Yes";
+
+LANGUAGE_HEADER_LABEL = "Language";
+LANGUAGE_ENGLISH_BUTTON = "English";
+LANGUAGE_RUSSIAN_BUTTON = "Russian";
+LANGUAGE_ALERT_TITLE = "Restart the application";
+LANGUAGE_ALERT_MESSAGE = "Restart the app to change the language?";
+LANGUAGE_ALERT_CANCEL_ACTION = "Cancel";
+LANGUAGE_ALERT_OK_ACTION = "Yes";
+
+TERMS_AND_CONDITIONS_HEADER_LABEL = "Terms & Conditions";
+TERMS_AND_CONDITIONS_MAIN_TEXT = "
+These Terms and Conditions govern your use of the News Application. By downloading, accessing, or using the App, you agree to be bound by this Agreement. If you do not agree with any of the terms and conditions stated herein, you should refrain from using the App.
+
+1. User Obligations
+1.1. You must be at least 18 years old to use the App. If you are under 18, you may only use the App under the supervision of a parent or legal guardian.
+1.2. You are responsible for providing accurate and up-to-date information during the registration process.
+1.3. You agree not to use the App for any illegal, harmful, or unauthorized activities.
+1.4. You shall not interfere with the proper functioning of the App, including but not limited to attempting to gain unauthorized access to the App or its servers.
+
+2. Intellectual Property
+2.1. The App and its contents, including but not limited to text, graphics, images, logos, and software, are the property of the Company and protected by intellectual property laws.
+2.2. You are granted a limited, non-transferable, and non-exclusive license to use the App for personal, non-commercial purposes.
+
+3. Privacy
+3.1. The Company respects your privacy and handles your personal information in accordance with its Privacy Policy, which is incorporated by reference into this Agreement.
+3.2. By using the App, you consent to the collection, use, and disclosure of your personal information as described in the Privacy Policy.
+
+4. Content
+4.1. The App provides access to news articles, images, videos, and other content (\"Content\") sourced from various third-party providers.
+4.2. The Company does not endorse or assume responsibility for the accuracy, completeness, or reliability of the Content.
+4.3. You acknowledge that the Content may be subject to copyright and other intellectual property rights, and you agree not to infringe upon such rights.
+
+5. Disclaimer of Warranties
+5.1. The App is provided on an \"as-is\" and \"as available\" basis, without any warranties or representations, express or implied.
+5.2. The Company does not warrant that the App will be error-free, uninterrupted, or free from viruses or other harmful components.
+5.3. The Company does not guarantee the accuracy, timeliness, or completeness of any Content provided through the App.
+
+6. Limitation of Liability
+6.1. To the maximum extent permitted by applicable law, the Company shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of or in connection with the use of the App.
+6.2. In no event shall the Company's total liability exceed the amount paid by you, if any, for accessing the App.
+
+7. Termination
+7.1. The Company may, at its sole discretion, terminate or suspend your access to the App at any time and for any reason, without prior notice.
+7.2. Upon termination, all licenses and rights granted to you under this Agreement shall immediately cease.
+
+8. Governing Law and Jurisdiction
+8.1. This Agreement shall be governed by and construed in accordance with the laws of [Jurisdiction].
+8.2. Any disputes arising out of or in connection with this Agreement shall be submitted to the exclusive jurisdiction of the courts of [Jurisdiction].
+
+9. Severability
+9.1. If any provision of this Agreement is deemed invalid, illegal, or unenforceable, the remaining provisions shall continue in full force and effect.
+
+10. Entire Agreement
+10.1. This Agreement constitutes the entire agreement between
+
+ you and the Company regarding the use of the App and supersedes any prior agreements or understandings.
+
+By continuing to use the App, you acknowledge that you have read, understood, and agreed to be bound by this Agreement.
+";
+

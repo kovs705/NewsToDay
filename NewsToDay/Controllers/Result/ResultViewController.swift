@@ -24,7 +24,20 @@ final class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        presenter.fetchHeadlines()
+        
+        showData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    func showData() {
+        if presenter.headlinesOrSearch {
+            presenter.fetchHeadlines()
+        } else {
+            presenter.showSearchResult()
+        }
     }
     
     //MARK: - Setup UI
@@ -55,6 +68,7 @@ final class ResultViewController: UIViewController {
     }
 }
 
+// MARK: - ResultViewProtocol
 extension ResultViewController: ResultViewProtocol {
     func failure(error: Error) {
         
@@ -103,7 +117,7 @@ extension ResultViewController: UITableViewDelegate {
                 // print("fetching")
                 self.tableView.tableFooterView = spinnerViewSetup()
                 // print("current page = ")
-                self.presenter.fetchHeadlines()
+                showData()
             }
         }
     }
