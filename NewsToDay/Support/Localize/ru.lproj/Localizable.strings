@@ -61,7 +61,7 @@ CATEGORIES_HEADER_TITLE = "Категории";
 CATEGORIES_ONBOARDING_SUBTITLE = "Выберите несколько Ваших любимых тем, чтобы мы могли предложить Вам лучшие новости.";
 CATEGORIES_SUBTITLE = "Тысячи статей в каждой категории";
 CATEGORIES_NEXT_BUTTON_TITLE = "Дальше";
-CATEGORIES_ONBORDIN_TITLTE = "Рекомендации";
+CATEGORIES_ONBORDIN_TITLTE_S = "Рекомендации";
 
 BOOKMARKS_TITLE_LABEL = "Закладки";
 BOOKMARKS_SUBTITLE_LABEL = "Сохраненные статьи в библиотеке";

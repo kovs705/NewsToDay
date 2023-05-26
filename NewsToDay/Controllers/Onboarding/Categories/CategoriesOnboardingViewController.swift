@@ -31,7 +31,7 @@ final class CategoriesOnboardingViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        self.title = NSLocalizedString("CATEGORIES_ONBORDIN_TITLTE", comment: "Recommendations")
+        self.title = NSLocalizedString("CATEGORIES_ONBORDIN_TITLTE_S", comment: "Recommendations")
         setupDiscriptionLabel()
         setupCollectionView()
         setupGetStartedButton()
