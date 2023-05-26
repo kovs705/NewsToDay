@@ -29,7 +29,7 @@ class ProfileExt: UIViewController {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor(named: "greyLighter")
+        imageView.backgroundColor = UIColor(named: "GreyLighter")
         imageView.image = UIImage(named: "bigDick")
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit

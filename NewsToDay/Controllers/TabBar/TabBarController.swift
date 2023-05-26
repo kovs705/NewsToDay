@@ -11,15 +11,16 @@ final class TabBarController: UITabBarController {
     
     //MARK: - Property
     
-    var coordinator: BuilderProtocol?
+    var builder: BuilderProtocol?
     
     //MARK: - Init
     
-    init(coordinator: BuilderProtocol) {
-        self.coordinator = coordinator
+    init(builder: BuilderProtocol) {
+        self.builder = builder
         super.init(nibName: nil, bundle: nil)
         setupTabs()
         setupTabBar()
+        navigationItem.setHidesBackButton(true, animated: true)
     }
     
     required init?(coder: NSCoder) {
@@ -29,10 +30,10 @@ final class TabBarController: UITabBarController {
     //MARK: - Private Methods
     
     private func setupTabs() {
-        let categories = coordinator?.getCategoriesModule()
-        let browse = coordinator?.getBrowseModule()
-        let profile = coordinator?.getProfileModule()
-        let bookmarks = coordinator?.getBookmarksModule()
+        let categories = builder?.getCategoriesModule()
+        let browse = builder?.getBrowseModule()
+        let profile = builder?.getProfileModule()
+        let bookmarks = builder?.getBookmarksModule()
         
         var tabs: [UINavigationController] = []
         

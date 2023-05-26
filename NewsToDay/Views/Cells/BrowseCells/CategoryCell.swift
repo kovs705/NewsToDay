@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-class CategoryCell: UICollectionViewCell {
+final class CategoryCell: UICollectionViewCell {
     
     static let id = "CategoryCell"
     

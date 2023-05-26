@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ProfileVC: ProfileExt {
+final class ProfileVC: ProfileExt {
     
     var presenter: ProfilePresenterProtocol!
     

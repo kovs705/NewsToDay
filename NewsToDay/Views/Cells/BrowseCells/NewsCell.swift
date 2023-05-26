@@ -1,6 +1,6 @@
 import UIKit
 
-class NewsCell: UICollectionViewCell {
+final class NewsCell: UICollectionViewCell {
     
     static let id = "NewsCell"
     
@@ -10,8 +10,6 @@ class NewsCell: UICollectionViewCell {
     private var newsTitle = UILabel()
     private var newsSourse = UILabel()
     private var loadingActivityIndicator = UIActivityIndicatorView(style: .medium)
-    var gradientView = UIView()
-    let gradient = CAGradientLayer()
     
     let placeholderImg = UIImage(named: "placeholderImage")
     
@@ -19,6 +17,7 @@ class NewsCell: UICollectionViewCell {
         super.init(frame: frame)
         setLayout()
         setupViews()
+        setupGradient()
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +35,7 @@ class NewsCell: UICollectionViewCell {
     func setupImage(news: News) {
         guard let urlToImage = news.urlToImage else {
             newsImageView.image = placeholderImg
-            newsImageView.contentMode = .scaleToFill
+            newsImageView.contentMode = .scaleAspectFill
             loadingActivityIndicator.stopAnimating()
             return
         }
@@ -46,12 +45,12 @@ class NewsCell: UICollectionViewCell {
         ) { [weak self] image in
             guard let image else {
                 self?.newsImageView.image = image
-                self?.newsImageView.contentMode = .scaleToFill
+                self?.newsImageView.contentMode = .scaleAspectFill
                 self?.loadingActivityIndicator.stopAnimating()
                 return
             }
             self?.newsImageView.image = image
-            self?.newsImageView.contentMode = .scaleToFill
+            self?.newsImageView.contentMode = .scaleAspectFill
             self?.loadingActivityIndicator.stopAnimating()
         }
     }
@@ -69,16 +68,18 @@ class NewsCell: UICollectionViewCell {
     private func setupNewsImageView() {
         newsImageView.clipsToBounds = true
         newsImageView.layer.cornerRadius = 12
-        newsImageView.contentMode = .scaleToFill
+        newsImageView.contentMode = .scaleAspectFill
         newsImageView.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
-//        gradientView = UIView(frame: newsImageView.frame)
-        
-        gradient.frame = gradientView.bounds
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.5).cgColor]
+    }
+    
+    private func setupGradient() {
+        newsImageView.layoutIfNeeded()
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.7).cgColor]
         gradient.locations = [0.0, 1.0]
-        gradientView.layer.insertSublayer(gradient, at: 0)
-        newsImageView.addSubview(gradientView)
-        newsImageView.bringSubviewToFront(gradientView)
+        newsImageView.layer.insertSublayer(gradient, at: 0)
+        gradient.frame = newsImageView.bounds
+        newsImageView.layoutIfNeeded()
     }
     
     private func setupNewsTitle() {
@@ -101,7 +102,7 @@ class NewsCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
-        [newsImageView, gradientView, newsTitle,
+        [newsImageView, newsTitle,
          newsSourse, loadingActivityIndicator].forEach {
             contentView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -129,11 +130,6 @@ class NewsCell: UICollectionViewCell {
             loadingActivityIndicator.centerXAnchor.constraint(equalTo: newsImageView.centerXAnchor),
             loadingActivityIndicator.widthAnchor.constraint(equalToConstant: 32),
             loadingActivityIndicator.heightAnchor.constraint(equalToConstant: 32),
-            
-            gradientView.topAnchor.constraint(equalTo: newsImageView.topAnchor),
-            gradientView.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor),
-            gradientView.leadingAnchor.constraint(equalTo: newsImageView.leadingAnchor),
-            gradientView.trailingAnchor.constraint(equalTo: newsImageView.trailingAnchor),
         ])
     }
 }

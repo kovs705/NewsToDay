@@ -20,7 +20,7 @@ protocol CategoriesOnboardingPresenterProtocol: AnyObject {
     func getStarted()
 }
 
-class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol {
+final class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol {
     weak var view: CategoriesOnboardingViewProtocol?
     var categories: CategoryManagerProtocol?
     var selectedCategories: [Category] = []
@@ -45,8 +45,7 @@ class CategoriesOnboardingPresenter: CategoriesOnboardingPresenterProtocol {
     }
     
     func getStarted() {
-        // standard.set(categories, forKey: Keys.categories)
-        print("You chose \(selectedCategories)")
+        UserDefaults.standard.set(true, forKey: Keys.onboarding)
     }
     
     //MARK: - Private Methods

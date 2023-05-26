@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
 
     private var nextButton = UIButton(type: .system)
     private var onboardingScrollView = UIScrollView()

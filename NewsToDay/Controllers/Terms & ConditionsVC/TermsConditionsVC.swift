@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TermsConditionsVC: UIViewController{
+final class TermsConditionsVC: UIViewController{
     
     let textView = UITextView()
     let label=UILabel()

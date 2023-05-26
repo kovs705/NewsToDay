@@ -25,7 +25,7 @@ protocol BuilderProtocol {
     func getBrowseModule() -> UIViewController
 }
 
-class Builder: BuilderProtocol {
+final class Builder: BuilderProtocol {
     func getBookmarksModule() -> UIViewController {
         let view = BookmarksViewController()
         let persistenceManager = PersistenceManager()
