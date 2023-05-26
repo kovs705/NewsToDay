@@ -9,12 +9,16 @@ protocol BrowsePresenterProtocol: AnyObject {
     init(view: BrowseViewProtocol, networkService: NetworkService)
     var categories: [Category] { get }
     var browseRows: [BrowseRow] { get }
+    var headNews: [News] { get }
 }
 
 final class BrowsePresenter: BrowsePresenterProtocol {
     weak var view: BrowseViewProtocol?
     var networkService: NetworkService!
     var categories = CategoryManager().all
+    
+    var headNews: [News] = []
+    
     var browseRows: [BrowseRow] = [
         BrowseRow(
             index: 0,
@@ -42,14 +46,16 @@ final class BrowsePresenter: BrowsePresenterProtocol {
     func fetchHead() {
         let request = BrowseHeadlinesRequest(category: categories[0])
         networkService.request(request) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let news):
                 guard let news else { return }
-                self?.browseRows[1] = BrowseRow(index: 1, title: nil,
+                self.browseRows[1] = BrowseRow(index: 1, title: nil,
                                                items: news.map { .news($0)})
-                self?.view?.success()
+                self.headNews = news
+                self.view?.success()
             case .failure(let error):
-                self?.view?.failure(error: error)
+                self.view?.failure(error: error)
             }
         }
     }

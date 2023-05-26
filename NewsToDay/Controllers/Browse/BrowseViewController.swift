@@ -94,6 +94,19 @@ final class BrowseViewController: UIViewController {
         configureDataSouce()
         reloadData()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let coordinator = Builder()
+        if let cell = collectionView.cellForItem(at: indexPath) as? NewsCell {
+            let article = presenter.headNews[indexPath.row]
+            let detailVC = coordinator.getDetailVCModule(news: article)
+            
+            navigationController?.pushViewController(detailVC, animated: true)
+        } else if let cell = collectionView.cellForItem(at: indexPath) as? ArticlesCell {
+            let article = presenter.headNews[indexPath.row]
+            let detailVC = coordinator.getDetailVCModule(news: article)
+        }
+    }
 }
 
 //MARK: - configureSearchController
@@ -102,7 +115,7 @@ extension BrowseViewController {
     func configureSearchController() {
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.placeholder = "Search article"
     }
 
     func configureNavigation() {
@@ -113,6 +126,8 @@ extension BrowseViewController {
     func setupCollectionView() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {$0.edges.equalTo(view.safeAreaLayoutGuide)}
+        
+        collectionView.allowsSelection = true
     }
 }
 
@@ -134,6 +149,12 @@ extension BrowseViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         print(#function)
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let coordinator = Builder()
+        let resultViewController = Builder.getResultModule(category: nil, coordinator: coordinator, headOrSearch: false, searchString: searchBar.text)
+        navigationController?.pushViewController(resultViewController, animated: true)
+    }
 }
 
 //MARK: - BrowseViewProtocol
@@ -147,6 +168,19 @@ extension BrowseViewController: BrowseViewProtocol {
         reloadData()
     }
 }
+
+// MARK: - UICollectionViewDelegate
+//extension BrowseViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let coordinator = Builder()
+//        if let cell = collectionView.cellForItem(at: indexPath) as? NewsCell {
+//            let article = presenter.headNews[indexPath.row]
+//            let detailVC = coordinator.getDetailVCModule(news: article)
+//            
+//            navigationController?.pushViewController(detailVC, animated: true)
+//        }
+//    }
+//}
 
 //MARK: - UICollectionViewLayout
 

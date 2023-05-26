@@ -108,7 +108,7 @@ extension CategoriesViewController: UICollectionViewDelegate {
         guard let selectedCategory = presenter.categories?.all[indexPath.row] else { return }
         let coordinator = Builder()
         
-        let resultViewController = Builder.getResultModule(category: selectedCategory, coordinator: coordinator)
+        let resultViewController = Builder.getResultModule(category: selectedCategory, coordinator: coordinator, headOrSearch: true, searchString: nil)
         navigationController?.pushViewController(resultViewController, animated: true)
     }
 }
