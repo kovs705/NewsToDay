@@ -21,7 +21,7 @@ struct BrowseContent {
 private typealias DataSource = UICollectionViewDiffableDataSource<BrowseRow, BrowseItem>
 private typealias Snapshot = NSDiffableDataSourceSnapshot<BrowseRow, BrowseItem>
 
-final class BrowseViewController: UIViewController {
+final class BrowseViewController: UIViewController, UICollectionViewDelegate {
     private let searchController = UISearchController()
     private var dataSource: DataSource!
     var presenter: BrowsePresenterProtocol!
@@ -49,16 +49,19 @@ final class BrowseViewController: UIViewController {
             case let .category(category):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.id, for: indexPath) as? CategoryCell else { fatalError("Unable to dequeue CategoryCell")}
                 cell.configure(with: category)
+                cell.isUserInteractionEnabled = true
                 return cell
             case let .news(news):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.id, for: indexPath) as? NewsCell else { fatalError("Unable to dequeue NewsCell")}
                 cell.setupCell(news: news)
                 cell.setupImage(news: news)
+                cell.isUserInteractionEnabled = true
                 return cell
             case let .article(article):
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArticlesCell.id, for: indexPath) as? ArticlesCell else { fatalError("Unable to dequeue NewsCell")}
                 cell.setupCell(news: article)
                 cell.setupImage(news: article)
+                cell.isUserInteractionEnabled = true
                 return cell
             }
         }
@@ -97,12 +100,12 @@ final class BrowseViewController: UIViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let coordinator = Builder()
-        if let cell = collectionView.cellForItem(at: indexPath) as? NewsCell {
+        if collectionView.cellForItem(at: indexPath) is NewsCell {
             let article = presenter.headNews[indexPath.row]
             let detailVC = coordinator.getDetailVCModule(news: article)
             
             navigationController?.pushViewController(detailVC, animated: true)
-        } else if let cell = collectionView.cellForItem(at: indexPath) as? ArticlesCell {
+        } else if collectionView.cellForItem(at: indexPath) is ArticlesCell {
             let article = presenter.headNews[indexPath.row]
             let detailVC = coordinator.getDetailVCModule(news: article)
         }
@@ -128,6 +131,7 @@ extension BrowseViewController {
         collectionView.snp.makeConstraints {$0.edges.equalTo(view.safeAreaLayoutGuide)}
         
         collectionView.allowsSelection = true
+        collectionView.isUserInteractionEnabled = true
     }
 }
 
@@ -176,7 +180,7 @@ extension BrowseViewController: BrowseViewProtocol {
 //        if let cell = collectionView.cellForItem(at: indexPath) as? NewsCell {
 //            let article = presenter.headNews[indexPath.row]
 //            let detailVC = coordinator.getDetailVCModule(news: article)
-//            
+//
 //            navigationController?.pushViewController(detailVC, animated: true)
 //        }
 //    }
