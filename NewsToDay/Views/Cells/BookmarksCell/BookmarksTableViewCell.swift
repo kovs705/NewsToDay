@@ -20,6 +20,13 @@ final class BookmarksTableViewCell: UITableViewCell {
     
     let placeholderImg = UIImage(named: "placeholderImage")
     
+    //MARK: - Override
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsImageView.image = nil
+    }
+    
     //MARK: - Public Setup
     
     func setupCell(news: News) {

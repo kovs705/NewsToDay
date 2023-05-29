@@ -54,6 +54,13 @@ final class ArticlesCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - Override
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsImageView.image = nil
+    }
+    
     //MARK: - Setup UI Elements
     
     private func setupViews() {

@@ -16,6 +16,8 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     
     var titleLabel = UILabel()
     
+    //MARK: - Override
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setConstraints()
