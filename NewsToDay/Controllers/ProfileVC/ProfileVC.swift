@@ -14,7 +14,6 @@ final class ProfileVC: ProfileExt {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         presenter.calculate()
     }
     
@@ -22,7 +21,6 @@ final class ProfileVC: ProfileExt {
 
 extension ProfileVC: ProfileViewProtocol {
     func show() {
-        // UI code here
         addSubviews()
         setBackground()
         setNameUser()
