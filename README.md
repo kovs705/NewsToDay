@@ -7,7 +7,11 @@ Group project - News app, that fetches the data from [NewsAPI](https://newsapi.o
 - Third-party API [NewsAPI](https://newsapi.org)
 
 ## Contributors
-- in progress 🧑‍💻🧑🏻‍💻👩‍💻👩🏻‍💻👨🏽‍💻👨🏻‍💻
+- [Eugene Kovs](https://github.com/kovs705)
+- [Mikhail](https://github.com/jstted)
+- [Nikita Korniuk](https://github.com/Privetyanikita)
+- [U-ggg](https://github.com/U-ggg)
+- [Vladimir Fibe](https://github.com/VladimirFibe)
 
 ## Screenshots
 - in progress
