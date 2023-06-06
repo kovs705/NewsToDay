@@ -13,6 +13,8 @@ final class NewsCell: UICollectionViewCell {
     
     let placeholderImg = UIImage(named: "placeholderImage")
     
+    //MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
@@ -22,6 +24,13 @@ final class NewsCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Override
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsImageView.image = nil
     }
     
     //MARK: - Public Setup

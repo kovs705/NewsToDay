@@ -33,7 +33,7 @@ final class TermsConditionsVC: UIViewController{
 //            label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
 //        }
 
-        label.textColor = UIColor(named: "BlackPrimary")
+        label.textColor = UIColor(named: Colors.blackPrimary.rawValue)
         label.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(60)
@@ -48,7 +48,7 @@ final class TermsConditionsVC: UIViewController{
         if let customFont = UIFont(name: "Inter-Regular", size: 19) {
             textView.font = customFont
         }
-        textView.textColor = UIColor(named: "GreyLight")
+        textView.textColor = UIColor(named: Colors.greyLight.rawValue)
         textView.isEditable = false
         textView.isScrollEnabled = true
         textView.isSelectable = false

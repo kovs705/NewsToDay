@@ -5,8 +5,7 @@
 //  Created by Kovs on 15.05.2023.
 //
 
-import UIKit
-import SnapKit
+import Foundation
 
 
 protocol ProfileViewProtocol: AnyObject {
@@ -28,10 +27,6 @@ final class ProfilePresenter: ProfilePresenterProtocol {
     
     
     func calculate() {
-        // 2 + 2 = 5
-        print("Calculated")
-        
         self.view?.show()
     }
-    
 }

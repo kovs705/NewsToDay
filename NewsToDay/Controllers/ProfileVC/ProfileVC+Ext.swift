@@ -29,7 +29,7 @@ class ProfileExt: UIViewController {
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor(named: "GreyLighter")
+        imageView.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
         imageView.image = UIImage(named: "bigDick")
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit
@@ -75,7 +75,7 @@ class ProfileExt: UIViewController {
         //        else{
         //            label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         //        }
-        nameUserLabel.textColor = UIColor(named: "BlackPrimary")
+        nameUserLabel.textColor = UIColor(named: Colors.blackPrimary.rawValue)
         
     }
     func setEmailUser(){
@@ -88,7 +88,7 @@ class ProfileExt: UIViewController {
         //        else{
         //            label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         //        }
-        emailUserLabel.textColor = UIColor(named: "GreyPrimary")
+        emailUserLabel.textColor = UIColor(named: Colors.greyLighter.rawValue)
         
     }
     

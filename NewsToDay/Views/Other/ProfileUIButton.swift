@@ -34,7 +34,7 @@ class ProfileUIButton: UIButton {
     
     private func setupButton() {
         self.layer.cornerRadius = 12
-        self.backgroundColor = UIColor(named: "greyLighter")
+        self.backgroundColor = UIColor(named: Colors.greyLighter.rawValue)
         profileImageView.contentMode = .scaleAspectFit
     }
     
