@@ -9,9 +9,8 @@ import UIKit
 
 class NewsImageView: UIImageView {
     
-    let cache               = ImageClient.shared.cachedImageForURL
-    let placeholderImage    = UIImage(named: "Home2")
-
+    let placeholderImage = UIImage(named: "placeholderImage")
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -24,25 +23,21 @@ class NewsImageView: UIImageView {
     
     
     private func configure() {
-        layer.cornerRadius  = 10
-        clipsToBounds       = true
-        image               = placeholderImage
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        image = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
     }
     
     
     func setupImage(news: News) {
-        guard let urlToImage = news.urlToImage else { return }
-        ImageClient.shared.setImage(
-            from: urlToImage,
-            placeholderImage: UIImage(named: "placeholderImage")
-        ) { [weak self] image in
-            guard let image else {
-                self?.image = image
-                return
-            }
+        guard let urlToImage = news.urlToImage else {
+            self.image = placeholderImage
+            return
+        }
+        ImageClient.shared.setImage(from: urlToImage) { [weak self] image in
+            guard let image else { return }
             self?.image = image
         }
     }
-    
 }

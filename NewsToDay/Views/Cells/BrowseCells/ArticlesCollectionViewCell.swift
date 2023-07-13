@@ -32,22 +32,9 @@ final class ArticlesCell: UICollectionViewCell {
     }
     
     func setupImage(news: News) {
-        guard let urlToImage = news.urlToImage else {
-            newsImageView.image = placeholderImg
-            newsImageView.contentMode = .scaleAspectFill
-            loadingActivityIndicator.stopAnimating()
-            return
-        }
-        ImageClient.shared.setImage(
-            from: urlToImage,
-            placeholderImage: placeholderImg
-        ) { [weak self] image in
-            guard let image else {
-                self?.newsImageView.image = image
-                self?.newsImageView.contentMode = .scaleAspectFill
-                self?.loadingActivityIndicator.stopAnimating()
-                return
-            }
+        guard let urlToImage = news.urlToImage else { return }
+        ImageClient.shared.setImage(from: urlToImage) { [weak self] image in
+            guard let image else { return }
             self?.newsImageView.image = image
             self?.newsImageView.contentMode = .scaleAspectFill
             self?.loadingActivityIndicator.stopAnimating()

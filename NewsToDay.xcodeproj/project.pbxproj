@@ -229,6 +229,7 @@
 				4E1520D22A06CE9400E42537 /* Controllers */,
 				4E1520D12A06CE8C00E42537 /* Views */,
 				4E4993982A07A5E7001CBF8C /* Model */,
+				4E49939F2A07AB61001CBF8C /* Managers */,
 				C8F160032A0D422D00C63C6C /* Plist */,
 				4E4993AA2A07AF75001CBF8C /* Network */,
 				4E1520D02A06CE7F00E42537 /* Support */,
@@ -351,20 +352,10 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		4E4993A72A07AE0C001CBF8C /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				4E4993A42A07AC1F001CBF8C /* NewsError.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		4E4993AA2A07AF75001CBF8C /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				C85075312A17AE64001AF283 /* NewNetwork */,
-				4E4993A72A07AE0C001CBF8C /* Service */,
-				4E49939F2A07AB61001CBF8C /* Managers */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -454,6 +445,7 @@
 				C85075342A17B01B001AF283 /* NewNetworkService.swift */,
 				C850753D2A17B748001AF283 /* ImageClient.swift */,
 				C85075362A17B082001AF283 /* ErrorResponse.swift */,
+				4E4993A42A07AC1F001CBF8C /* NewsError.swift */,
 			);
 			path = NewNetwork;
 			sourceTree = "<group>";
@@ -990,7 +982,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5PVHGUKPAW;
+				DEVELOPMENT_TEAM = 3YU35F66VY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsToDay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "NewstoDay!";
@@ -1005,7 +997,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.NewsToDay;
+				PRODUCT_BUNDLE_IDENTIFIER = space.jstted.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1023,7 +1015,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5PVHGUKPAW;
+				DEVELOPMENT_TEAM = 3YU35F66VY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsToDay/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "NewstoDay!";
@@ -1038,7 +1030,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CodingKovs.NewsToDay;
+				PRODUCT_BUNDLE_IDENTIFIER = space.jstted.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

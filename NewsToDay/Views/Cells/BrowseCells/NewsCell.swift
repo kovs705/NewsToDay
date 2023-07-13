@@ -48,16 +48,8 @@ final class NewsCell: UICollectionViewCell {
             loadingActivityIndicator.stopAnimating()
             return
         }
-        ImageClient.shared.setImage(
-            from: urlToImage,
-            placeholderImage: placeholderImg
-        ) { [weak self] image in
-            guard let image else {
-                self?.newsImageView.image = image
-                self?.newsImageView.contentMode = .scaleAspectFill
-                self?.loadingActivityIndicator.stopAnimating()
-                return
-            }
+        ImageClient.shared.setImage(from: urlToImage) { [weak self] image in
+            guard let image else { return }
             self?.newsImageView.image = image
             self?.newsImageView.contentMode = .scaleAspectFill
             self?.loadingActivityIndicator.stopAnimating()
